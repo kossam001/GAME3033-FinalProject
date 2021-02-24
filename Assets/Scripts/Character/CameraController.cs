@@ -20,7 +20,6 @@ public class CameraController : MonoBehaviour
     public void OnLook(InputValue delta)
     {
         Vector2 aimValue = delta.Get<Vector2>();
-        Debug.Log(aimValue);
 
         FollowTarget.rotation *=
             Quaternion.AngleAxis(

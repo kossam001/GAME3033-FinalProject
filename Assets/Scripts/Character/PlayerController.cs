@@ -18,19 +18,27 @@ public class PlayerController : Character
     [SerializeField]
     private float forwardMagnitude;
 
+    private Vector2 movementDirection;
+
     // Used to handle physics
     void FixedUpdate()
     {
-        Turn();
+        //if (currentlyActiveSkill == null || currentlyActiveSkill.isStationary == false)
+        //{
+        //    Move();
+        //}
+        //else
+        //{
+        //    // Come to a stop if the skill is supposed to be stationary
+        //    // rigidbody.velocity *= 0.97f;
+        //}
+        if (movementDirection.y != 0.0f || movementDirection.x != 0.0f)
+        {
+            Vector3 forwardForce = character.transform.forward * movementDirection.y;
+            Vector3 rightForce = character.transform.right * movementDirection.x;
+            movementComponent.Move(forwardForce + rightForce);
 
-        if (currentlyActiveSkill == null || currentlyActiveSkill.isStationary == false)
-        {
-            Move();
-        }
-        else
-        {
-            // Come to a stop if the skill is supposed to be stationary
-            // rigidbody.velocity *= 0.97f;
+            Turn();
         }
     }
 
@@ -42,11 +50,7 @@ public class PlayerController : Character
 
     public void OnMovement(InputValue vector2)
     {
-        Vector2 movementDirection = vector2.Get<Vector2>();
-
-        Vector3 forwardForce = character.transform.forward * movementDirection.y;
-        Vector3 rightForce = character.transform.right * movementDirection.x;
-        movementComponent.Move(forwardForce + rightForce);
+        movementDirection = vector2.Get<Vector2>();
 
         //// Get movement based on character direction
         //Vector3 forwardForce = character.transform.forward * Input.GetAxis("Vertical");
@@ -68,7 +72,7 @@ public class PlayerController : Character
         //Quaternion rotation = Quaternion.RotateTowards(character.transform.rotation, cam.transform.rotation, rotationSpeed);
         //Vector3 euler = Vector3.Scale(rotation.eulerAngles, new Vector3(0, 1, 0));
         //character.transform.rotation = Quaternion.Euler(euler);
-        //movementComponent.Turn(cam.transform.rotation);
+        movementComponent.Turn(cam.transform.rotation);
     }
 
     public override IEnumerator UseSkill(ActiveSkill skill)
