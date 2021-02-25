@@ -6,6 +6,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : Character
 {
+    // Animator hashes
+    private readonly int MoveXHash = Animator.StringToHash("MoveX");
+    private readonly int MoveZHash = Animator.StringToHash("MoveZ");
+
     public float movementSpeed;
     public float rotationSpeed;
     public Camera cam;
@@ -13,12 +17,15 @@ public class PlayerController : Character
     public Movement movementComponent;
 
     private float lookDirection;
-    //public Rigidbody rigidbody;
-    //public Animator animator;
-    [SerializeField]
-    private float forwardMagnitude;
+    private Animator characterAnimator;
+    [SerializeField] private float forwardMagnitude;
 
     private Vector2 movementDirection;
+
+    private void Awake()
+    {
+        characterAnimator = character.GetComponent<Animator>();
+    }
 
     // Used to handle physics
     void FixedUpdate()
@@ -51,6 +58,9 @@ public class PlayerController : Character
     public void OnMovement(InputValue vector2)
     {
         movementDirection = vector2.Get<Vector2>();
+
+        characterAnimator.SetFloat(MoveXHash, movementDirection.x);
+        characterAnimator.SetFloat(MoveZHash, movementDirection.y);
 
         //// Get movement based on character direction
         //Vector3 forwardForce = character.transform.forward * Input.GetAxis("Vertical");
