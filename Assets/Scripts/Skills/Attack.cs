@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attack : OffensiveSkill
+public class Attack : ActiveSkill
 {
     public GameObject attackObject;
     public float resetDuration = 0.3f; // duration to reset stance
@@ -15,20 +15,21 @@ public class Attack : OffensiveSkill
         hitBox = GetComponent<Collider>();
         hitBox.enabled = false;
 
+        // If the attack has an associated mesh
         meshRenderer = GetComponent<MeshRenderer>();
         meshRenderer.enabled = false;
     }
 
     public override IEnumerator Use()
     {
+        // don't use if there is a cooldown
         if (cooldown > 0.0f)
-        {
             yield return null;
-        }
 
         yield return StartCoroutine(WindUp());
     }
 
+    // Before the attack collider becomes active, usually when raising weapon for a swing
     public IEnumerator WindUp()
     {
         isInUse = true;
@@ -41,6 +42,7 @@ public class Attack : OffensiveSkill
         StartCoroutine(Strike());
     }
 
+    // The swing - when the attack actually connects
     public IEnumerator Strike()
     {
         yield return new WaitForSeconds(attackDuration);
@@ -50,6 +52,7 @@ public class Attack : OffensiveSkill
         StartCoroutine(Finish());
     }
 
+    // Returns to neutral stance
     public IEnumerator Finish()
     {
         // Reset stance - mostly for AI so that they don't immediately turn after attacking
