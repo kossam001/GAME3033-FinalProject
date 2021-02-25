@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class TreeNode : ScriptableObject
 {
-    private Brain brain;
+    protected Brain brain;
     public List<TreeNode> nodes;
 
-    public void Initialize(Brain _brain)
+    public bool isSelector = false; // Otherwise it is a sequence
+
+    public virtual bool PerformCheck()
+    {
+        return true;
+    }
+
+    public virtual void Initialize(Brain _brain)
     {
         brain = _brain;
     }
 
-    public bool Run()
+    public virtual bool Run()
     {
         foreach (TreeNode node in nodes)
         {
-            return node.Run();
+            if (!node.Run() ^ isSelector) return false;
         }
-        return false;
+        return true;
     }
 }

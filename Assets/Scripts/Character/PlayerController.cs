@@ -51,6 +51,10 @@ public class PlayerController : Character
 
     private void CancelAttack()
     {
+
+
+        AnimatorStateInfo animatorState = characterAnimator.GetCurrentAnimatorStateInfo(1);
+
         if (characterAnimator.GetBool(CanCancelHash))
         {
             characterAnimator.SetBool(IsAttackingHash, false);
