@@ -9,6 +9,9 @@ public class PlayerController : Character
     // Animator hashes
     private readonly int MoveXHash = Animator.StringToHash("MoveX");
     private readonly int MoveZHash = Animator.StringToHash("MoveZ");
+    private readonly int IsAttackingHash = Animator.StringToHash("IsAttacking");
+    private readonly int ComboHash = Animator.StringToHash("Combo");
+    private readonly int ComboEndHash = Animator.StringToHash("ComboEnd");
 
     public float movementSpeed;
     public float rotationSpeed;
@@ -40,12 +43,6 @@ public class PlayerController : Character
         }
     }
 
-    // Used to handle player input so it is not jittery
-    private void Update()
-    {
-        Attack();
-    }
-
     public void OnMovement(InputValue vector2)
     {
         movementDirection = vector2.Get<Vector2>();
@@ -67,8 +64,17 @@ public class PlayerController : Character
         currentlyActiveSkill = null;
     }
 
-    public void Attack()
+    public void OnAttack(InputValue button)
     {
+        int currentCombo = characterAnimator.GetInteger(ComboHash);
+        bool currentlyAttacking = characterAnimator.GetBool(IsAttackingHash);
+
+        if (button.isPressed && !currentlyAttacking)
+        {
+            characterAnimator.SetBool(ComboEndHash, false);
+            characterAnimator.SetBool(IsAttackingHash, true);
+            characterAnimator.SetInteger(ComboHash, ++currentCombo);
+        }
         //if (Input.GetButtonDown("Fire1") && currentlyActiveSkill == null)
         //{
         //    StartCoroutine(UseSkill(skillsList[0]));

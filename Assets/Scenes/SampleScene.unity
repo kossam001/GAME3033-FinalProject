@@ -4026,6 +4026,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponSocket
       objectReference: {fileID: 0}
+    - target: {fileID: 8275359146937781334, guid: 906f36fd28a05bd418a32fc9d218fb27, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8275359146937781335, guid: 906f36fd28a05bd418a32fc9d218fb27, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4069,6 +4073,10 @@ PrefabInstance:
     - target: {fileID: 8275359146937781335, guid: 906f36fd28a05bd418a32fc9d218fb27, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275359147100909984, guid: 906f36fd28a05bd418a32fc9d218fb27, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 906f36fd28a05bd418a32fc9d218fb27, type: 3}
