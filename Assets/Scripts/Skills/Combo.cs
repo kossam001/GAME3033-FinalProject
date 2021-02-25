@@ -46,9 +46,9 @@ public class Combo : StateMachineBehaviour
         }
     }
 
-    //public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
-    //{
-    //    if (animator.GetInteger(ComboHash) > 2)
-    //        animator.SetInteger(ComboHash, -1);
-    //}
+    public void SetComboParameters(float _attackDuration, float _comboDuration)
+    {
+        attackDuration = _attackDuration;
+        comboDuration = _comboDuration;
+    }
 }

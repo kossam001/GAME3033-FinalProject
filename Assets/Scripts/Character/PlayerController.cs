@@ -22,7 +22,11 @@ public class PlayerController : Character
     public CharacterData characterData;
 
     private float lookDirection;
+
+    public Skill skill;
     private Animator characterAnimator;
+    public AnimatorOverrideController animatorOverride;
+
     [SerializeField] private float forwardMagnitude;
 
     private Vector2 movementDirection;
@@ -30,6 +34,7 @@ public class PlayerController : Character
     private void Awake()
     {
         characterAnimator = character.GetComponent<Animator>();
+        characterAnimator.runtimeAnimatorController = animatorOverride;
     }
 
     // Used to handle physics
@@ -51,10 +56,6 @@ public class PlayerController : Character
 
     private void CancelAttack()
     {
-
-
-        AnimatorStateInfo animatorState = characterAnimator.GetCurrentAnimatorStateInfo(1);
-
         if (characterAnimator.GetBool(CanCancelHash))
         {
             characterAnimator.SetBool(IsAttackingHash, false);
@@ -90,11 +91,26 @@ public class PlayerController : Character
         bool currentlyAttacking = characterAnimator.GetBool(IsAttackingHash);
         bool canCancel = characterAnimator.GetBool(CanCancelHash);
 
-        if (button.isPressed && (!currentlyAttacking || canCancel))
+        if (button.isPressed && (!currentlyAttacking))
         {
+            //animatorOverride["BruteStandingMeleeAttackHorizontal"] = animationClip;
+            animatorOverride["BruteStandingMeleeAttackHorizontal"] = skill.animation;
+            skill.OverrideAnimationData("BruteStandingMeleeAttackHorizontal", characterAnimator, animatorOverride);
+
             characterAnimator.SetBool(ComboEndHash, false);
             characterAnimator.SetBool(IsAttackingHash, true);
             characterAnimator.SetInteger(ComboHash, ++currentCombo);
+
+            skill = skill.nextChain;
+        }
+        else if (button.isPressed && canCancel)
+        {
+            animatorOverride["BruteStandingMeleeAttackHorizontal"] = skill.animation;
+            skill.OverrideAnimationData("BruteStandingMeleeAttackHorizontal", characterAnimator, animatorOverride);
+
+            characterAnimator.Play("SkillUse", 1, 0.0f);
+
+            skill = skill.nextChain;
         }
     }
 }

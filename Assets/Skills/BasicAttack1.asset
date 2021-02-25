@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e85542d373b68974ebbf9e70451c90a6, type: 3}
+  m_Name: BasicAttack1
+  m_EditorClassIdentifier: 
+  animation: {fileID: 7400000, guid: 3227a11c42c4bfd41b461fb6166966aa, type: 2}
+  nextChain: {fileID: 11400000, guid: c71c82543a01ce84fa72ad0a427155aa, type: 2}
+  attackDuration: 0.5
+  comboDuration: 1
