@@ -14,10 +14,6 @@ public class Attack : ActiveSkill
 
         hitBox = GetComponent<Collider>();
         hitBox.enabled = false;
-
-        // If the attack has an associated mesh
-        meshRenderer = GetComponent<MeshRenderer>();
-        meshRenderer.enabled = false;
     }
 
     public override IEnumerator Use()

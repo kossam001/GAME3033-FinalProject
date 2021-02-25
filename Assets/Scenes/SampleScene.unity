@@ -521,6 +521,7 @@ GameObject:
   - component: {fileID: 745705307}
   - component: {fileID: 745705308}
   - component: {fileID: 745705309}
+  - component: {fileID: 745705310}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -607,6 +608,20 @@ MonoBehaviour:
   FollowTarget: {fileID: 1655836734}
   RotationSpeed: 0.1
   HorizontalDamping: 1
+--- !u!114 &745705310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745705305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b74f93eb2546742a2047ed0b3cd2df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  isAttacking: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3514,6 +3529,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1368440408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8275359147100909984, guid: 906f36fd28a05bd418a32fc9d218fb27, type: 3}
+  m_PrefabInstance: {fileID: 8275359148416831480}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1368440413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368440408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42fea116c9ba8e24badae72ef862887b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 0
+  angle: 0
+  target: 
+  attackDuration: 0
+  chargingTime: 0
+  cooldown: 0
+  isCancellable: 0
+  isStationary: 0
+  canCancel: 0
+  isInterruptable: 0
+  isInUse: 0
+  damage: 0
+  hitBox: {fileID: 0}
+  meshRenderer: {fileID: 0}
+  attackObject: {fileID: 0}
+  resetDuration: 0.3
+  windUpDuration: 0.3
 --- !u!1 &1655836733
 GameObject:
   m_ObjectHideFlags: 0

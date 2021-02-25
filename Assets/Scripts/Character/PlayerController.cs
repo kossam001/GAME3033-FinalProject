@@ -10,6 +10,7 @@ public class PlayerController : Character
     private readonly int MoveXHash = Animator.StringToHash("MoveX");
     private readonly int MoveZHash = Animator.StringToHash("MoveZ");
     private readonly int IsAttackingHash = Animator.StringToHash("IsAttacking");
+    private readonly int CanCancelHash = Animator.StringToHash("CanCancel");
     private readonly int ComboHash = Animator.StringToHash("Combo");
     private readonly int ComboEndHash = Animator.StringToHash("ComboEnd");
 
@@ -18,6 +19,7 @@ public class PlayerController : Character
     public Camera cam;
     public GameObject character;
     public Movement movementComponent;
+    public CharacterData characterData;
 
     private float lookDirection;
     private Animator characterAnimator;
@@ -33,13 +35,27 @@ public class PlayerController : Character
     // Used to handle physics
     void FixedUpdate()
     {
-        if (movementDirection.y != 0.0f || movementDirection.x != 0.0f)
+        if ((movementDirection.y != 0.0f || movementDirection.x != 0.0f) 
+            && (!characterAnimator.GetBool(IsAttackingHash) 
+            || characterAnimator.GetBool(CanCancelHash)))
         {
+            CancelAttack();
+
             Vector3 forwardForce = character.transform.forward * movementDirection.y;
             Vector3 rightForce = character.transform.right * movementDirection.x;
             movementComponent.Move(forwardForce + rightForce);
 
             Turn();
+        }
+    }
+
+    private void CancelAttack()
+    {
+        if (characterAnimator.GetBool(CanCancelHash))
+        {
+            characterAnimator.SetBool(IsAttackingHash, false);
+            characterAnimator.SetBool(CanCancelHash, false);
+            characterAnimator.SetInteger(ComboHash, -1);
         }
     }
 
@@ -68,16 +84,13 @@ public class PlayerController : Character
     {
         int currentCombo = characterAnimator.GetInteger(ComboHash);
         bool currentlyAttacking = characterAnimator.GetBool(IsAttackingHash);
+        bool canCancel = characterAnimator.GetBool(CanCancelHash);
 
-        if (button.isPressed && !currentlyAttacking)
+        if (button.isPressed && (!currentlyAttacking || canCancel))
         {
             characterAnimator.SetBool(ComboEndHash, false);
             characterAnimator.SetBool(IsAttackingHash, true);
             characterAnimator.SetInteger(ComboHash, ++currentCombo);
         }
-        //if (Input.GetButtonDown("Fire1") && currentlyActiveSkill == null)
-        //{
-        //    StartCoroutine(UseSkill(skillsList[0]));
-        //}
     }
 }
