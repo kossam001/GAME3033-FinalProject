@@ -20,6 +20,8 @@ public class ChaseTarget : TreeNode
 
     public override bool Run()
     {
+        brain.controller.SetCurrentNode(this);
+
         if (!PerformCheck()) return false;
 
         brain.moveDestination = brain.enemyTargets[Random.Range(0, brain.enemyTargets.Count - 1)].transform.position;

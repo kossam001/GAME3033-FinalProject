@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Brain : MonoBehaviour
 {
     public GameObject character;
+    public AIController controller;
 
     public Vector3 moveDestination;
 

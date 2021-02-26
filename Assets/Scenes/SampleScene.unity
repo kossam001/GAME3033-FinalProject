@@ -602,6 +602,73 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 906f36fd28a05bd418a32fc9d218fb27, type: 3}
+--- !u!1 &583532570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 583532571}
+  - component: {fileID: 583532573}
+  - component: {fileID: 583532572}
+  m_Layer: 0
+  m_Name: Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &583532571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583532570}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1098312820}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &583532572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583532570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57846ffab22638f409f77cbe1c7600fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 707804528}
+  controller: {fileID: 583532573}
+  moveDestination: {x: 0, y: 0, z: 0}
+  enemyTargets:
+  - {fileID: 8766573650720140851}
+  activeTarget: {fileID: 0}
+  combatRange: 0
+  agent: {fileID: 1098312821}
+--- !u!114 &583532573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583532570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac27c8cef7248964b897c2593ad6d56d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: 11400000, guid: aeb3b8bbf42825b4899f86d8bd6d7774, type: 2}
+  brain: {fileID: 583532572}
+  currentNode: {fileID: 0}
 --- !u!1 &600782639
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,6 +807,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5652114111254772415, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fff1f51ddf21fd54bb3400f40091c779, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
 --- !u!4 &609959424 stripped
@@ -845,6 +916,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &707804528 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1430926072993397375, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
+  m_PrefabInstance: {fileID: 609959423}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &745705305
 GameObject:
   m_ObjectHideFlags: 0
@@ -5612,6 +5688,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1098312820}
+  - component: {fileID: 1098312821}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -5631,9 +5708,32 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 609959424}
+  - {fileID: 583532571}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!195 &1098312821
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098312819}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!43 &1109898168
 Mesh:
   m_ObjectHideFlags: 0
