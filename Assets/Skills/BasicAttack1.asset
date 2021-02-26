@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e85542d373b68974ebbf9e70451c90a6, type: 3}
   m_Name: BasicAttack1
   m_EditorClassIdentifier: 
+  skillName: BasicAttack0
   animation: {fileID: 7400000, guid: 3227a11c42c4bfd41b461fb6166966aa, type: 2}
-  nextChain: {fileID: 11400000, guid: c71c82543a01ce84fa72ad0a427155aa, type: 2}
+  isCombo: 1
   attackDuration: 0.5
   comboDuration: 1

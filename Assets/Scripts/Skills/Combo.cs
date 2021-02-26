@@ -39,7 +39,7 @@ public class Combo : StateMachineBehaviour
         // End combo
         if (stateDuration >= stateInfo.length * comboDuration)
         {
-            animator.SetInteger(ComboHash, -1);
+            animator.SetInteger(ComboHash, 0);
             animator.SetBool(ComboEndHash, true);
             animator.SetBool(IsAttackingHash, false);
             animator.SetBool(CanCancelHash, false);

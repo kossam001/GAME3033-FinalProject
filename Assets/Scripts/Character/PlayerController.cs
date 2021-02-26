@@ -23,7 +23,7 @@ public class PlayerController : Character
 
     private float lookDirection;
 
-    public Skill skill;
+    public SkillList skills;
     private Animator characterAnimator;
     public AnimatorOverrideController animatorOverride;
 
@@ -60,7 +60,7 @@ public class PlayerController : Character
         {
             characterAnimator.SetBool(IsAttackingHash, false);
             characterAnimator.SetBool(CanCancelHash, false);
-            characterAnimator.SetInteger(ComboHash, -1);
+            characterAnimator.SetInteger(ComboHash, 0);
         }
     }
 
@@ -93,24 +93,22 @@ public class PlayerController : Character
 
         if (button.isPressed && (!currentlyAttacking))
         {
-            //animatorOverride["BruteStandingMeleeAttackHorizontal"] = animationClip;
-            animatorOverride["BruteStandingMeleeAttackHorizontal"] = skill.animation;
-            skill.OverrideAnimationData("BruteStandingMeleeAttackHorizontal", characterAnimator, animatorOverride);
+            Skill basicAttack = skills.skillTable["BasicAttack" + currentCombo];
+            animatorOverride["BruteStandingMeleeAttackHorizontal"] = basicAttack.animation;
+            basicAttack.OverrideAnimationData("BruteStandingMeleeAttackHorizontal", characterAnimator, animatorOverride);
 
             characterAnimator.SetBool(ComboEndHash, false);
             characterAnimator.SetBool(IsAttackingHash, true);
-            characterAnimator.SetInteger(ComboHash, ++currentCombo);
-
-            skill = skill.nextChain;
         }
         else if (button.isPressed && canCancel)
         {
-            animatorOverride["BruteStandingMeleeAttackHorizontal"] = skill.animation;
-            skill.OverrideAnimationData("BruteStandingMeleeAttackHorizontal", characterAnimator, animatorOverride);
+            characterAnimator.SetInteger(ComboHash, ++currentCombo);
 
-            characterAnimator.Play("SkillUse", 1, 0.0f);
+            Skill basicAttack = skills.skillTable["BasicAttack" + currentCombo];
+            animatorOverride["BruteStandingMeleeAttackHorizontal"] = basicAttack.animation;
+            basicAttack.OverrideAnimationData("BruteStandingMeleeAttackHorizontal", characterAnimator, animatorOverride);
 
-            skill = skill.nextChain;
+            characterAnimator.Play("SkillUse", 1, 0.0f);;
         }
     }
 }

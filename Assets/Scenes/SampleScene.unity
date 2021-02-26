@@ -634,9 +634,57 @@ Transform:
   - {fileID: 1655836734}
   - {fileID: 963194228}
   - {fileID: 2038727635}
+  - {fileID: 604390048}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &604390047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 604390048}
+  - component: {fileID: 604390049}
+  m_Layer: 0
+  m_Name: SkillList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &604390048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604390047}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -98.00538, y: -86.10081, z: 330.06442}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 600782640}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &604390049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604390047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5172f9fde1a6d4196ba8de02a6e50c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills:
+  - {fileID: 11400000, guid: b2a8af2e5396a3f4583625885e973ef9, type: 2}
+  - {fileID: 11400000, guid: c71c82543a01ce84fa72ad0a427155aa, type: 2}
+  - {fileID: 11400000, guid: b2d5e6359c9ef634b974b8a078c11e8e, type: 2}
 --- !u!1001 &609959423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -851,7 +899,7 @@ MonoBehaviour:
   character: {fileID: 8766573650720140851}
   movementComponent: {fileID: 8766573650720140852}
   characterData: {fileID: 0}
-  skill: {fileID: 11400000, guid: b2a8af2e5396a3f4583625885e973ef9, type: 2}
+  skills: {fileID: 604390049}
   animatorOverride: {fileID: 22100000, guid: 65a61ac0b0cab7047869f49a03be4c0d, type: 2}
   forwardMagnitude: 5
 --- !u!114 &745705308
