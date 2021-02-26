@@ -12,7 +12,6 @@ public class PlayerController : Character
     private readonly int IsAttackingHash = Animator.StringToHash("IsAttacking");
     private readonly int CanCancelHash = Animator.StringToHash("CanCancel");
     private readonly int ComboHash = Animator.StringToHash("Combo");
-    private readonly int ComboEndHash = Animator.StringToHash("ComboEnd");
 
     public float movementSpeed;
     public float rotationSpeed;
@@ -96,8 +95,7 @@ public class PlayerController : Character
             Skill basicAttack = skills.skillTable["BasicAttack" + currentCombo];
             animatorOverride["BruteStandingMeleeAttackHorizontal"] = basicAttack.animation;
             basicAttack.OverrideAnimationData("BruteStandingMeleeAttackHorizontal", characterAnimator, animatorOverride);
-
-            characterAnimator.SetBool(ComboEndHash, false);
+            
             characterAnimator.SetBool(IsAttackingHash, true);
         }
         else if (button.isPressed && canCancel)

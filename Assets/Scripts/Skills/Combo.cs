@@ -6,7 +6,6 @@ public class Combo : StateMachineBehaviour
 {
     private static readonly int IsAttackingHash = Animator.StringToHash("IsAttacking");
     private static readonly int ComboHash = Animator.StringToHash("Combo");
-    private static readonly int ComboEndHash = Animator.StringToHash("ComboEnd");
     private readonly int CanCancelHash = Animator.StringToHash("CanCancel");
 
     private float stateDuration;
@@ -40,7 +39,6 @@ public class Combo : StateMachineBehaviour
         if (stateDuration >= stateInfo.length * comboDuration)
         {
             animator.SetInteger(ComboHash, 0);
-            animator.SetBool(ComboEndHash, true);
             animator.SetBool(IsAttackingHash, false);
             animator.SetBool(CanCancelHash, false);
         }
