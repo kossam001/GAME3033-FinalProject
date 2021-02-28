@@ -655,8 +655,8 @@ MonoBehaviour:
   activeTarget: {fileID: 0}
   combatRange: 0
   agent: {fileID: 707804529}
-  skillController: {fileID: 0}
-  skillList: {fileID: 0}
+  skillController: {fileID: 758816954}
+  skillList: {fileID: 758816955}
   selectedSkill: {fileID: 0}
 --- !u!114 &583532573
 MonoBehaviour:
@@ -879,6 +879,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: fff1f51ddf21fd54bb3400f40091c779, type: 2}
+    - target: {fileID: 5652114111254772415, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
 --- !u!4 &609959424 stripped
@@ -1112,7 +1116,6 @@ MonoBehaviour:
   characterData: {fileID: 0}
   skills: {fileID: 604390049}
   skillController: {fileID: 604390050}
-  animatorOverride: {fileID: 22100000, guid: 65a61ac0b0cab7047869f49a03be4c0d, type: 2}
   forwardMagnitude: 5
 --- !u!114 &745705308
 MonoBehaviour:
@@ -1173,6 +1176,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   isAttacking: 0
+--- !u!114 &758816954 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2374343827154503860, guid: a920ea1f309f8054a82ff434098b7dec, type: 3}
+  m_PrefabInstance: {fileID: 1508867390}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a8f6d8076451d84fa222c5f2327673c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &758816955 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2374343827154503863, guid: a920ea1f309f8054a82ff434098b7dec, type: 3}
+  m_PrefabInstance: {fileID: 1508867390}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5172f9fde1a6d4196ba8de02a6e50c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &962787986
 Mesh:
   m_ObjectHideFlags: 0
@@ -6066,6 +6091,10 @@ PrefabInstance:
     - target: {fileID: 8032309276516903981, guid: 636ba3294baa31a46bbb7f219a9cd2ea, type: 3}
       propertyPath: m_Name
       value: Collider
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032309276516903981, guid: 636ba3294baa31a46bbb7f219a9cd2ea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 636ba3294baa31a46bbb7f219a9cd2ea, type: 3}

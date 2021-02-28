@@ -16,6 +16,11 @@ public class SkillController : MonoBehaviour
 
     private readonly int IsAttackingHash = Animator.StringToHash("IsAttacking");
 
+    private void Start()
+    {
+        animator.runtimeAnimatorController = overrideController;
+    }
+
     private void Awake()
     {
         socketTable = new Dictionary<string, Socket>();
@@ -44,7 +49,7 @@ public class SkillController : MonoBehaviour
         if (CanChain(skill))
             activeSkill = activeSkill.followUpSkill; // If the used skill is from the same combo chain, use next chain
         else
-            activeSkill = skill; 
+            activeSkill = skill;
 
         StopAllCoroutines();
 

@@ -22,7 +22,6 @@ public class PlayerController : Character
     public SkillList skills;
     public SkillController skillController;
     private Animator characterAnimator;
-    public AnimatorOverrideController animatorOverride;
 
     [SerializeField] private float forwardMagnitude;
 
@@ -31,7 +30,6 @@ public class PlayerController : Character
     private void Awake()
     {
         characterAnimator = character.GetComponent<Animator>();
-        characterAnimator.runtimeAnimatorController = animatorOverride;
     }
 
     // Used to handle physics
