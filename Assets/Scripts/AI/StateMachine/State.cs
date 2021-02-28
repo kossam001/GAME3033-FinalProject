@@ -36,6 +36,7 @@ public class State : ScriptableObject
     public void SetCurrentNode(TreeNode node)
     {
         currentNode = node;
+        stateMachine.SetCurrentNode(node);
     }
 
     public virtual void Update()

@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: ChaseRoot
   m_EditorClassIdentifier: 
   nodeTemplates:
-  - {fileID: 11400000, guid: 093b8c991a5446645ab537b12de1cbed, type: 2}
   - {fileID: 11400000, guid: 9abba44602b323243b578e8240c6cdd2, type: 2}
   nodes: []
   isSelector: 0

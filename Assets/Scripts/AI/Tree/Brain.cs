@@ -17,4 +17,14 @@ public class Brain : MonoBehaviour
     public float combatRange; 
 
     public NavMeshAgent agent;
+
+    public float GetDistanceFromTarget()
+    {
+        return Vector3.Distance(character.transform.position, activeTarget.transform.position);
+    }
+
+    public Vector3 GetDirectionToTarget()
+    {
+        return activeTarget.transform.position - character.transform.position;
+    }
 }

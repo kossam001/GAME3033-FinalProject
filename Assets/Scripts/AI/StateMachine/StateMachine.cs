@@ -10,7 +10,8 @@ public class StateMachine : MonoBehaviour
     private Brain brain;
 
     [Tooltip("Debug")]
-    [SerializeField] State currentState;
+    [SerializeField] private State currentState;
+    [SerializeField] private TreeNode currentNode;
 
     private void Awake()
     {
@@ -35,5 +36,10 @@ public class StateMachine : MonoBehaviour
     public void ChangeState(StateID id)
     {
         currentState = states[id];
+    }
+
+    public void SetCurrentNode(TreeNode node)
+    {
+        currentNode = node;
     }
 }

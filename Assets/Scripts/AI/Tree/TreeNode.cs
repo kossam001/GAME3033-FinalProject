@@ -33,6 +33,8 @@ public class TreeNode : ScriptableObject
 
     public virtual bool Run()
     {
+        state.SetCurrentNode(this);
+
         foreach (TreeNode node in nodes)
         {
             if (!node.Run() ^ isSelector) return false;

@@ -11,14 +11,18 @@ public class FindWanderTarget : TreeNode
     public override bool Run()
     {
         if (!brain.agent.hasPath || brain.agent.remainingDistance <= 0.1f)
-            brain.moveDestination = new Vector3
+        {
+            Vector3 randomPointAroundTarget = new Vector3
                 (
-                    Random.Range(-wanderRange + brain.activeTarget.transform.position.x, wanderRange + brain.activeTarget.transform.position.x), 
-                    0.0f, 
+                    Random.Range(-wanderRange + brain.activeTarget.transform.position.x, wanderRange + brain.activeTarget.transform.position.x),
+                    0.0f,
                     Random.Range(-wanderRange + brain.activeTarget.transform.position.z, wanderRange + brain.activeTarget.transform.position.z)
                 );
 
-        else if (wanderRange <= Vector3.Distance(brain.character.transform.position, brain.activeTarget.transform.position))
+            // Limit movement distance
+            brain.moveDestination = (randomPointAroundTarget - brain.character.transform.position).normalized * moveDistance; 
+        }
+        else if (wanderRange <= brain.GetDistanceFromTarget())
         {
             state.ChangeState(StateID.Chase);
             return false;
