@@ -7,8 +7,6 @@ public class MoveToTarget : TreeNode
 {
     public override bool Run()
     {
-        brain.controller.SetCurrentNode(this);
-
         if (brain.agent.destination != brain.moveDestination)
         {
             brain.agent.SetDestination(brain.moveDestination);

@@ -9,9 +9,12 @@ public enum StateID
     Chase
 }
 
+[CreateAssetMenu(fileName = "State", menuName = "AIStateNodes/State")]
 public class State : ScriptableObject
 {
+    [SerializeField] protected StateMachine stateMachine;
     [SerializeField] protected TreeNode rootNode;
+
     [Tooltip("Debug only")]
     [SerializeField] private TreeNode currentNode;
     [SerializeField] private Brain brain; // Going to need to know when to change states
@@ -21,12 +24,13 @@ public class State : ScriptableObject
 
     protected Dictionary<StateID, State> transition;
 
-    public void Initialize(Brain _brain)
+    public void Initialize(Brain _brain, StateMachine _stateMachine)
     {
         rootNode = Instantiate(rootNode);
-        rootNode.Initialize(_brain);
+        rootNode.Initialize(_brain, this);
 
         brain = _brain;
+        stateMachine = _stateMachine;
     }
 
     public void SetCurrentNode(TreeNode node)
@@ -39,5 +43,8 @@ public class State : ScriptableObject
         rootNode.Run();
     }
 
-    public virtual void ChangeState() { }
+    public virtual void ChangeState(StateID stateToChangeTo)
+    {
+        stateMachine.ChangeState(stateToChangeTo);
+    }
 }

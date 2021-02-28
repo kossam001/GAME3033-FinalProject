@@ -617,6 +617,7 @@ GameObject:
   - component: {fileID: 583532571}
   - component: {fileID: 583532573}
   - component: {fileID: 583532572}
+  - component: {fileID: 583532574}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -670,9 +671,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac27c8cef7248964b897c2593ad6d56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rootNode: {fileID: 11400000, guid: aeb3b8bbf42825b4899f86d8bd6d7774, type: 2}
-  brain: {fileID: 583532572}
-  currentNode: {fileID: 0}
+--- !u!114 &583532574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583532570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d59e3a60592ba548abe370197a79097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startState: 1
+  stateTemplates:
+  - {fileID: 11400000, guid: d996a28bd56167141b9ce6fc65a4c876, type: 2}
+  - {fileID: 11400000, guid: 6f4cb10ab7cf4904d8c71ce5a88b72e4, type: 2}
+  currentState: {fileID: 0}
 --- !u!1001 &591273353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1486,7 +1501,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -5788,7 +5803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1098312820
 Transform:
   m_ObjectHideFlags: 0

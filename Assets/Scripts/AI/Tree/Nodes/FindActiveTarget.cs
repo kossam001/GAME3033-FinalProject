@@ -10,8 +10,6 @@ public class FindActiveTarget : TreeNode
 
     public override bool Run()
     {
-        brain.controller.SetCurrentNode(this);
-
         if (brain.activeTarget == null)
         {
             brain.activeTarget = brain.enemyTargets[Random.Range(0, brain.enemyTargets.Count-1)];
