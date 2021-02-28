@@ -12,7 +12,12 @@ public class ChaseTarget : TreeNode
 
         if (Vector3.Distance(targetPosition, selfPosition) > brain.combatRange)
         {
+            brain.agent.isStopped = false;
             brain.moveDestination = targetPosition;
+        }
+        else
+        {
+            brain.agent.isStopped = true;
         }
 
         return true;
@@ -23,8 +28,6 @@ public class ChaseTarget : TreeNode
         brain.controller.SetCurrentNode(this);
 
         if (!PerformCheck()) return false;
-
-        brain.moveDestination = brain.enemyTargets[Random.Range(0, brain.enemyTargets.Count - 1)].transform.position;
 
         return base.Run();
     }

@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d23ad9ab7c5d1947979ef14924044c3, type: 3}
   m_Name: BasicAttack3
   m_EditorClassIdentifier: 
-  skillName: BasicAttack2
+  skillName: BasicAttack3
   animation: {fileID: 7400000, guid: 7dc11d79fb5e93c47a661b32afc494d1, type: 2}
-  isCombo: 1
+  overrideName: BruteStandingMeleeAttackHorizontal
   attackDuration: 0.7
   comboDuration: 0.7
+  followUpSkill: {fileID: 11400000, guid: b2a8af2e5396a3f4583625885e973ef9, type: 2}
+  comboName: BasicCombo

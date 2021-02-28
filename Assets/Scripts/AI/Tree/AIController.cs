@@ -12,7 +12,6 @@ public class AIController : MonoBehaviour
     private void Awake()
     {
         rootNode = Instantiate(rootNode);
-
         rootNode.Initialize(brain);
     }
 

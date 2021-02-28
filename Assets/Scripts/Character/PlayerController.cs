@@ -23,6 +23,7 @@ public class PlayerController : Character
     private float lookDirection;
 
     public SkillList skills;
+    public SkillController skillController;
     private Animator characterAnimator;
     public AnimatorOverrideController animatorOverride;
 
@@ -40,10 +41,9 @@ public class PlayerController : Character
     void FixedUpdate()
     {
         if ((movementDirection.y != 0.0f || movementDirection.x != 0.0f) 
-            && (!characterAnimator.GetBool(IsAttackingHash) 
-            || characterAnimator.GetBool(CanCancelHash)))
+            && (skillController.canCancel || !skillController.SkillInUse()))
         {
-            CancelAttack();
+            skillController.CancelSkill();
 
             Vector3 forwardForce = character.transform.forward * movementDirection.y;
             Vector3 rightForce = character.transform.right * movementDirection.x;
@@ -53,15 +53,15 @@ public class PlayerController : Character
         }
     }
 
-    private void CancelAttack()
-    {
-        if (characterAnimator.GetBool(CanCancelHash))
-        {
-            characterAnimator.SetBool(IsAttackingHash, false);
-            characterAnimator.SetBool(CanCancelHash, false);
-            characterAnimator.SetInteger(ComboHash, 0);
-        }
-    }
+    //private void CancelAttack()
+    //{
+    //    if (characterAnimator.GetBool(CanCancelHash))
+    //    {
+    //        characterAnimator.SetBool(IsAttackingHash, false);
+    //        characterAnimator.SetBool(CanCancelHash, false);
+    //        characterAnimator.SetInteger(ComboHash, 0);
+    //    }
+    //}
 
     public void OnMovement(InputValue vector2)
     {
@@ -86,27 +86,29 @@ public class PlayerController : Character
 
     public void OnAttack(InputValue button)
     {
-        int currentCombo = characterAnimator.GetInteger(ComboHash);
-        bool currentlyAttacking = characterAnimator.GetBool(IsAttackingHash);
-        bool canCancel = characterAnimator.GetBool(CanCancelHash);
+        skillController.Use(skills.skillTable["BasicAttack1"], "BruteStandingMeleeAttackHorizontal");
 
-        if (button.isPressed && (!currentlyAttacking))
-        {
-            Skill basicAttack = skills.skillTable["BasicAttack" + currentCombo];
-            animatorOverride["BruteStandingMeleeAttackHorizontal"] = basicAttack.animation;
-            basicAttack.OverrideAnimationData("BruteStandingMeleeAttackHorizontal", characterAnimator, animatorOverride);
+        //int currentCombo = characterAnimator.GetInteger(ComboHash);
+        //bool currentlyAttacking = characterAnimator.GetBool(IsAttackingHash);
+        //bool canCancel = characterAnimator.GetBool(CanCancelHash);
+
+        //if (button.isPressed && (!currentlyAttacking))
+        //{
+        //    Skill basicAttack = skills.skillTable["BasicAttack" + currentCombo];
+        //    basicAttack.OverrideAnimationData(characterAnimator, animatorOverride);
             
-            characterAnimator.SetBool(IsAttackingHash, true);
-        }
-        else if (button.isPressed && canCancel)
-        {
-            characterAnimator.SetInteger(ComboHash, ++currentCombo);
+        //    characterAnimator.SetBool(IsAttackingHash, true);
+        //}
+        //else if (button.isPressed && canCancel)
+        //{
+        //    characterAnimator.SetInteger(ComboHash, ++currentCombo);
 
-            Skill basicAttack = skills.skillTable["BasicAttack" + currentCombo];
-            animatorOverride["BruteStandingMeleeAttackHorizontal"] = basicAttack.animation;
-            basicAttack.OverrideAnimationData("BruteStandingMeleeAttackHorizontal", characterAnimator, animatorOverride);
+        //    Skill basicAttack = skills.skillTable["BasicAttack" + currentCombo];
+        //    animatorOverride["BruteStandingMeleeAttackHorizontal"] = basicAttack.animation;
+        //    basicAttack.OverrideAnimationData(characterAnimator, animatorOverride);
 
-            characterAnimator.Play("SkillUse", 1, 0.0f);;
-        }
+        //    characterAnimator.Play("SkillUse", 1, 0.0f);
+        //}
+
     }
 }

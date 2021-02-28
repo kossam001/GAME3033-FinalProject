@@ -9,7 +9,7 @@ public class MoveToTarget : TreeNode
     {
         brain.controller.SetCurrentNode(this);
 
-        if (!brain.agent.hasPath || brain.agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete)
+        if (brain.agent.destination != brain.moveDestination)
         {
             brain.agent.SetDestination(brain.moveDestination);
         }
