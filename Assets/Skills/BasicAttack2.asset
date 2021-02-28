@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: BasicAttack2
   m_EditorClassIdentifier: 
   skillName: BasicAttack2
+  socketName: WeaponSocket
   animation: {fileID: 7400000, guid: 035ffb04363bb254584375374eb4b457, type: 2}
   overrideName: BruteStandingMeleeAttackHorizontal
+  windupPeriod: 0.3
   attackDuration: 0.6
   comboDuration: 1
+  noncancellablePeriod: 0.6
   followUpSkill: {fileID: 11400000, guid: b2d5e6359c9ef634b974b8a078c11e8e, type: 2}
   comboName: BasicCombo

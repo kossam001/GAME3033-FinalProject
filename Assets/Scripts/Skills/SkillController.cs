@@ -8,11 +8,23 @@ public class SkillController : MonoBehaviour
     public AnimatorOverrideController overrideController;
 
     private Skill activeSkill;
+    public List<Socket> skillSockets; // If skill needs a collider, where is it
+    private Dictionary<string, Socket> socketTable;
 
     public bool isActive = false; // A bool to start skill - indicates whether or not controller is doing something 
     public bool canCancel = false; // A bool to stop - the controller is doing something but can be stopped
 
     private readonly int IsAttackingHash = Animator.StringToHash("IsAttacking");
+
+    private void Awake()
+    {
+        socketTable = new Dictionary<string, Socket>();
+
+        foreach (Socket socket in skillSockets)
+        {
+            socketTable.Add(socket.name, socket);
+        }
+    }
 
     public void Use(Skill skill, string overrideName)
     {
@@ -56,16 +68,30 @@ public class SkillController : MonoBehaviour
 
         while (activeSkill.comboDuration * stateInfo.length >= stateDuration)
         {
+            // Turn attack collider on
+            if (stateInfo.length * activeSkill.windupPeriod < stateDuration)
+                ToggleCollider(activeSkill.socketName, true);
+
             stateDuration += Time.deltaTime;
 
-            // If animation passes the noncancellable portion
+            // If animation passes the noncancellable portion - the swing animation
             if (stateInfo.length * activeSkill.attackDuration < stateDuration)
+                ToggleCollider(activeSkill.socketName, false); // Turn off collider
+
+            if (stateInfo.length * activeSkill.noncancellablePeriod < stateDuration)
                 canCancel = true;
 
             yield return null;
         }
 
         EndSkill();
+    }
+
+    private void ToggleCollider(string socketName, bool toggle)
+    {
+        Transform socket = socketTable[socketName].transform;
+        GameObject collider = socket.Find("Collider").gameObject;
+        collider.SetActive(toggle);
     }
 
     private IEnumerator WaitForStateTransition(string stateName)
@@ -80,13 +106,17 @@ public class SkillController : MonoBehaviour
     public bool CancelSkill()
     {
         if (canCancel)
+        {
+            ToggleCollider(activeSkill.socketName, false);
             animator.SetBool(IsAttackingHash, false);
+        }
 
         return false;
     }
 
     public void EndSkill()
     {
+        ToggleCollider(activeSkill.socketName, false);
         isActive = false;
         canCancel = false;
         activeSkill = null;
