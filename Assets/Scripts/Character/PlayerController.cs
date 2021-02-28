@@ -74,28 +74,5 @@ public class PlayerController : Character
     public void OnAttack(InputValue button)
     {
         skillController.Use(skills.skillTable["BasicAttack1"], "BruteStandingMeleeAttackHorizontal");
-
-        //int currentCombo = characterAnimator.GetInteger(ComboHash);
-        //bool currentlyAttacking = characterAnimator.GetBool(IsAttackingHash);
-        //bool canCancel = characterAnimator.GetBool(CanCancelHash);
-
-        //if (button.isPressed && (!currentlyAttacking))
-        //{
-        //    Skill basicAttack = skills.skillTable["BasicAttack" + currentCombo];
-        //    basicAttack.OverrideAnimationData(characterAnimator, animatorOverride);
-            
-        //    characterAnimator.SetBool(IsAttackingHash, true);
-        //}
-        //else if (button.isPressed && canCancel)
-        //{
-        //    characterAnimator.SetInteger(ComboHash, ++currentCombo);
-
-        //    Skill basicAttack = skills.skillTable["BasicAttack" + currentCombo];
-        //    animatorOverride["BruteStandingMeleeAttackHorizontal"] = basicAttack.animation;
-        //    basicAttack.OverrideAnimationData(characterAnimator, animatorOverride);
-
-        //    characterAnimator.Play("SkillUse", 1, 0.0f);
-        //}
-
     }
 }

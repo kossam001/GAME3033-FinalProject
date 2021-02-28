@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: InCombatRoot
   m_EditorClassIdentifier: 
   nodeTemplates:
+  - {fileID: 11400000, guid: ef367e32def961242b1416250ff3d41d, type: 2}
   - {fileID: 11400000, guid: b4e00e96202fb614b9f3cfb74edbecbf, type: 2}
   - {fileID: 11400000, guid: 42b9c9bf2fd1c054690afb7e25972a15, type: 2}
   nodes: []
   isSelector: 0
+  procRate: 1
+  procRateCheckFrequency: -1

@@ -28,31 +28,6 @@ public class Movement : MonoBehaviour
         float lookToMoveAngle = Vector3.Angle(lookDirection, movementDirection);
         Vector3 angleSign = Vector3.Cross(lookDirection, movementDirection);
 
-        //// Move Backwards
-        //if (lookToMoveAngle > 135 && Mathf.Abs(rigidbody.velocity.magnitude) > stoppingVelocity)
-        //{
-        //    animator.SetInteger("State", 4);
-        //}
-        //// Strafe Right
-        //else if (lookToMoveAngle > 30 && angleSign.y > 0 && Mathf.Abs(rigidbody.velocity.magnitude) > stoppingVelocity)
-        //{
-        //    animator.SetInteger("State", 2);
-        //}
-        //else if (lookToMoveAngle > 30 && angleSign.y < 0 && Mathf.Abs(rigidbody.velocity.magnitude) > stoppingVelocity)
-        //{
-        //    animator.SetInteger("State", 3);
-        //}
-        //// Move Forward
-        //else if (Vector3.Angle(lookDirection, movementDirection) <= 30 && Mathf.Abs(rigidbody.velocity.magnitude) > stoppingVelocity)
-        //{
-        //    animator.SetInteger("State", 1);
-        //}
-        //else
-        //{
-        //    rigidbody.velocity *= 0.97f;
-        //    animator.SetInteger("State", 0);
-        //}
-
         // Sum forward and side force
         rigidbody.AddForce(movementForce * movementSpeed * Time.deltaTime);
 
