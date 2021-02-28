@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Skill : ScriptableObject
 {
+    [Header("Parameters")]
     public string skillName;
+    public float cooldown = 0.0f;
+    public float cost = 0.0f;
 
     [Header("Collider Physics")]
     [Tooltip("Name of associated socket")]
@@ -30,6 +33,14 @@ public class Skill : ScriptableObject
     public Skill followUpSkill;
     [Tooltip("ID for the combo")]
     public string comboName;
+
+    [Header("AI")]
+    [Tooltip("Min range for the skill to be usable.")]
+    public float minRange = 0.0f;
+    [Tooltip("Max range for the skill to be usable.")]
+    public float maxRange = 1.0f;
+    [Tooltip("Arc range of the attack.")]
+    public float arcAngle;
 
     public virtual void OverrideAnimationData(Animator animator, AnimatorOverrideController animatorOverrideController) { }
 }

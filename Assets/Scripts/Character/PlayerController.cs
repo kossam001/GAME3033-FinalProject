@@ -73,6 +73,8 @@ public class PlayerController : Character
 
     public void OnAttack(InputValue button)
     {
-        skillController.Use(skills.skillTable["BasicAttack1"], "BruteStandingMeleeAttackHorizontal");
+        Skill selectedSkill = skills.skillTable["BasicAttack1"];
+
+        skillController.Use(selectedSkill, selectedSkill.overrideName);
     }
 }

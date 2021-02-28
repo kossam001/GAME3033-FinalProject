@@ -18,4 +18,9 @@ public class SkillList : MonoBehaviour
             skillTable.Add(skills[i].skillName, skills[i]);
         }
     }
+
+    public Skill GetRandomSkill()
+    {
+        return skills[Random.Range(0, skills.Count)];
+    }
 }
