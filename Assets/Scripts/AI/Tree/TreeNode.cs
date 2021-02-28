@@ -12,6 +12,12 @@ public class TreeNode : ScriptableObject
 
     public bool isSelector = false; // Otherwise it is a sequence
 
+    [Tooltip("Chance of this node running.")]
+    public float procRate = 1.0f;
+    [Tooltip("Frequency of checks.")]
+    public float procRateCheckFrequency = -1.0f;
+    private float procTimer = 0.0f;
+
     public virtual void Initialize(Brain _brain, State _state)
     {
         // Each character will have its own nodes
@@ -29,6 +35,24 @@ public class TreeNode : ScriptableObject
     public virtual bool PerformCheck()
     {
         return true;
+    }
+
+    public bool ProcCheck()
+    {
+        // Don't want to check
+        if (procRateCheckFrequency == -1.0f) return true;
+
+        procTimer -= Time.deltaTime;
+
+        if (procTimer <= 0.0f)
+        {
+            procTimer = procRateCheckFrequency;
+
+            if (Random.Range(0.0f, 1.0f) >= procRate)
+                return true;
+        }
+
+        return false;
     }
 
     public virtual bool Run()

@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6608910ac657a534bafd42d5a42fd9e0, type: 3}
-  m_Name: MoveAway
+  m_Script: {fileID: 11500000, guid: a80a6e4933ec231479b81687e0e32e71, type: 3}
+  m_Name: Aim
   m_EditorClassIdentifier: 
   nodeTemplates: []
   nodes: []
   isSelector: 0
-  minDistance: 3
-  maxMoveAwayDistance: 5
+  procRate: 1
+  procRateCheckFrequency: -1
