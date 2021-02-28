@@ -9,9 +9,6 @@ public class PlayerController : Character
     // Animator hashes
     private readonly int MoveXHash = Animator.StringToHash("MoveX");
     private readonly int MoveZHash = Animator.StringToHash("MoveZ");
-    private readonly int IsAttackingHash = Animator.StringToHash("IsAttacking");
-    private readonly int CanCancelHash = Animator.StringToHash("CanCancel");
-    private readonly int ComboHash = Animator.StringToHash("Combo");
 
     public float movementSpeed;
     public float rotationSpeed;
@@ -52,16 +49,6 @@ public class PlayerController : Character
             Turn();
         }
     }
-
-    //private void CancelAttack()
-    //{
-    //    if (characterAnimator.GetBool(CanCancelHash))
-    //    {
-    //        characterAnimator.SetBool(IsAttackingHash, false);
-    //        characterAnimator.SetBool(CanCancelHash, false);
-    //        characterAnimator.SetInteger(ComboHash, 0);
-    //    }
-    //}
 
     public void OnMovement(InputValue vector2)
     {

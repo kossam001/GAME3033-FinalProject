@@ -9,8 +9,8 @@ public class SkillController : MonoBehaviour
 
     private Skill activeSkill;
 
-    public bool isActive = false;
-    public bool canCancel = false;
+    public bool isActive = false; // A bool to start skill - indicates whether or not controller is doing something 
+    public bool canCancel = false; // A bool to stop - the controller is doing something but can be stopped
 
     private readonly int IsAttackingHash = Animator.StringToHash("IsAttacking");
 
@@ -19,38 +19,28 @@ public class SkillController : MonoBehaviour
         // Another skill is being used
         if (!canCancel && isActive) return;
 
-        // Allowing the skill controller to set an active skill, specifically for skills that follow a chain
-        if (isActive && activeSkill.comboName == skill.comboName && canCancel)
-        {
-            ChainSkill(skill);
-        }
-        else
-        {
-            activeSkill = skill;
-
-            isActive = true;
-            canCancel = false;
-
-            skill.OverrideAnimationData(animator, overrideController);
-            animator.SetBool(IsAttackingHash, true);
-
-            StartCoroutine(PlayAnimation());
-        }
+        ActivateSkill(skill);
     }
 
-    private void ChainSkill(Skill skill)
+    private bool CanChain(Skill skill)
     {
-        if (activeSkill.followUpSkill != null)
+        return isActive && activeSkill.comboName == skill.comboName && canCancel && activeSkill.followUpSkill != null;
+    }
+
+    private void ActivateSkill(Skill skill)
+    {
+        if (CanChain(skill))
             activeSkill = activeSkill.followUpSkill; // If the used skill is from the same combo chain, use next chain
         else
-            activeSkill = skill; // Cycle around
-
-        activeSkill.OverrideAnimationData(animator, overrideController);
-        animator.SetBool(IsAttackingHash, true);
+            activeSkill = skill; 
 
         StopAllCoroutines();
 
+        isActive = true;
         canCancel = false;
+
+        activeSkill.OverrideAnimationData(animator, overrideController);
+        animator.SetBool(IsAttackingHash, true);
 
         animator.Play("SkillUse", 1, 0.0f);
         StartCoroutine(PlayAnimation());
@@ -70,15 +60,7 @@ public class SkillController : MonoBehaviour
 
             // If animation passes the noncancellable portion
             if (stateInfo.length * activeSkill.attackDuration < stateDuration)
-            {
                 canCancel = true;
-            }
-
-            //// If the animation state is finished
-            //if (stateInfo.length <= stateDuration)
-            //{
-            //    animator.SetBool(IsAttackingHash, false); // Go back to idle state
-            //}
 
             yield return null;
         }
@@ -97,18 +79,8 @@ public class SkillController : MonoBehaviour
     // Returns whether or not skill was cancelled
     public bool CancelSkill()
     {
-        // Setting up next skill in chain
-        //if (activeSkill.followUpSkill != null)
-        //{
-        //    activeSkill = activeSkill.followUpSkill;
-        //    stateDuration = 0.0f;
-
-        //    return true;
-        //}
         if (canCancel)
-        {
             animator.SetBool(IsAttackingHash, false);
-        }
 
         return false;
     }
