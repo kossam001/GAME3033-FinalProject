@@ -9,10 +9,12 @@ public class Movement : MonoBehaviour
     private Animator animator;
 
     [SerializeField]
-    private float maxSpeed;
-    public float movementSpeed;
+    public float maxWalkSpeed;
+    public float maxRunSpeed;
+
+    private float movementSpeed;
     public float rotationSpeed;
-    //public float stoppingVelocity;
+    public bool isRunning;
 
     private void Awake()
     {
@@ -22,6 +24,8 @@ public class Movement : MonoBehaviour
 
     public void Move(Vector3 movementForce)
     {
+        movementSpeed = isRunning ? maxRunSpeed : maxWalkSpeed;
+
         Vector3 lookDirection = transform.forward;
         Vector3 movementDirection = rigidbody.velocity;
 
@@ -30,9 +34,6 @@ public class Movement : MonoBehaviour
 
         // Sum forward and side force
         rigidbody.AddForce(movementForce * movementSpeed * Time.deltaTime);
-
-        // Clamp velocity
-        rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxSpeed);
     }
 
     public void Turn(Quaternion rotateDirection)

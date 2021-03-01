@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2700154513790056277}
   - component: {fileID: 4143675532590195099}
-  m_Layer: 0
-  m_Name: BattleAxeCollider
+  m_Layer: 7
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

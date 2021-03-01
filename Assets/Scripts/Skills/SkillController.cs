@@ -65,25 +65,22 @@ public class SkillController : MonoBehaviour
 
     public IEnumerator PlayAnimation()
     {
-        // Animation does not immediately play when 
-        yield return StartCoroutine(WaitForStateTransition("SkillUse"));
-
         float stateDuration = 0.0f;
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(1);
+        float stateLength = activeSkill.animation.length;
 
-        while (activeSkill.comboDuration * stateInfo.length >= stateDuration)
+        while (activeSkill.comboDuration * stateLength >= stateDuration)
         {
             // Turn attack collider on
-            if (stateInfo.length * activeSkill.windupPeriod < stateDuration)
+            if (stateLength * activeSkill.windupPeriod < stateDuration)
                 ToggleCollider(activeSkill.socketName, true);
 
             stateDuration += Time.deltaTime;
 
             // If animation passes the noncancellable portion - the swing animation
-            if (stateInfo.length * activeSkill.attackDuration < stateDuration)
+            if (stateLength * activeSkill.attackDuration < stateDuration)
                 ToggleCollider(activeSkill.socketName, false); // Turn off collider
 
-            if (stateInfo.length * activeSkill.noncancellablePeriod < stateDuration)
+            if (stateLength * activeSkill.noncancellablePeriod < stateDuration)
                 canCancel = true;
 
             yield return null;
@@ -97,14 +94,6 @@ public class SkillController : MonoBehaviour
         Transform socket = socketTable[socketName].transform;
         GameObject collider = socket.Find("Collider").gameObject;
         collider.SetActive(toggle);
-    }
-
-    private IEnumerator WaitForStateTransition(string stateName)
-    {
-        while (!animator.GetCurrentAnimatorStateInfo(1).IsName(stateName))
-        {
-            yield return null;
-        }
     }
 
     // Returns whether or not skill was cancelled
@@ -134,11 +123,6 @@ public class SkillController : MonoBehaviour
             return false;
 
         return true;
-    }
-
-    public float GetCurrentNoncancellableSkillLength()
-    {
-        return animator.GetCurrentAnimatorStateInfo(1).length * activeSkill.noncancellablePeriod;
     }
 
     public void Interrupt()

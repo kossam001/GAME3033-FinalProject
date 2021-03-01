@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6976478720858974328}
   - component: {fileID: 6976478720858974330}
   - component: {fileID: 6976478720858974331}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BattleAxe_GEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BattleAxe_GEO
       objectReference: {fileID: 0}
+    - target: {fileID: 6976478720858974329, guid: 99628344ae9643046a428089b8a19c1d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99628344ae9643046a428089b8a19c1d, type: 3}
 --- !u!43 &138092319
@@ -1027,9 +1031,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d0959ffd8cbd034eaf6e96e18ddcb2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
-  movementSpeed: 5000
+  maxWalkSpeed: 5
+  maxRunSpeed: 10
   rotationSpeed: 5
+  isRunning: 0
 --- !u!136 &707804531
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1122,6 +1127,7 @@ MonoBehaviour:
   skills: {fileID: 604390049}
   skillController: {fileID: 604390050}
   forwardMagnitude: 5
+  isShiftOn: 0
 --- !u!114 &745705308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11747,9 +11753,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d0959ffd8cbd034eaf6e96e18ddcb2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
-  movementSpeed: 5000
+  maxWalkSpeed: 5000
+  maxRunSpeed: 20000
   rotationSpeed: 5
+  isRunning: 0
 --- !u!54 &8766573650720140853
 Rigidbody:
   m_ObjectHideFlags: 0

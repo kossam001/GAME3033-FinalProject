@@ -9,6 +9,7 @@ public class PlayerController : Character
     // Animator hashes
     private readonly int MoveXHash = Animator.StringToHash("MoveX");
     private readonly int MoveZHash = Animator.StringToHash("MoveZ");
+    private readonly int IsRunningHash = Animator.StringToHash("IsRunning");
 
     public float movementSpeed;
     public float rotationSpeed;
@@ -26,6 +27,8 @@ public class PlayerController : Character
     [SerializeField] private float forwardMagnitude;
 
     private Vector2 movementDirection;
+
+    public bool isShiftOn = false;
 
     private void Awake()
     {
@@ -49,6 +52,8 @@ public class PlayerController : Character
 
             Vector3 forwardForce = character.transform.forward * movementDirection.y;
             Vector3 rightForce = character.transform.right * movementDirection.x;
+
+            movementComponent.isRunning = isShiftOn;
             movementComponent.Move(forwardForce + rightForce);
         }
     }
@@ -79,5 +84,11 @@ public class PlayerController : Character
         Skill selectedSkill = skills.skillTable["BasicAttack1"];
 
         skillController.Use(selectedSkill, selectedSkill.overrideName);
+    }
+
+    public void OnShift(InputValue button)
+    {
+        isShiftOn = button.isPressed;
+        characterAnimator.SetBool(IsRunningHash, button.isPressed);
     }
 }
