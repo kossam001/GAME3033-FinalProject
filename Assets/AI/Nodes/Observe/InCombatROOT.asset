@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa77fd3130575794d8e995e746cc3d02, type: 3}
-  m_Name: InCombatRoot
+  m_Name: InCombatROOT
   m_EditorClassIdentifier: 
   nodeTemplates:
-  - {fileID: 11400000, guid: b4c131be77d5ef4489893ea7fe80f1ed, type: 2}
+  - {fileID: 11400000, guid: 101377380367dea4ead981e0e03de0f1, type: 2}
   - {fileID: 11400000, guid: ef367e32def961242b1416250ff3d41d, type: 2}
   - {fileID: 11400000, guid: b4e00e96202fb614b9f3cfb74edbecbf, type: 2}
   - {fileID: 11400000, guid: 42b9c9bf2fd1c054690afb7e25972a15, type: 2}

@@ -135,4 +135,15 @@ public class SkillController : MonoBehaviour
 
         return true;
     }
+
+    public float GetCurrentNoncancellableSkillLength()
+    {
+        return animator.GetCurrentAnimatorStateInfo(1).length * activeSkill.noncancellablePeriod;
+    }
+
+    public void Interrupt()
+    {
+        StopAllCoroutines();
+        EndSkill();
+    }
 }

@@ -24,14 +24,19 @@ public class MoveToTarget : TreeNode
         Vector3 lookDirection = brain.character.transform.forward;
         Vector3 movementDirection = brain.agent.velocity;
 
-        float lookToMoveAngle = Vector3.Angle(lookDirection, movementDirection);
-        Vector3 angleSign = Vector3.Cross(lookDirection, movementDirection);
-
         movementDirection = movementDirection.normalized;
 
         movementDirection = Quaternion.Euler(brain.character.transform.rotation.eulerAngles) * movementDirection;
 
-        brain.character.GetComponent<Animator>().SetFloat(MoveXHash, movementDirection.x);
-        brain.character.GetComponent<Animator>().SetFloat(MoveZHash, movementDirection.z);
+        if (brain.agent.isStopped == true)
+        {
+            brain.character.GetComponent<Animator>().SetFloat(MoveXHash, 0.0f);
+            brain.character.GetComponent<Animator>().SetFloat(MoveZHash, 0.0f);
+        }
+        else
+        {
+            brain.character.GetComponent<Animator>().SetFloat(MoveXHash, movementDirection.x);
+            brain.character.GetComponent<Animator>().SetFloat(MoveZHash, movementDirection.z);
+        }
     }
 }

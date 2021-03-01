@@ -6,7 +6,8 @@ using System;
 public enum StateID
 {
     InCombat,
-    Chase
+    Chase, 
+    Attack
 }
 
 [CreateAssetMenu(fileName = "State", menuName = "AIStateNodes/State")]
@@ -20,7 +21,6 @@ public class State : ScriptableObject
     [SerializeField] private Brain brain; // Going to need to know when to change states
 
     public StateID id;
-    public List<State> transferrableStates;
 
     protected Dictionary<StateID, State> transition;
 

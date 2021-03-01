@@ -29,22 +29,27 @@ public class PlayerController : Character
 
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         characterAnimator = character.GetComponent<Animator>();
     }
 
     // Used to handle physics
     void FixedUpdate()
     {
-        if ((movementDirection.y != 0.0f || movementDirection.x != 0.0f) 
-            && (skillController.canCancel || !skillController.SkillInUse()))
+        if ((movementDirection.y != 0.0f || movementDirection.x != 0.0f))
+        {
+            Turn();
+        }
+
+        if (skillController.canCancel || !skillController.SkillInUse())
         {
             skillController.CancelSkill();
 
             Vector3 forwardForce = character.transform.forward * movementDirection.y;
             Vector3 rightForce = character.transform.right * movementDirection.x;
             movementComponent.Move(forwardForce + rightForce);
-
-            Turn();
         }
     }
 

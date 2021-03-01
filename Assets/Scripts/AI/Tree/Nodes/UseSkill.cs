@@ -11,16 +11,30 @@ public class UseSkill : TreeNode
     {
         float distance = brain.GetDistanceFromTarget();
 
-        timer -= Time.deltaTime;
+        // Counts the period where the character is stuck in an attack animation
+        if (brain.skillController.isActive)
+            timer -= Time.deltaTime;
 
         if (brain.selectedSkill.maxRange >= distance &&
             brain.selectedSkill.minRange <= distance &&
-            timer <= 0.0f)
+            (!brain.skillController.isActive ||
+            brain.skillController.canCancel))
         {
             brain.skillController.Use(brain.selectedSkill, brain.selectedSkill.overrideName);
-            timer = brain.selectedSkill.noncancellablePeriod;
+            // Get the period where the character can't move
+            timer = brain.skillController.GetCurrentNoncancellableSkillLength();
+
+            // Stop agent
+            brain.agent.isStopped = true;
+            return true;
         }
 
-        return base.Run();
+        if (timer <= 0.0f && brain.skillController.canCancel)
+        {
+            brain.skillController.CancelSkill();
+            brain.agent.isStopped = false;
+        }
+
+        return false;
     }
 }

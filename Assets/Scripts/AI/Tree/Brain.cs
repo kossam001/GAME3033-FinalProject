@@ -21,7 +21,7 @@ public class Brain : MonoBehaviour
     public SkillController skillController;
     public SkillList skillList;
     public Skill selectedSkill;
-
+    
     public float GetDistanceFromTarget()
     {
         return Vector3.Distance(character.transform.position, activeTarget.transform.position);

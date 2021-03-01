@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Chase", menuName = "AITreeNodes/Chase")]
 public class ChaseTarget : TreeNode
 {
-    [SerializeField] private float stoppingRange;
+    [SerializeField] protected float stoppingRange;
 
     public override bool PerformCheck()
     {

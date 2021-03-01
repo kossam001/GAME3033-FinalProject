@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa77fd3130575794d8e995e746cc3d02, type: 3}
-  m_Name: ChaseROOT
+  m_Script: {fileID: 11500000, guid: 953eea21bfacca74bab532f9d6568407, type: 3}
+  m_Name: SelectSkill
   m_EditorClassIdentifier: 
   nodeTemplates:
-  - {fileID: 11400000, guid: 9abba44602b323243b578e8240c6cdd2, type: 2}
+  - {fileID: 11400000, guid: 3d98e406312c6174ead27dd8e54fb613, type: 2}
+  - {fileID: 11400000, guid: 237d94aeef8812d4f8a07f644d8e3694, type: 2}
   nodes: []
-  isSelector: 0
+  isSelector: 1
   procRate: 1
   procRateCheckFrequency: -1
