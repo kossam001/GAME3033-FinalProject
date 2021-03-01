@@ -4,4 +4,5 @@ using UnityEngine;
 
 public class Socket : MonoBehaviour
 {
+    public GameObject colliderObject;
 }

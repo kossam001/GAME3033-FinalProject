@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8124a3654f4af4f42876281160572fde, type: 3}
   m_Name: UseSkill
   m_EditorClassIdentifier: 
-  nodeTemplates: []
+  nodeTemplates:
+  - {fileID: 11400000, guid: 8ea51b1c9418200439a4042ac6a490f6, type: 2}
   nodes: []
   isSelector: 0
-  procRate: 1
-  procRateCheckFrequency: -1
+  procRate: 0.25
+  procRateCheckFrequency: 0

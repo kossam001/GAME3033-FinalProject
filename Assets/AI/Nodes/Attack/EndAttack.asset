@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce494193d30f82b4c815ffd1370ca390, type: 3}
-  m_Name: EngageCombat
+  m_Script: {fileID: 11500000, guid: fa8f61855df236f47bd2c3c3dacb031c, type: 3}
+  m_Name: EndAttack
   m_EditorClassIdentifier: 
   nodeTemplates: []
   nodes: []
   isSelector: 0
-  procRate: 0.5
-  procRateCheckFrequency: 1
+  procRate: 1
+  procRateCheckFrequency: -1

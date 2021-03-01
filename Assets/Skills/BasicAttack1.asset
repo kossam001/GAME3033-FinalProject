@@ -26,4 +26,4 @@ MonoBehaviour:
   comboName: BasicCombo
   minRange: 0
   maxRange: 2
-  arcAngle: 0
+  arcAngle: 60

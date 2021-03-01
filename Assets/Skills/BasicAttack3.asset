@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: BasicAttack3
   m_EditorClassIdentifier: 
   skillName: BasicAttack3
+  cooldown: 0
+  cost: 0
   socketName: WeaponSocket
   animation: {fileID: 7400000, guid: 7dc11d79fb5e93c47a661b32afc494d1, type: 2}
   overrideName: BruteStandingMeleeAttackHorizontal
@@ -22,3 +24,6 @@ MonoBehaviour:
   noncancellablePeriod: 0.7
   followUpSkill: {fileID: 11400000, guid: b2a8af2e5396a3f4583625885e973ef9, type: 2}
   comboName: BasicCombo
+  minRange: 0
+  maxRange: 2
+  arcAngle: 60
