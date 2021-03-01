@@ -15,6 +15,15 @@ public class UseSkill : TreeNode
         if (brain.skillController.isActive)
             timer -= Time.deltaTime;
 
+        if (timer <= 0.0f && ProcCheck() && brain.skillController.isActive && brain.skillController.canCancel)
+        {
+            brain.skillController.CancelSkill();
+            brain.agent.isStopped = false;
+            state.ChangeState(StateID.InCombat);
+
+            return false;
+        }
+
         if (brain.selectedSkill.maxRange >= distance &&
             brain.selectedSkill.minRange <= distance &&
             (!brain.skillController.isActive ||
@@ -33,6 +42,7 @@ public class UseSkill : TreeNode
         {
             brain.skillController.CancelSkill();
             brain.agent.isStopped = false;
+            state.ChangeState(StateID.InCombat);
         }
 
         return false;

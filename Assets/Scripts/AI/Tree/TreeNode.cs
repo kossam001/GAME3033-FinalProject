@@ -48,7 +48,7 @@ public class TreeNode : ScriptableObject
         {
             procTimer = procRateCheckFrequency;
 
-            if (Random.Range(0.0f, 1.0f) >= procRate)
+            if (Random.Range(0.0f, 1.0f) <= procRate)
                 return true;
         }
 
