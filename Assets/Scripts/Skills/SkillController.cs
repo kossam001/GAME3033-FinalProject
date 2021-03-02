@@ -15,6 +15,7 @@ public class SkillController : MonoBehaviour
     public bool canCancel = false; // A bool to stop - the controller is doing something but can be stopped
 
     private readonly int IsAttackingHash = Animator.StringToHash("IsAttacking");
+    private readonly int AttackSpeedHash = Animator.StringToHash("AttackSpeed");
 
     private void Start()
     {
@@ -46,12 +47,12 @@ public class SkillController : MonoBehaviour
 
     private void ActivateSkill(Skill skill)
     {
+        StopAllCoroutines();
+
         if (CanChain(skill))
             activeSkill = activeSkill.followUpSkill; // If the used skill is from the same combo chain, use next chain
         else
             activeSkill = skill;
-
-        StopAllCoroutines();
 
         isActive = true;
         canCancel = false;
@@ -67,20 +68,21 @@ public class SkillController : MonoBehaviour
     {
         float stateDuration = 0.0f;
         float stateLength = activeSkill.animation.length;
+        float attackSpeed = animator.GetFloat(AttackSpeedHash);
 
         while (activeSkill.comboDuration * stateLength >= stateDuration)
         {
             // Turn attack collider on
-            if (stateLength * activeSkill.windupPeriod < stateDuration)
+            if (stateLength / attackSpeed * activeSkill.windupPeriod < stateDuration)
                 ToggleCollider(activeSkill.socketName, true);
 
             stateDuration += Time.deltaTime;
 
             // If animation passes the noncancellable portion - the swing animation
-            if (stateLength * activeSkill.attackDuration < stateDuration)
+            if (stateLength / attackSpeed * activeSkill.attackDuration < stateDuration)
                 ToggleCollider(activeSkill.socketName, false); // Turn off collider
 
-            if (stateLength * activeSkill.noncancellablePeriod < stateDuration)
+            if (stateLength / attackSpeed * activeSkill.noncancellablePeriod < stateDuration)
                 canCancel = true;
 
             yield return null;
@@ -91,8 +93,8 @@ public class SkillController : MonoBehaviour
 
     private void ToggleCollider(string socketName, bool toggle)
     {
-        Transform socket = socketTable[socketName].transform;
-        GameObject collider = socket.Find("Collider").gameObject;
+        Socket socket = socketTable[socketName];
+        GameObject collider = socket.colliderObject;
         collider.SetActive(toggle);
     }
 
@@ -129,5 +131,10 @@ public class SkillController : MonoBehaviour
     {
         StopAllCoroutines();
         EndSkill();
+    }
+
+    public float GetLength()
+    {
+        return activeSkill.animation.length / animator.GetFloat(AttackSpeedHash) * activeSkill.noncancellablePeriod;
     }
 }
