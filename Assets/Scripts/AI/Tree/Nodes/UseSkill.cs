@@ -35,7 +35,7 @@ public class UseSkill : TreeNode
             timer = brain.skillController.GetLength();
 
             // Stop agent
-            brain.agent.isStopped = true;
+            //brain.agent.isStopped = true;
             return true;
         }
 

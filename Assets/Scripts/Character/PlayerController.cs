@@ -37,26 +37,15 @@ public class PlayerController : Character
             Turn();
         }
 
-        if (characterData.skillController.canCancel || !characterData.skillController.SkillInUse())
-        {
-            characterData.skillController.CancelSkill();
-
-            MovementCalculation(movementDirection);
-        }
-    }
-
-    private void MovementCalculation(Vector2 movementDirection)
-    {
-        Vector3 forwardForce = character.transform.forward * movementDirection.y;
-        Vector3 rightForce = character.transform.right * movementDirection.x;
-
-        characterData.movementComponent.isRunning = isShiftOn;
-        characterData.movementComponent.Move(forwardForce + rightForce);
+        characterData.movementComponent.MovementCalculation(movementDirection);
+        characterData.movementComponent.SetIsRunning(isShiftOn);
     }
 
     public void OnMovement(InputValue vector2)
     {
         movementDirection = vector2.Get<Vector2>();
+
+        if (!characterData.canMove) return; // Lock dodging to one direction
 
         characterData.characterAnimator.SetFloat(MoveXHash, movementDirection.x);
         characterData.characterAnimator.SetFloat(MoveZHash, movementDirection.y);

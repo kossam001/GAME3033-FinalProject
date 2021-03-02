@@ -17,6 +17,8 @@ public class CharacterData : MonoBehaviour
     public int health = 100;
     private int currentHealth;
 
+    public bool canMove = true;
+
     [SerializeField] private Slider healthIndicator;
 
     private void Awake()

@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
 {
     private Rigidbody rigidbody;
     private Animator animator;
+    private CharacterData characterData;
 
     [SerializeField]
     public float maxWalkSpeed;
@@ -16,10 +17,13 @@ public class Movement : MonoBehaviour
     public float rotationSpeed;
     public bool isRunning;
 
+    private float LerpTimer = 0.0f;
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        characterData = GetComponent<CharacterData>();
     }
 
     public void Move(Vector3 movementForce)
@@ -34,6 +38,44 @@ public class Movement : MonoBehaviour
 
         // Sum forward and side force
         rigidbody.AddForce(movementForce * movementSpeed * Time.deltaTime);
+    }
+
+    public void MovementCalculation(Vector2 movementDirection)
+    {
+        if (characterData.skillController.canCancel || !characterData.skillController.SkillInUse())
+        {
+            characterData.skillController.CancelSkill();
+
+            Vector3 forwardForce = transform.forward * movementDirection.y;
+            Vector3 rightForce = transform.right * movementDirection.x;
+
+            Move(forwardForce + rightForce);
+        }
+    }
+
+    public void AIMove(Transform followTransform)
+    {
+        if (characterData.skillController.canCancel || !characterData.skillController.SkillInUse())
+        {
+            characterData.skillController.CancelSkill();
+
+            transform.position = followTransform.position;
+        }
+        else
+        {
+           followTransform.position = transform.position;
+        }
+
+        if (LerpTimer >= 0.1f) LerpTimer = 0.0f;
+
+        LerpTimer += Time.deltaTime;
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, followTransform.rotation, LerpTimer / 0.6f);
+    }
+
+    public void SetIsRunning(bool on)
+    {
+        isRunning = on;
     }
 
     public void Turn(Quaternion rotateDirection)

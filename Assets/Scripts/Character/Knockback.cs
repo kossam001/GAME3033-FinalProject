@@ -17,6 +17,8 @@ public class Knockback : MonoBehaviour
 
     public void Flinch()
     {
+        if (characterData.characterAnimator.GetBool(IsFlinchingHash)) return;
+
         characterData.movementComponent.Stop(flinchClip.length);
         characterData.skillController.Interrupt();
         characterData.characterAnimator.SetBool(IsFlinchingHash, true);
