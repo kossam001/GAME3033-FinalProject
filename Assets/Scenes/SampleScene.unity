@@ -554,7 +554,7 @@ PrefabInstance:
       objectReference: {fileID: 707804528}
     - target: {fileID: 6976478720858974328, guid: 99628344ae9643046a428089b8a19c1d, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6976478720858974328, guid: 99628344ae9643046a428089b8a19c1d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6868,6 +6868,7 @@ GameObject:
   - component: {fileID: 1454053362}
   - component: {fileID: 1454053361}
   - component: {fileID: 1454053360}
+  - component: {fileID: 1454053363}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -6956,6 +6957,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1454053363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454053358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2c48a88da974044ab75bf83252081e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  billboardTransform: {fileID: 1454053359}
+  target: {fileID: 963194228}
 --- !u!1 &1467518773
 GameObject:
   m_ObjectHideFlags: 0

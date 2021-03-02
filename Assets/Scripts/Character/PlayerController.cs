@@ -64,6 +64,14 @@ public class PlayerController : Character
 
         characterAnimator.SetFloat(MoveXHash, movementDirection.x);
         characterAnimator.SetFloat(MoveZHash, movementDirection.y);
+
+        Invoke(nameof(InterruptAttack), 0.1f);
+    }
+
+    public void InterruptAttack()
+    {
+        if (isShiftOn && (movementDirection.y != 0.0f || movementDirection.x != 0.0f) && skillController.isActive)
+            skillController.Interrupt();
     }
 
     public override void Turn()

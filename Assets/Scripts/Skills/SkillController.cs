@@ -129,8 +129,11 @@ public class SkillController : MonoBehaviour
 
     public void Interrupt()
     {
-        StopAllCoroutines();
-        EndSkill();
+        if (isActive)
+        {
+            StopAllCoroutines();
+            EndSkill();
+        }
     }
 
     public float GetLength()
