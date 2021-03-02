@@ -852,6 +852,10 @@ PrefabInstance:
       propertyPath: flinchClip
       value: 
       objectReference: {fileID: 7400000, guid: f4444093313ff8d49bf55b4a3cd2b811, type: 2}
+    - target: {fileID: -6530520090765888345, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
+      propertyPath: knockDownClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 2daed3513d5f5df45b893a8192540162, type: 2}
     - target: {fileID: -810309721807430851, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
       propertyPath: skills
       value: 
@@ -1276,6 +1280,7 @@ MonoBehaviour:
   cam: {fileID: 963194227}
   character: {fileID: 8766573650720140851}
   characterData: {fileID: 8766573650720140856}
+  movementDirection: {x: 0, y: 0}
   isShiftOn: 0
 --- !u!114 &745705308
 MonoBehaviour:
@@ -12341,9 +12346,13 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2374343827154503863, guid: a920ea1f309f8054a82ff434098b7dec, type: 3}
+      propertyPath: skills.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ddadb43774c4e646a048e842e100c13, type: 2}
+    - target: {fileID: 2374343827154503863, guid: a920ea1f309f8054a82ff434098b7dec, type: 3}
       propertyPath: skills.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: b8557412dc7bf454995db0747d8d6bf4, type: 2}
+      objectReference: {fileID: 11400000, guid: 90b2e92934e85d040ba3e3a87f54c259, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a920ea1f309f8054a82ff434098b7dec, type: 3}
 --- !u!1001 &7670346940238042188
@@ -12357,6 +12366,10 @@ PrefabInstance:
       propertyPath: flinchClip
       value: 
       objectReference: {fileID: 7400000, guid: f4444093313ff8d49bf55b4a3cd2b811, type: 2}
+    - target: {fileID: -6530520090765888345, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
+      propertyPath: knockDownClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 2daed3513d5f5df45b893a8192540162, type: 2}
     - target: {fileID: -810309721807430851, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
       propertyPath: skills
       value: 

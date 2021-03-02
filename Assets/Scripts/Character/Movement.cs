@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour
     private float movementSpeed;
     public float rotationSpeed;
     public bool isRunning;
+    public bool isStopped = false;
 
     private float LerpTimer = 0.0f;
 
@@ -45,7 +46,7 @@ public class Movement : MonoBehaviour
 
     public void MovementCalculation(Vector2 movementDirection)
     {
-        if (characterData.skillController.canCancel || !characterData.skillController.SkillInUse())
+        if ((characterData.skillController.canCancel || !characterData.skillController.SkillInUse()) && characterData.canMove)
         {
             characterData.skillController.CancelSkill();
 
@@ -61,22 +62,18 @@ public class Movement : MonoBehaviour
 
     public void AIMove(Transform followTransform)
     {
-        if (characterData.skillController.canCancel || !characterData.skillController.SkillInUse())
+        if ((characterData.skillController.canCancel || !characterData.skillController.SkillInUse()) && !isStopped)
         {
             characterData.skillController.CancelSkill();
 
             transform.position = followTransform.position;
+            followTransform.rotation = Quaternion.Lerp(followTransform.rotation, transform.rotation, Time.deltaTime * 0.5f);
         }
         else
         {
-           followTransform.position = transform.position;
+            followTransform.position = transform.position;
+            transform.rotation = Quaternion.Lerp(transform.rotation, followTransform.rotation, Time.deltaTime * 0.5f);
         }
-
-        if (LerpTimer >= 0.1f) LerpTimer = 0.0f;
-
-        LerpTimer += Time.deltaTime;
-
-        transform.rotation = Quaternion.Lerp(transform.rotation, followTransform.rotation, LerpTimer / 0.6f);
     }
 
     public void SetIsRunning(bool on)
@@ -94,7 +91,10 @@ public class Movement : MonoBehaviour
 
     public void Stop(float duration)
     {
+        if (isStopped) return;
+
         rigidbody.velocity = Vector3.zero;
+        isStopped = true;
 
         StartCoroutine(StopForDuration(duration));
     }
@@ -108,6 +108,8 @@ public class Movement : MonoBehaviour
         maxWalkSpeed = 0.0f;
 
         yield return new WaitForSeconds(duration);
+
+        isStopped = false;
 
         maxRunSpeed = originalRunSpeed;
         maxWalkSpeed = originalWalkSpeed;

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e85542d373b68974ebbf9e70451c90a6, type: 3}
+  m_Name: PlayerBasicAttack1
+  m_EditorClassIdentifier: 
+  skillName: BasicAttack1
+  cooldown: 0
+  cost: 0
+  speed: 2
+  damage: 10
+  repeatEffect: 0
+  canInterrupt: 0
+  socketName: WeaponSocket
+  animation: {fileID: 7400000, guid: 3227a11c42c4bfd41b461fb6166966aa, type: 2}
+  overrideName: BruteStandingMeleeAttackHorizontal
+  useAnimation: 1
+  windupPeriod: 0.3
+  attackDuration: 0.5
+  comboDuration: 1
+  noncancellablePeriod: 0.5
+  followUpSkill: {fileID: 11400000, guid: a0cd5c27f50235940829900f35269f6f, type: 2}
+  comboName: BasicCombo
+  minRange: 0
+  maxRange: 2
+  arcAngle: 60

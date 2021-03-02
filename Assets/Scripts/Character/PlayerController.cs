@@ -17,7 +17,7 @@ public class PlayerController : Character
 
     private float lookDirection;
 
-    private Vector2 movementDirection;
+    public Vector2 movementDirection;
 
     public bool isShiftOn = false;
 
@@ -41,9 +41,9 @@ public class PlayerController : Character
 
     public void OnMovement(InputValue vector2)
     {
-        movementDirection = vector2.Get<Vector2>();
+        //if (!characterData.canMove) return; // Lock dodging to one direction
 
-        if (!characterData.canMove) return; // Lock dodging to one direction
+        movementDirection = vector2.Get<Vector2>();
     }
     
     public void OnDodge(InputValue button)

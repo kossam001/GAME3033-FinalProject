@@ -30,12 +30,13 @@ public class UseSkill : TreeNode
             (!brain.skillController.isActive ||
             brain.skillController.canCancel))
         {
+            if (brain.skillController.isStopped) return false;
+
             brain.skillController.Use(brain.selectedSkill, brain.selectedSkill.overrideName);
             // Get the period where the character can't move
             timer = brain.skillController.GetLength();
 
             // Stop agent
-            //brain.agent.isStopped = true;
             return true;
         }
 

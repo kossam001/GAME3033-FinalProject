@@ -13,6 +13,14 @@ public class Dodge : Skill
 
     private string ownerTag;
 
+    public override void PrestartEffect(SkillController skillController)
+    {
+        if (prestartEffectActivated) return;
+        base.PrestartEffect(skillController);
+
+        skillController.animator.SetFloat(DodgeSpeedHash, speed);
+    }
+
     public override void StartEfftect(SkillController skillController)
     {
         if (isRepeating()) return;
@@ -32,8 +40,8 @@ public class Dodge : Skill
         if (!startEffectActivated) return;
         base.EndEffect(skillController);
 
-        skillController.animator.SetFloat(MoveXHash, 0.0f);
-        skillController.animator.SetFloat(MoveZHash, 0.0f);
+        //skillController.animator.SetFloat(MoveXHash, 0.0f);
+        //skillController.animator.SetFloat(MoveZHash, 0.0f);
 
         skillController.animator.SetBool(IsDodgingHash, false);
         skillController.owner.tag = ownerTag;

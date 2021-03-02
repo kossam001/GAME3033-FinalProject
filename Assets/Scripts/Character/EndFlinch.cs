@@ -5,6 +5,7 @@ using UnityEngine;
 public class EndFlinch : StateMachineBehaviour
 {
     private readonly int IsFlinchingHash = Animator.StringToHash("IsFlinching");
+    private readonly int IsKnockedDownHash = Animator.StringToHash("IsKnockedDown");
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -22,6 +23,7 @@ public class EndFlinch : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool(IsFlinchingHash, false);
+        animator.SetBool(IsKnockedDownHash, false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -15,9 +15,12 @@ public class SkillController : MonoBehaviour
 
     public bool isActive = false; // A bool to start skill - indicates whether or not controller is doing something 
     public bool canCancel = false; // A bool to stop - the controller is doing something but can be stopped
+    public bool isStopped = false; // A bool to stop - the controller is doing something but can be stopped
 
     private readonly int IsAttackingHash = Animator.StringToHash("IsAttacking");
     private readonly int AttackSpeedHash = Animator.StringToHash("AttackSpeed");
+
+    private IEnumerator playAnimationRoutine;
 
     private void Start()
     {
@@ -42,6 +45,8 @@ public class SkillController : MonoBehaviour
         if (skill.canInterrupt)
             Interrupt();
 
+        if (isStopped) return;
+
         ActivateSkill(skill);
     }
 
@@ -52,7 +57,8 @@ public class SkillController : MonoBehaviour
 
     private void ActivateSkill(Skill skill)
     {
-        StopAllCoroutines();
+        if (playAnimationRoutine != null)
+            StopCoroutine(playAnimationRoutine);
 
         if (CanChain(skill))
             activeSkill = activeSkill.followUpSkill; // If the used skill is from the same combo chain, use next chain
@@ -70,7 +76,8 @@ public class SkillController : MonoBehaviour
             animator.Play("SkillUse", 1, 0.0f);
         }
 
-        StartCoroutine(PlayAnimation());
+        playAnimationRoutine = PlayAnimation();
+        StartCoroutine(playAnimationRoutine);
     }
 
     public IEnumerator PlayAnimation()
@@ -140,9 +147,30 @@ public class SkillController : MonoBehaviour
     {
         if (isActive)
         {
-            StopAllCoroutines();
+            if (playAnimationRoutine != null)
+                StopCoroutine(playAnimationRoutine);
             EndSkill();
         }
+    }
+
+    public void Stop(float duration)
+    {
+        if (isStopped) return;
+
+        isStopped = true;
+        StartCoroutine(Stopping(duration));
+    }
+
+    public IEnumerator Stopping(float duration)
+    {
+        while (duration >= 0.0f)
+        {
+            duration -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        isStopped = false;
     }
 
     public float GetLength()
