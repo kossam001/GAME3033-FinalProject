@@ -1,30 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DamageCollider : MonoBehaviour
 {
     public int damage = 5;
     public GameObject owner;
+    public UnityAction<GameObject, GameObject> action;
 
     private void OnTriggerEnter(Collider other)
     {
-        switch (owner.tag)
-        {
-            case "Player":
-                if (other.CompareTag("Enemy"))
-                {
-                    other.GetComponent<CharacterData>().UpdateHealth(damage);
-                    other.GetComponent<CharacterData>().knockbackComponent.Flinch();
-                }
-                break;
-            case "Enemy":
-                if (other.CompareTag("Player"))
-                {
-                    other.GetComponent<CharacterData>().UpdateHealth(damage);
-                    other.GetComponent<CharacterData>().knockbackComponent.Flinch();
-                }
-                break;
-        }
+        UseEffect(action, other.gameObject, owner);
+    }
+
+    public void UseEffect(UnityAction<GameObject, GameObject> effect, GameObject target, GameObject caster)
+    {
+        effect(target, caster);
     }
 }

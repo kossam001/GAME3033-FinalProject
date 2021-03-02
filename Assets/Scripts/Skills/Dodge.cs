@@ -29,7 +29,7 @@ public class Dodge : Skill
 
     public override void EndEffect(SkillController skillController)
     {
-        if (!effectActivated) return;
+        if (!startEffectActivated) return;
         base.EndEffect(skillController);
 
         skillController.animator.SetFloat(MoveXHash, 0.0f);

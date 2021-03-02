@@ -9,12 +9,14 @@ public class Skill : ScriptableObject
     public float cooldown = 0.0f;
     public float cost = 0.0f;
     public float speed = 1.0f;
+    public int damage = 10;
     [Tooltip("Attack effect should be repeated during the duration of the attack.")]
     public bool repeatEffect = false;
     [Tooltip("Can the skill interrupt other skills.")]
     public bool canInterrupt = false;
 
-    protected bool effectActivated = false;
+    protected bool prestartEffectActivated = false;
+    protected bool startEffectActivated = false;
 
     [Header("Collider Physics")]
     [Tooltip("Name of associated socket")]
@@ -53,20 +55,29 @@ public class Skill : ScriptableObject
 
     public virtual void OverrideAnimationData(Animator animator, AnimatorOverrideController animatorOverrideController) { }
 
+    public virtual void PrestartEffect(SkillController skillController)
+    {
+        prestartEffectActivated = true;
+    }
+
     public virtual void StartEfftect(SkillController skillController)
     {
-        effectActivated = true;
+        prestartEffectActivated = false;
+        startEffectActivated = true;
     }
 
     public virtual void EndEffect(SkillController skillController)
     {
-        effectActivated = false;
+        prestartEffectActivated = false;
+        startEffectActivated = false;
     }
 
     public bool isRepeating()
     {
-        if (!repeatEffect && effectActivated) return true;
+        if (!repeatEffect && startEffectActivated) return true;
 
         return false;
     }
+
+    public virtual void ApplyEffect(GameObject target, GameObject caster) { }
 }

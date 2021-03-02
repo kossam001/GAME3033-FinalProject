@@ -84,6 +84,9 @@ public class SkillController : MonoBehaviour
         {
             stateDuration += Time.deltaTime;
 
+            if (stateLength / attackSpeed * activeSkill.windupPeriod > stateDuration)
+                activeSkill.PrestartEffect(this);
+
             // Turn attack collider on
             if (stateLength / attackSpeed * activeSkill.windupPeriod < stateDuration &&
                 stateLength / attackSpeed * activeSkill.attackDuration > stateDuration)
@@ -102,13 +105,6 @@ public class SkillController : MonoBehaviour
 
         EndSkill();
     }
-
-    //private void ToggleCollider(string socketName, bool toggle)
-    //{
-    //    Socket socket = socketTable[socketName];
-    //    GameObject collider = socket.colliderObject;
-    //    collider.SetActive(toggle);
-    //}
 
     // Returns whether or not skill was cancelled
     public bool CancelSkill()
