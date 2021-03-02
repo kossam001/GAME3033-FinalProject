@@ -932,6 +932,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1098312820}
     m_Modifications:
+    - target: {fileID: -6530520090765888345, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
+      propertyPath: flinchClip
+      value: 
+      objectReference: {fileID: 7400000, guid: f4444093313ff8d49bf55b4a3cd2b811, type: 2}
     - target: {fileID: -810309721807430851, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
       propertyPath: healthIndicator
       value: 
@@ -1297,7 +1301,6 @@ GameObject:
   - component: {fileID: 745705307}
   - component: {fileID: 745705308}
   - component: {fileID: 745705309}
-  - component: {fileID: 745705310}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -1337,12 +1340,7 @@ MonoBehaviour:
   rotationSpeed: 1
   cam: {fileID: 963194227}
   character: {fileID: 8766573650720140851}
-  movementComponent: {fileID: 8766573650720140852}
-  dodgeComponent: {fileID: 8766573650720140857}
-  characterData: {fileID: 0}
-  skills: {fileID: 604390049}
-  skillController: {fileID: 604390050}
-  forwardMagnitude: 5
+  characterData: {fileID: 8766573650720140856}
   isShiftOn: 0
 --- !u!114 &745705308
 MonoBehaviour:
@@ -1389,20 +1387,6 @@ MonoBehaviour:
   FollowTarget: {fileID: 1655836734}
   RotationSpeed: 0.1
   HorizontalDamping: 1
---- !u!114 &745705310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 745705305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98b74f93eb2546742a2047ed0b3cd2df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  healthIndicator: {fileID: 0}
 --- !u!114 &758816954 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2374343827154503860, guid: a920ea1f309f8054a82ff434098b7dec, type: 3}
@@ -8689,7 +8673,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -301, y: -207}
+  m_AnchoredPosition: {x: -301, y: -164.1}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1541137628
@@ -12178,10 +12162,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 600782640}
     m_Modifications:
+    - target: {fileID: -6530520090765888345, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
+      propertyPath: flinchClip
+      value: 
+      objectReference: {fileID: 7400000, guid: f4444093313ff8d49bf55b4a3cd2b811, type: 2}
+    - target: {fileID: -810309721807430851, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
+      propertyPath: skills
+      value: 
+      objectReference: {fileID: 604390049}
     - target: {fileID: -810309721807430851, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
       propertyPath: healthIndicator
       value: 
       objectReference: {fileID: 965841711}
+    - target: {fileID: -810309721807430851, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
+      propertyPath: skillController
+      value: 
+      objectReference: {fileID: 604390050}
     - target: {fileID: 590091856146669839, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
       propertyPath: colliderObject
       value: 
@@ -12246,33 +12242,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1430926072993397375, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
   m_PrefabInstance: {fileID: 7670346940238042188}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8766573650720140852 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8766573650720140852, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
-  m_PrefabInstance: {fileID: 7670346940238042188}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8766573650720140851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d0959ffd8cbd034eaf6e96e18ddcb2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &8766573650720140855 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5652114111254772415, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
   m_PrefabInstance: {fileID: 7670346940238042188}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8766573650720140857
+--- !u!114 &8766573650720140856 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: -810309721807430851, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
+  m_PrefabInstance: {fileID: 7670346940238042188}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8766573650720140851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc5dddda1a319e46bcacd15e91d3635, type: 3}
+  m_Script: {fileID: 11500000, guid: 98b74f93eb2546742a2047ed0b3cd2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dodgeDuration: 0.15
-  dodgeSpeed: 3

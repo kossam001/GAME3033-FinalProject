@@ -15,17 +15,9 @@ public class PlayerController : Character
     public float rotationSpeed;
     public Camera cam;
     public GameObject character;
-    public Movement movementComponent;
-    public Dodge dodgeComponent;
     public CharacterData characterData;
 
     private float lookDirection;
-
-    public SkillList skills;
-    public SkillController skillController;
-    private Animator characterAnimator;
-
-    [SerializeField] private float forwardMagnitude;
 
     private Vector2 movementDirection;
 
@@ -35,8 +27,6 @@ public class PlayerController : Character
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-        characterAnimator = character.GetComponent<Animator>();
     }
 
     // Used to handle physics
@@ -47,9 +37,9 @@ public class PlayerController : Character
             Turn();
         }
 
-        if (skillController.canCancel || !skillController.SkillInUse())
+        if (characterData.skillController.canCancel || !characterData.skillController.SkillInUse())
         {
-            skillController.CancelSkill();
+            characterData.skillController.CancelSkill();
 
             MovementCalculation(movementDirection);
         }
@@ -60,26 +50,26 @@ public class PlayerController : Character
         Vector3 forwardForce = character.transform.forward * movementDirection.y;
         Vector3 rightForce = character.transform.right * movementDirection.x;
 
-        movementComponent.isRunning = isShiftOn;
-        movementComponent.Move(forwardForce + rightForce);
+        characterData.movementComponent.isRunning = isShiftOn;
+        characterData.movementComponent.Move(forwardForce + rightForce);
     }
 
     public void OnMovement(InputValue vector2)
     {
         movementDirection = vector2.Get<Vector2>();
 
-        characterAnimator.SetFloat(MoveXHash, movementDirection.x);
-        characterAnimator.SetFloat(MoveZHash, movementDirection.y);
+        characterData.characterAnimator.SetFloat(MoveXHash, movementDirection.x);
+        characterData.characterAnimator.SetFloat(MoveZHash, movementDirection.y);
     }
     
     public void OnDodge(InputValue button)
     {
-        dodgeComponent.TriggerDodge(movementDirection, skillController, movementComponent);
+        characterData.dodgeComponent.TriggerDodge(movementDirection, characterData.skillController, characterData.movementComponent);
     }
 
     public override void Turn()
     {
-        movementComponent.Turn(cam.transform.rotation);
+        characterData.movementComponent.Turn(cam.transform.rotation);
     }
 
     public override IEnumerator UseSkill(ActiveSkill skill)
@@ -92,14 +82,14 @@ public class PlayerController : Character
 
     public void OnAttack(InputValue button)
     {
-        Skill selectedSkill = skills.skillTable["BasicAttack1"];
+        Skill selectedSkill = characterData.skills.skillTable["BasicAttack1"];
 
-        skillController.Use(selectedSkill, selectedSkill.overrideName);
+        characterData.skillController.Use(selectedSkill, selectedSkill.overrideName);
     }
 
     public void OnShift(InputValue button)
     {
         isShiftOn = button.isPressed;
-        characterAnimator.SetBool(IsRunningHash, button.isPressed);
+        characterData.characterAnimator.SetBool(IsRunningHash, button.isPressed);
     }
 }

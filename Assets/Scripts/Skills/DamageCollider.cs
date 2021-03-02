@@ -13,13 +13,17 @@ public class DamageCollider : MonoBehaviour
         {
             case "Player":
                 if (other.CompareTag("Enemy"))
+                {
                     other.GetComponent<CharacterData>().UpdateHealth(damage);
-
+                    other.GetComponent<CharacterData>().knockbackComponent.Flinch();
+                }
                 break;
             case "Enemy":
                 if (other.CompareTag("Player"))
+                {
                     other.GetComponent<CharacterData>().UpdateHealth(damage);
-
+                    other.GetComponent<CharacterData>().knockbackComponent.Flinch();
+                }
                 break;
         }
     }

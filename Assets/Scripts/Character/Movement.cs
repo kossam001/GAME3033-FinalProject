@@ -43,4 +43,25 @@ public class Movement : MonoBehaviour
         Vector3 euler = Vector3.Scale(rotation.eulerAngles, new Vector3(0, 1, 0));
         transform.rotation = Quaternion.Euler(euler);
     }
+
+    public void Stop(float duration)
+    {
+        rigidbody.velocity = Vector3.zero;
+
+        StartCoroutine(StopForDuration(duration));
+    }
+
+    private IEnumerator StopForDuration(float duration)
+    {
+        float originalRunSpeed = maxRunSpeed;
+        float originalWalkSpeed = maxWalkSpeed;
+
+        maxRunSpeed = 0.0f;
+        maxWalkSpeed = 0.0f;
+
+        yield return new WaitForSeconds(duration);
+
+        maxRunSpeed = originalRunSpeed;
+        maxWalkSpeed = originalWalkSpeed;
+    }
 }
