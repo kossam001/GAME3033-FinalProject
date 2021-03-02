@@ -42,9 +42,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d0959ffd8cbd034eaf6e96e18ddcb2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
-  movementSpeed: 5000
+  maxWalkSpeed: 0
+  maxRunSpeed: 0
   rotationSpeed: 5
+  isRunning: 0
 --- !u!1 &5245317512122091695
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,11 +310,8 @@ MonoBehaviour:
   rotationSpeed: 1
   cam: {fileID: 5245317512702092860}
   character: {fileID: 3558472854505678204}
-  movementComponent: {fileID: 3558472854505678203}
   characterData: {fileID: 0}
-  skills: {fileID: 5245317513055635950}
-  animatorOverride: {fileID: 22100000, guid: 65a61ac0b0cab7047869f49a03be4c0d, type: 2}
-  forwardMagnitude: 5
+  isShiftOn: 0
 --- !u!114 &5245317512918582291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,8 +369,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b74f93eb2546742a2047ed0b3cd2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementComponent: {fileID: 0}
+  dodgeComponent: {fileID: 0}
+  knockbackComponent: {fileID: 0}
+  skills: {fileID: 0}
+  skillController: {fileID: 0}
+  characterAnimator: {fileID: 0}
   health: 100
-  isAttacking: 0
+  canMove: 1
+  healthIndicator: {fileID: 0}
 --- !u!1 &5245317513055635920
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,7 +955,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1150829895078407904, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
 --- !u!4 &4191141073224875974 stripped
 Transform:
@@ -974,6 +980,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 386875893945431990}
     m_Modifications:
+    - target: {fileID: 6292044974484601111, guid: 906f36fd28a05bd418a32fc9d218fb27, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8275359146937781334, guid: 906f36fd28a05bd418a32fc9d218fb27, type: 3}
       propertyPath: m_Name
       value: WeaponSocket

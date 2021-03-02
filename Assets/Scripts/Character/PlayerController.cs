@@ -7,8 +7,6 @@ using UnityEngine.InputSystem;
 public class PlayerController : Character
 {
     // Animator hashes
-    private readonly int MoveXHash = Animator.StringToHash("MoveX");
-    private readonly int MoveZHash = Animator.StringToHash("MoveZ");
     private readonly int IsRunningHash = Animator.StringToHash("IsRunning");
 
     public float movementSpeed;
@@ -46,14 +44,14 @@ public class PlayerController : Character
         movementDirection = vector2.Get<Vector2>();
 
         if (!characterData.canMove) return; // Lock dodging to one direction
-
-        characterData.characterAnimator.SetFloat(MoveXHash, movementDirection.x);
-        characterData.characterAnimator.SetFloat(MoveZHash, movementDirection.y);
     }
     
     public void OnDodge(InputValue button)
     {
-        characterData.dodgeComponent.TriggerDodge(movementDirection, characterData.skillController, characterData.movementComponent);
+        if (characterData.skillController.GetActiveSkillName() == "Dodge") return;
+
+        Skill selectedSkill = characterData.skills.skillTable["Dodge"];
+        characterData.skillController.Use(selectedSkill, selectedSkill.overrideName);
     }
 
     public override void Turn()

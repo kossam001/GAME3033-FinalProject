@@ -2,50 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dodge : MonoBehaviour
+[CreateAssetMenu(fileName = "Dodge", menuName = "Skills/Dodge")]
+public class Dodge : Skill
 {
+    // Animator hashes
     private readonly int MoveXHash = Animator.StringToHash("MoveX");
     private readonly int MoveZHash = Animator.StringToHash("MoveZ");
     private readonly int IsDodgingHash = Animator.StringToHash("IsDodging");
     private readonly int DodgeSpeedHash = Animator.StringToHash("DodgeSpeed");
 
-    public float dodgeDuration = 0.3f;
-    public float dodgeSpeed = 3;
     private string ownerTag;
 
-    private CharacterData characterData;
-    private Animator animator;
-    [SerializeField] private AnimationClip clip;
-
-    private void Awake()
+    public override void StartEfftect(SkillController skillController)
     {
-        ownerTag = tag;
-        animator = GetComponent<Animator>();
-        characterData = GetComponent<CharacterData>();
+        if (isRepeating()) return;
+        base.StartEfftect(skillController);
+
+        ownerTag = skillController.owner.tag;
+
+        if (!skillController.owner.canMove) return;
+
+        skillController.owner.tag = "Untagged";
+        skillController.owner.canMove = false;
+        skillController.animator.SetBool(IsDodgingHash, true);
     }
 
-    public void TriggerDodge(Vector2 movementDirection, SkillController skillController, Movement movementComponent)
+    public override void EndEffect(SkillController skillController)
     {
-        if (!characterData.canMove) return;
+        if (!effectActivated) return;
+        base.EndEffect(skillController);
 
-        if (skillController.isActive)
-                skillController.Interrupt();
+        skillController.animator.SetFloat(MoveXHash, 0.0f);
+        skillController.animator.SetFloat(MoveZHash, 0.0f);
 
-        GetComponent<Collider>().tag = "Untagged";
-
-        characterData.canMove = false;
-
-        animator.SetFloat(MoveXHash, movementDirection.x);
-        animator.SetFloat(MoveZHash, movementDirection.y);
-        animator.SetBool(IsDodgingHash, true);
-
-        Invoke(nameof(Stop), clip.length / animator.GetFloat(DodgeSpeedHash));
-    }
-
-    private void Stop()
-    {
-        animator.SetBool(IsDodgingHash, false);
-        GetComponent<Collider>().tag = ownerTag;
-        characterData.canMove = true;
+        skillController.animator.SetBool(IsDodgingHash, false);
+        skillController.owner.tag = ownerTag;
+        skillController.owner.canMove = true;
     }
 }

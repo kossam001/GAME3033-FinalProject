@@ -8,6 +8,13 @@ public class Skill : ScriptableObject
     public string skillName;
     public float cooldown = 0.0f;
     public float cost = 0.0f;
+    public float speed = 1.0f;
+    [Tooltip("Attack effect should be repeated during the duration of the attack.")]
+    public bool repeatEffect = false;
+    [Tooltip("Can the skill interrupt other skills.")]
+    public bool canInterrupt = false;
+
+    protected bool effectActivated = false;
 
     [Header("Collider Physics")]
     [Tooltip("Name of associated socket")]
@@ -17,6 +24,8 @@ public class Skill : ScriptableObject
     public AnimationClip animation;
     [Tooltip("Name of animation in animator to override")]
     public string overrideName;
+    [Tooltip("Whether or not the animation should be used externally.")]
+    public bool useAnimation = true;
 
     [Header("Timing")]
     [Tooltip("Period before the attack - collider should be off.")]
@@ -43,4 +52,21 @@ public class Skill : ScriptableObject
     public float arcAngle;
 
     public virtual void OverrideAnimationData(Animator animator, AnimatorOverrideController animatorOverrideController) { }
+
+    public virtual void StartEfftect(SkillController skillController)
+    {
+        effectActivated = true;
+    }
+
+    public virtual void EndEffect(SkillController skillController)
+    {
+        effectActivated = false;
+    }
+
+    public bool isRepeating()
+    {
+        if (!repeatEffect && effectActivated) return true;
+
+        return false;
+    }
 }

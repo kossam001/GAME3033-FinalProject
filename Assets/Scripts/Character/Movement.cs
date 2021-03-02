@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
+    private readonly int MoveXHash = Animator.StringToHash("MoveX");
+    private readonly int MoveZHash = Animator.StringToHash("MoveZ");
+
     private Rigidbody rigidbody;
     private Animator animator;
     private CharacterData characterData;
@@ -48,6 +51,9 @@ public class Movement : MonoBehaviour
 
             Vector3 forwardForce = transform.forward * movementDirection.y;
             Vector3 rightForce = transform.right * movementDirection.x;
+
+            animator.SetFloat(MoveXHash, movementDirection.x);
+            animator.SetFloat(MoveZHash, movementDirection.y);
 
             Move(forwardForce + rightForce);
         }

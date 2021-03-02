@@ -697,7 +697,6 @@ GameObject:
   - component: {fileID: 8766573650720140852}
   - component: {fileID: -810309721807430851}
   - component: {fileID: -6530520090765888345}
-  - component: {fileID: 1150829895078407904}
   m_Layer: 6
   m_Name: brute
   m_TagString: Player
@@ -798,7 +797,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b74f93eb2546742a2047ed0b3cd2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementComponent: {fileID: 0}
+  dodgeComponent: {fileID: 0}
+  knockbackComponent: {fileID: 0}
+  skills: {fileID: 0}
+  skillController: {fileID: 0}
+  characterAnimator: {fileID: 0}
   health: 100
+  canMove: 1
   healthIndicator: {fileID: 0}
 --- !u!114 &-6530520090765888345
 MonoBehaviour:
@@ -812,20 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409abbb7ea7247a44aafe46a262cae1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1150829895078407904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1430926072993397375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc5dddda1a319e46bcacd15e91d3635, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dodgeDuration: 0.15
-  dodgeSpeed: 3
+  flinchClip: {fileID: 0}
 --- !u!1 &1475392678574827085
 GameObject:
   m_ObjectHideFlags: 0

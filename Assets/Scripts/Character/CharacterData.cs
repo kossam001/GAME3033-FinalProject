@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class CharacterData : MonoBehaviour
 {
     public Movement movementComponent;
-    public Dodge dodgeComponent;
     public Knockback knockbackComponent;
 
     [Header("Skills")]
@@ -25,7 +24,6 @@ public class CharacterData : MonoBehaviour
     {
         currentHealth = health;
         movementComponent = GetComponent<Movement>();
-        dodgeComponent = GetComponent<Dodge>();
         knockbackComponent = GetComponent<Knockback>();
         characterAnimator = GetComponent<Animator>();
     }

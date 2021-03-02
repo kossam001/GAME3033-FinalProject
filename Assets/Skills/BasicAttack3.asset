@@ -15,9 +15,13 @@ MonoBehaviour:
   skillName: BasicAttack3
   cooldown: 0
   cost: 0
+  speed: 1.5
+  repeatEffect: 0
+  canInterrupt: 0
   socketName: WeaponSocket
   animation: {fileID: 7400000, guid: 7dc11d79fb5e93c47a661b32afc494d1, type: 2}
   overrideName: BruteStandingMeleeAttackHorizontal
+  useAnimation: 1
   windupPeriod: 0.3
   attackDuration: 0.4
   comboDuration: 0.7

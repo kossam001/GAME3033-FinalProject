@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SkillController : MonoBehaviour
 {
+    public CharacterData owner;
+
     public Animator animator;
     public AnimatorOverrideController overrideController;
 
@@ -35,7 +37,10 @@ public class SkillController : MonoBehaviour
     public void Use(Skill skill, string overrideName)
     {
         // Another skill is being used
-        if (!canCancel && isActive) return;
+        if (!canCancel && isActive && !skill.canInterrupt) return;
+
+        if (skill.canInterrupt)
+            Interrupt();
 
         ActivateSkill(skill);
     }
@@ -57,10 +62,14 @@ public class SkillController : MonoBehaviour
         isActive = true;
         canCancel = false;
 
-        activeSkill.OverrideAnimationData(animator, overrideController);
-        animator.SetBool(IsAttackingHash, true);
+        if (activeSkill.useAnimation)
+        {
+            activeSkill.OverrideAnimationData(animator, overrideController);
+            animator.SetBool(IsAttackingHash, true);
 
-        animator.Play("SkillUse", 1, 0.0f);
+            animator.Play("SkillUse", 1, 0.0f);
+        }
+
         StartCoroutine(PlayAnimation());
     }
 
@@ -68,19 +77,22 @@ public class SkillController : MonoBehaviour
     {
         float stateDuration = 0.0f;
         float stateLength = activeSkill.animation.length;
-        float attackSpeed = animator.GetFloat(AttackSpeedHash);
+        float attackSpeed = activeSkill.speed;
+        animator.SetFloat(AttackSpeedHash, attackSpeed);
 
-        while (activeSkill.comboDuration * stateLength >= stateDuration)
+        while (activeSkill.comboDuration / attackSpeed * stateLength >= stateDuration)
         {
-            // Turn attack collider on
-            if (stateLength / attackSpeed * activeSkill.windupPeriod < stateDuration)
-                ToggleCollider(activeSkill.socketName, true);
-
             stateDuration += Time.deltaTime;
 
+            // Turn attack collider on
+            if (stateLength / attackSpeed * activeSkill.windupPeriod < stateDuration &&
+                stateLength / attackSpeed * activeSkill.attackDuration > stateDuration)
+                activeSkill.StartEfftect(this); // Trigger skill effect
+
             // If animation passes the noncancellable portion - the swing animation
-            if (stateLength / attackSpeed * activeSkill.attackDuration < stateDuration)
-                ToggleCollider(activeSkill.socketName, false); // Turn off collider
+            if (stateLength / attackSpeed * activeSkill.attackDuration < stateDuration &&
+                activeSkill.comboDuration * stateLength < stateDuration)
+                activeSkill.EndEffect(this); // Turn off skill effect
 
             if (stateLength / attackSpeed * activeSkill.noncancellablePeriod < stateDuration)
                 canCancel = true;
@@ -91,19 +103,20 @@ public class SkillController : MonoBehaviour
         EndSkill();
     }
 
-    private void ToggleCollider(string socketName, bool toggle)
-    {
-        Socket socket = socketTable[socketName];
-        GameObject collider = socket.colliderObject;
-        collider.SetActive(toggle);
-    }
+    //private void ToggleCollider(string socketName, bool toggle)
+    //{
+    //    Socket socket = socketTable[socketName];
+    //    GameObject collider = socket.colliderObject;
+    //    collider.SetActive(toggle);
+    //}
 
     // Returns whether or not skill was cancelled
     public bool CancelSkill()
     {
         if (canCancel)
         {
-            ToggleCollider(activeSkill.socketName, false);
+            //ToggleCollider(activeSkill.socketName, false);
+            activeSkill.EndEffect(this);
             animator.SetBool(IsAttackingHash, false);
         }
 
@@ -112,7 +125,7 @@ public class SkillController : MonoBehaviour
 
     public void EndSkill()
     {
-        ToggleCollider(activeSkill.socketName, false);
+        activeSkill.EndEffect(this);
         isActive = false;
         canCancel = false;
         activeSkill = null;
@@ -139,5 +152,19 @@ public class SkillController : MonoBehaviour
     public float GetLength()
     {
         return activeSkill.animation.length / animator.GetFloat(AttackSpeedHash) * activeSkill.noncancellablePeriod;
+    }
+
+    public Socket RetrieveSocket(string socketName)
+    {
+        return socketTable[socketName];
+    }
+
+    public string GetActiveSkillName()
+    {
+        if (activeSkill != null)
+            return activeSkill.skillName;
+
+        else
+            return "Invalid41245161";
     }
 }
