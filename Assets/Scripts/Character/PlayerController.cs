@@ -16,6 +16,7 @@ public class PlayerController : Character
     public Camera cam;
     public GameObject character;
     public Movement movementComponent;
+    public Dodge dodgeComponent;
     public CharacterData characterData;
 
     private float lookDirection;
@@ -50,12 +51,17 @@ public class PlayerController : Character
         {
             skillController.CancelSkill();
 
-            Vector3 forwardForce = character.transform.forward * movementDirection.y;
-            Vector3 rightForce = character.transform.right * movementDirection.x;
-
-            movementComponent.isRunning = isShiftOn;
-            movementComponent.Move(forwardForce + rightForce);
+            MovementCalculation(movementDirection);
         }
+    }
+
+    private void MovementCalculation(Vector2 movementDirection)
+    {
+        Vector3 forwardForce = character.transform.forward * movementDirection.y;
+        Vector3 rightForce = character.transform.right * movementDirection.x;
+
+        movementComponent.isRunning = isShiftOn;
+        movementComponent.Move(forwardForce + rightForce);
     }
 
     public void OnMovement(InputValue vector2)
@@ -64,14 +70,11 @@ public class PlayerController : Character
 
         characterAnimator.SetFloat(MoveXHash, movementDirection.x);
         characterAnimator.SetFloat(MoveZHash, movementDirection.y);
-
-        Invoke(nameof(InterruptAttack), 0.1f);
     }
-
-    public void InterruptAttack()
+    
+    public void OnDodge(InputValue button)
     {
-        if (isShiftOn && (movementDirection.y != 0.0f || movementDirection.x != 0.0f) && skillController.isActive)
-            skillController.Interrupt();
+        dodgeComponent.TriggerDodge(movementDirection, skillController, movementComponent);
     }
 
     public override void Turn()

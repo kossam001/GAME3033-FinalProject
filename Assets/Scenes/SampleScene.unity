@@ -1338,6 +1338,7 @@ MonoBehaviour:
   cam: {fileID: 963194227}
   character: {fileID: 8766573650720140851}
   movementComponent: {fileID: 8766573650720140852}
+  dodgeComponent: {fileID: 8766573650720140857}
   characterData: {fileID: 0}
   skills: {fileID: 604390049}
   skillController: {fileID: 604390050}
@@ -12261,3 +12262,17 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5652114111254772415, guid: 2644cb569c70ab9418edffc97cab0767, type: 3}
   m_PrefabInstance: {fileID: 7670346940238042188}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8766573650720140857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8766573650720140851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc5dddda1a319e46bcacd15e91d3635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dodgeDuration: 0.15
+  dodgeSpeed: 3
