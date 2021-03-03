@@ -59,14 +59,6 @@ public class PlayerController : Character
         characterData.movementComponent.Turn(cam.transform.rotation);
     }
 
-    public override IEnumerator UseSkill(ActiveSkill skill)
-    {
-        currentlyActiveSkill = skill;
-
-        yield return StartCoroutine(currentlyActiveSkill.Use());
-        currentlyActiveSkill = null;
-    }
-
     public void OnAttack(InputValue button)
     {
         Skill selectedSkill = characterData.skills.skillTable["BasicAttack1"];
