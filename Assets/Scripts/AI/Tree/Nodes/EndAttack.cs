@@ -7,7 +7,7 @@ public class EndAttack : TreeNode
 {
     public override bool Run()
     {
-        brain.skillController.CancelSkill();
+        brain.controller.CancelSkill();
         brain.agent.isStopped = false;
         state.ChangeState(StateID.InCombat);
 

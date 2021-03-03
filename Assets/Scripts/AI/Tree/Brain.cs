@@ -14,13 +14,12 @@ public class Brain : MonoBehaviour
     public GameObject activeTarget;
 
     [Tooltip("Maximum distance to a target to be considered in range of combat.")]
-    public float combatRange; 
+    public float combatRange;
 
-    public NavMeshAgent agent;
-
-    public SkillController skillController;
     public SkillList skillList;
     public Skill selectedSkill;
+
+    public NavMeshAgent agent;
     
     public float GetDistanceFromTarget()
     {

@@ -21,8 +21,6 @@ public class Movement : MonoBehaviour
     public bool isRunning;
     public bool isStopped = false;
 
-    private float LerpTimer = 0.0f;
-
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();

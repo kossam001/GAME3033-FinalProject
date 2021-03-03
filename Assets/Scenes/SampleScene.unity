@@ -973,16 +973,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 707804528}
-  controller: {fileID: 0}
+  controller: {fileID: 707804529}
   moveDestination: {x: 0, y: 0, z: 0}
   enemyTargets:
   - {fileID: 8766573650720140851}
   activeTarget: {fileID: 0}
   combatRange: 0
-  agent: {fileID: 1098312821}
-  skillController: {fileID: 758816954}
   skillList: {fileID: 758816955}
   selectedSkill: {fileID: 0}
+  agent: {fileID: 1098312821}
 --- !u!114 &583532574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,6 +1231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {fileID: 1591679340}
+  skillController: {fileID: 667732365}
 --- !u!54 &645231680
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1518,6 +1518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {fileID: 1098312820}
+  skillController: {fileID: 758816954}
 --- !u!54 &707804532
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11204,16 +11205,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 645231677}
-  controller: {fileID: 0}
+  controller: {fileID: 645231679}
   moveDestination: {x: 0, y: 0, z: 0}
   enemyTargets:
   - {fileID: 8766573650720140851}
   activeTarget: {fileID: 0}
   combatRange: 0
-  agent: {fileID: 1591679341}
-  skillController: {fileID: 667732365}
   skillList: {fileID: 667732367}
   selectedSkill: {fileID: 0}
+  agent: {fileID: 1591679341}
 --- !u!1 &1783352967 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1330500193405865146, guid: 99628344ae9643046a428089b8a19c1d, type: 3}
