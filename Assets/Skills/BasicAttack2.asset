@@ -15,7 +15,8 @@ MonoBehaviour:
   skillName: BasicAttack2
   cooldown: 0
   cost: 0
-  speed: 1.5
+  speed: 1
+  damage: 10
   repeatEffect: 0
   canInterrupt: 0
   socketName: WeaponSocket

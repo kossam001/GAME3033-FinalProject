@@ -10,9 +10,12 @@ public class FindActiveTarget : TreeNode
 
     public override bool Run()
     {
-        if (brain.activeTarget == null)
+        if (brain.activeTarget == null || ProcCheck())
         {
-            brain.activeTarget = brain.enemyTargets[Random.Range(0, brain.enemyTargets.Count-1)];
+            List<GameObject> targets = StageManager.Instance.GetEnemies(brain.character.GetComponent<CharacterData>().team);
+            if (targets.Count <= 0) return false;
+
+            brain.activeTarget = targets[Random.Range(0, targets.Count)];
             activeTarget = brain.activeTarget;
         }
 

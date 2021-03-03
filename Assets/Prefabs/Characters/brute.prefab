@@ -785,6 +785,7 @@ MonoBehaviour:
   maxRunSpeed: 20000
   rotationSpeed: 5
   isRunning: 0
+  isStopped: 0
 --- !u!114 &-810309721807430851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,8 +798,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b74f93eb2546742a2047ed0b3cd2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 0
   movementComponent: {fileID: 0}
-  dodgeComponent: {fileID: 0}
   knockbackComponent: {fileID: 0}
   skills: {fileID: 0}
   skillController: {fileID: 0}
@@ -818,7 +819,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409abbb7ea7247a44aafe46a262cae1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flinchClip: {fileID: 0}
+  flinchClip: {fileID: 7400000, guid: f4444093313ff8d49bf55b4a3cd2b811, type: 2}
+  knockDownClip: {fileID: 7400000, guid: 2daed3513d5f5df45b893a8192540162, type: 2}
 --- !u!1 &1475392678574827085
 GameObject:
   m_ObjectHideFlags: 0

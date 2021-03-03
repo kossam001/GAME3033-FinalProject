@@ -46,7 +46,7 @@ public class BasicAttack1 : Skill
     {
         switch (caster.tag)
         {
-            case "Player":
+            case "Ally":
                 if (target.CompareTag("Enemy"))
                 {
                     target.GetComponent<CharacterData>().UpdateHealth(damage);
@@ -54,7 +54,7 @@ public class BasicAttack1 : Skill
                 }
                 break;
             case "Enemy":
-                if (target.CompareTag("Player"))
+                if (target.CompareTag("Ally"))
                 {
                     target.GetComponent<CharacterData>().UpdateHealth(damage);
                     target.GetComponent<CharacterData>().knockbackComponent.Flinch();

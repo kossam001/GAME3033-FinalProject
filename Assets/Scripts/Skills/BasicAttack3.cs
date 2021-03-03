@@ -9,7 +9,7 @@ public class BasicAttack3 : BasicAttack1
     {
         switch (caster.tag)
         {
-            case "Player":
+            case "Ally":
                 if (target.CompareTag("Enemy"))
                 {
                     target.GetComponent<CharacterData>().UpdateHealth(damage);
@@ -17,7 +17,7 @@ public class BasicAttack3 : BasicAttack1
                 }
                 break;
             case "Enemy":
-                if (target.CompareTag("Player"))
+                if (target.CompareTag("Ally"))
                 {
                     target.GetComponent<CharacterData>().UpdateHealth(damage);
                     target.GetComponent<CharacterData>().knockbackComponent.Knockdown();

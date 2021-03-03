@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CharacterData : MonoBehaviour
 {
+    public Team team;
+
     public Movement movementComponent;
     public Knockback knockbackComponent;
 
