@@ -17,17 +17,20 @@ public class Knockback : MonoBehaviour
         characterData = GetComponent<CharacterData>();
     }
 
-    public void Flinch()
+    public void Flinch(float force)
     {
         if (characterData.characterAnimator.GetBool(IsFlinchingHash)) return;
+        if (characterData.skillController.CanResistFlinch()) return;
 
         characterData.movementComponent.Stop(flinchClip.length);
         characterData.skillController.Stop(flinchClip.length);
         characterData.skillController.Interrupt();
         characterData.characterAnimator.SetBool(IsFlinchingHash, true);
+
+        characterData.GetComponent<Rigidbody>().AddForce(-characterData.gameObject.transform.forward * force);
     }
 
-    public void Knockdown()
+    public void Knockdown(float force)
     {
         if (characterData.characterAnimator.GetBool(IsKnockedDownHash)) return;
 
@@ -35,5 +38,7 @@ public class Knockback : MonoBehaviour
         characterData.skillController.Stop(knockDownClip.length);
         characterData.skillController.Interrupt();
         characterData.characterAnimator.SetBool(IsKnockedDownHash, true);
+
+        characterData.GetComponent<Rigidbody>().AddForce(-characterData.gameObject.transform.forward * force);
     }
 }

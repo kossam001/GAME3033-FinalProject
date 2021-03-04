@@ -41,10 +41,11 @@ public class SkillController : MonoBehaviour
     public void Use(Skill skill, string overrideName)
     {
         // Another skill is being used
-        if (!canCancel && isActive && !skill.canInterrupt) return;
+        if (!canCancel && isActive && (!skill.canInterrupt || !activeSkill.canBeInterrupted)) return;
 
-        if (skill.canInterrupt)
+        if (skill.canInterrupt && activeSkill != null && activeSkill.canBeInterrupted)
             Interrupt();
+
 
         if (isStopped) return;
 
@@ -102,7 +103,7 @@ public class SkillController : MonoBehaviour
 
             // If animation passes the noncancellable portion - the swing animation
             if (stateLength / attackSpeed * activeSkill.attackDuration < stateDuration &&
-                activeSkill.comboDuration * stateLength < stateDuration)
+                activeSkill.comboDuration * stateLength > stateDuration)
                 activeSkill.EndEffect(this); // Turn off skill effect
 
             if (stateLength / attackSpeed * activeSkill.noncancellablePeriod < stateDuration)
@@ -191,5 +192,19 @@ public class SkillController : MonoBehaviour
 
         else
             return "Invalid41245161";
+    }
+
+    public bool CanInterrupt()
+    {
+        if (activeSkill == null) return true;
+
+        return activeSkill.canInterrupt;
+    }
+
+    public bool CanResistFlinch()
+    {
+        if (activeSkill == null) return false;
+
+        return activeSkill.canResistFlinch;
     }
 }

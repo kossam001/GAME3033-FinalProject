@@ -16,7 +16,8 @@ public class BasicAttack1 : Skill
         base.PrestartEffect(skillController);
 
         Socket socket = skillController.RetrieveSocket(socketName);
-        DamageCollider collider = socket.colliderObject.GetComponent<DamageCollider>();
+        colliderObject = socket.colliderObject;
+        DamageCollider collider = colliderObject.GetComponent<DamageCollider>();
 
         collider.action = ApplyEffect;
     }
@@ -27,9 +28,9 @@ public class BasicAttack1 : Skill
         base.StartEfftect(skillController);
 
         Socket socket = skillController.RetrieveSocket(socketName);
-        GameObject collider = socket.colliderObject;
+        colliderObject = socket.colliderObject;
 
-        collider.SetActive(true);
+        colliderObject.SetActive(true);
     }
 
     public override void EndEffect(SkillController skillController)
@@ -50,14 +51,14 @@ public class BasicAttack1 : Skill
                 if (target.CompareTag("Enemy"))
                 {
                     target.GetComponent<CharacterData>().UpdateHealth(damage);
-                    target.GetComponent<CharacterData>().knockbackComponent.Flinch();
+                    target.GetComponent<CharacterData>().knockbackComponent.Flinch(knockback);
                 }
                 break;
             case "Enemy":
                 if (target.CompareTag("Ally"))
                 {
                     target.GetComponent<CharacterData>().UpdateHealth(damage);
-                    target.GetComponent<CharacterData>().knockbackComponent.Flinch();
+                    target.GetComponent<CharacterData>().knockbackComponent.Flinch(knockback);
                 }
                 break;
         }

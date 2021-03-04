@@ -9,11 +9,15 @@ public class Skill : ScriptableObject
     public float cooldown = 0.0f;
     public float cost = 0.0f;
     public float speed = 1.0f;
+    public float knockback = 0.0f;
     public int damage = 10;
     [Tooltip("Attack effect should be repeated during the duration of the attack.")]
     public bool repeatEffect = false;
     [Tooltip("Can the skill interrupt other skills.")]
     public bool canInterrupt = false;
+    public bool canBeInterrupted = false;
+    [Tooltip("Can flinch interrupt the attack.")]
+    public bool canResistFlinch = false;
 
     protected bool prestartEffectActivated = false;
     protected bool startEffectActivated = false;
@@ -21,6 +25,10 @@ public class Skill : ScriptableObject
     [Header("Collider Physics")]
     [Tooltip("Name of associated socket")]
     public string socketName;
+    protected GameObject colliderObject;
+    public Vector3 position;
+    public Vector3 rotation;
+    public Vector3 scale;
 
     [Header("Animation")]
     public AnimationClip animation;

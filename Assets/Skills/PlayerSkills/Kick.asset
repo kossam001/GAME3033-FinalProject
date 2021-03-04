@@ -9,27 +9,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc5dddda1a319e46bcacd15e91d3635, type: 3}
-  m_Name: PlayerDodge
+  m_Script: {fileID: 11500000, guid: 757b9f0b97bf18e4cbbc3cebdd6ac242, type: 3}
+  m_Name: Kick
   m_EditorClassIdentifier: 
-  skillName: Dodge
+  skillName: Kick
   cooldown: 0
   cost: 0
-  speed: 4
-  knockback: 0
-  damage: 0
+  speed: 1.5
+  knockback: 250
+  damage: 10
   repeatEffect: 0
   canInterrupt: 1
   canBeInterrupted: 0
   canResistFlinch: 0
-  socketName: 
-  animation: {fileID: 7400000, guid: 69ccc3c1da63ed64c989ce80133c031e, type: 2}
-  overrideName: 
-  useAnimation: 0
-  windupPeriod: 0.05
-  attackDuration: 1
+  socketName: FootSocket
+  animation: {fileID: 7400000, guid: 084e142590761394383b9d03a05a5e93, type: 2}
+  overrideName: BruteStandingMeleeAttackHorizontal
+  useAnimation: 1
+  windupPeriod: 0.4
+  attackDuration: 0.5
   comboDuration: 1
-  noncancellablePeriod: 1
+  noncancellablePeriod: 0.75
   followUpSkill: {fileID: 0}
   comboName: 
   minRange: 0

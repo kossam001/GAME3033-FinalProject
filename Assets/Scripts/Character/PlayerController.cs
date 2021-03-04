@@ -54,7 +54,16 @@ public class PlayerController : Character
 
     public void OnAttack(InputValue button)
     {
-        Skill selectedSkill = characterData.skills.skillTable["BasicAttack1"];
+        Skill selectedSkill;
+
+        if (isShiftOn)
+        {
+            selectedSkill = characterData.skills.skillTable["JumpAttack"];
+        }
+        else
+        {
+            selectedSkill = characterData.skills.skillTable["BasicAttack1"];
+        }
 
         characterData.skillController.Use(selectedSkill, selectedSkill.overrideName);
     }
@@ -62,5 +71,21 @@ public class PlayerController : Character
     public void OnShift(InputValue button)
     {
         isShiftOn = button.isPressed;
+    }
+
+    public void OnAltAttack(InputValue button)
+    {
+        Skill selectedSkill;
+
+        if (isShiftOn)
+        {
+            selectedSkill = characterData.skills.skillTable["SpinAttack"];
+        }
+        else
+        {
+            selectedSkill = characterData.skills.skillTable["Kick"];
+        }
+
+        characterData.skillController.Use(selectedSkill, selectedSkill.overrideName);
     }
 }

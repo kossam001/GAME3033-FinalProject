@@ -9,29 +9,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d23ad9ab7c5d1947979ef14924044c3, type: 3}
-  m_Name: PlayerBasicAttack3
+  m_Script: {fileID: 11500000, guid: 4c19c91e19a3b9545825585ce12ba537, type: 3}
+  m_Name: SpinAttack
   m_EditorClassIdentifier: 
-  skillName: BasicAttack3
+  skillName: SpinAttack
   cooldown: 0
   cost: 0
-  speed: 2
-  knockback: 0
+  speed: 1
   damage: 10
   repeatEffect: 0
   canInterrupt: 0
-  canBeInterrupted: 1
-  canResistFlinch: 0
+  canResistFlinch: 1
   socketName: WeaponSocket
-  animation: {fileID: 7400000, guid: 7dc11d79fb5e93c47a661b32afc494d1, type: 2}
+  animation: {fileID: 7400000, guid: 13915f3b636779c488be6a19999e619c, type: 2}
   overrideName: BruteStandingMeleeAttackHorizontal
   useAnimation: 1
-  windupPeriod: 0.3
+  windupPeriod: 0.1
   attackDuration: 0.4
-  comboDuration: 0.7
-  noncancellablePeriod: 0.7
-  followUpSkill: {fileID: 11400000, guid: 3ddadb43774c4e646a048e842e100c13, type: 2}
-  comboName: BasicCombo
+  comboDuration: 1
+  noncancellablePeriod: 0.9
+  followUpSkill: {fileID: 0}
+  comboName: 
   minRange: 0
-  maxRange: 2
-  arcAngle: 60
+  maxRange: 1
+  arcAngle: 360
