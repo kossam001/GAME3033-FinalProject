@@ -16,7 +16,7 @@ MonoBehaviour:
   cooldown: 0
   cost: 0
   speed: 2
-  knockback: 0
+  knockback: 500
   damage: 10
   repeatEffect: 0
   canInterrupt: 0
@@ -35,6 +35,6 @@ MonoBehaviour:
   noncancellablePeriod: 0.75
   followUpSkill: {fileID: 0}
   comboName: 
-  minRange: 0
-  maxRange: 1
+  minRange: 1
+  maxRange: 2
   arcAngle: 0
