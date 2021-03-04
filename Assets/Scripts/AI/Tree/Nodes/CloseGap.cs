@@ -12,6 +12,7 @@ public class CloseGap : ChaseTarget
             stoppingRange > brain.selectedSkill.maxRange))
         {
             stoppingRange = Random.Range(brain.selectedSkill.minRange, brain.selectedSkill.maxRange);
+            brain.controller.SetRun(true, brain.agent);
         }
 
         return base.Run();

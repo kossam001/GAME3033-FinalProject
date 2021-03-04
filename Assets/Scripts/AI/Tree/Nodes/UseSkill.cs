@@ -30,7 +30,17 @@ public class UseSkill : TreeNode
             (!brain.controller.skillController.isActive ||
             brain.controller.skillController.canCancel))
         {
+            // Is target dead
+            if (brain.activeTarget.GetComponent<CharacterData>().currentHealth <= 0.0f)
+            {
+                state.ChangeState(StateID.Chase);
+                brain.activeTarget = null;
+                return false;
+            }
+
             if (brain.controller.skillController.isStopped) return false;
+
+            brain.controller.SetRun(false, brain.agent);
 
             brain.controller.UseSkill(brain.selectedSkill);
             // Get the period where the character can't move

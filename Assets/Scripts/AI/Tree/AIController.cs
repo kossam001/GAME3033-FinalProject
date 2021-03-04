@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AIController : MonoBehaviour
 {
+    public float walkSpeed;
+    public float runSpeed;
+
     private Movement movementController;
     public Transform followTarget;
 
@@ -27,5 +31,20 @@ public class AIController : MonoBehaviour
     public void CancelSkill()
     {
         skillController.CancelSkill();
+    }
+
+    public void SetRun(bool on, NavMeshAgent agent)
+    {
+        movementController.SetIsRunning(on);
+
+        if (on)
+        {
+            agent.speed = runSpeed;
+        }
+
+        else
+        {
+            agent.speed = walkSpeed;
+        }
     }
 }

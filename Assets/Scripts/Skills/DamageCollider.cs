@@ -16,6 +16,7 @@ public class DamageCollider : MonoBehaviour
 
     public void UseEffect(UnityAction<GameObject, GameObject> effect, GameObject target, GameObject caster)
     {
-        effect(target, caster);
+        if (effect != null && target != null && caster != null)
+            effect(target, caster);
     }
 }

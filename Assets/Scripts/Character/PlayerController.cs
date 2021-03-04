@@ -6,9 +6,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : Character
 {
-    // Animator hashes
-    private readonly int IsRunningHash = Animator.StringToHash("IsRunning");
-
     public float movementSpeed;
     public float rotationSpeed;
     public Camera cam;
@@ -31,9 +28,7 @@ public class PlayerController : Character
     void FixedUpdate()
     {
         if ((movementDirection.y != 0.0f || movementDirection.x != 0.0f))
-        {
             Turn();
-        }
 
         characterData.movementComponent.MovementCalculation(movementDirection);
         characterData.movementComponent.SetIsRunning(isShiftOn);
@@ -41,8 +36,6 @@ public class PlayerController : Character
 
     public void OnMovement(InputValue vector2)
     {
-        //if (!characterData.canMove) return; // Lock dodging to one direction
-
         movementDirection = vector2.Get<Vector2>();
     }
     
@@ -69,6 +62,5 @@ public class PlayerController : Character
     public void OnShift(InputValue button)
     {
         isShiftOn = button.isPressed;
-        characterData.characterAnimator.SetBool(IsRunningHash, button.isPressed);
     }
 }

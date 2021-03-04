@@ -5,8 +5,12 @@ using UnityEngine.UI;
 
 public class CharacterData : MonoBehaviour
 {
+    private readonly int IsDeadHash = Animator.StringToHash("IsDead");
+
+    public int id;
     public Team team;
 
+    public StateMachine stateMachine;
     public Movement movementComponent;
     public Knockback knockbackComponent;
 
@@ -16,7 +20,7 @@ public class CharacterData : MonoBehaviour
     public Animator characterAnimator;
 
     public int health = 100;
-    private int currentHealth;
+    public int currentHealth;
 
     public bool canMove = true;
 
@@ -34,5 +38,14 @@ public class CharacterData : MonoBehaviour
     {
         currentHealth -= damage;
         healthIndicator.value = (float)currentHealth / (float)health;
+
+        if (currentHealth <= 0.0f)
+        {
+            characterAnimator.SetBool(IsDeadHash, true);
+            StageManager.Instance.RemoveFromTeam(this);
+
+            if (stateMachine != null)
+                stateMachine.enabled = false;
+        }
     }
 }

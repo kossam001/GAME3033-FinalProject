@@ -24,6 +24,7 @@ public class SkillController : MonoBehaviour
 
     private void Start()
     {
+        overrideController = Instantiate(overrideController);
         animator.runtimeAnimatorController = overrideController;
     }
 

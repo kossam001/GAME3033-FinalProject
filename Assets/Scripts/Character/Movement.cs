@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
+    // Animator hashes
+    private readonly int IsRunningHash = Animator.StringToHash("IsRunning");
     private readonly int MoveXHash = Animator.StringToHash("MoveX");
     private readonly int MoveZHash = Animator.StringToHash("MoveZ");
 
@@ -31,6 +33,7 @@ public class Movement : MonoBehaviour
     public void Move(Vector3 movementForce)
     {
         movementSpeed = isRunning ? maxRunSpeed : maxWalkSpeed;
+        characterData.characterAnimator.SetBool(IsRunningHash, isRunning);
 
         Vector3 lookDirection = transform.forward;
         Vector3 movementDirection = rigidbody.velocity;
@@ -60,6 +63,8 @@ public class Movement : MonoBehaviour
 
     public void AIMove(Transform followTransform)
     {
+        characterData.characterAnimator.SetBool(IsRunningHash, isRunning);
+
         if ((characterData.skillController.canCancel || !characterData.skillController.SkillInUse()) && !isStopped)
         {
             characterData.skillController.CancelSkill();
