@@ -43,7 +43,7 @@ public class PlayerController : Character
     {
         if (characterData.skillController.GetActiveSkillName() == "Dodge") return;
 
-        Skill selectedSkill = characterData.skills.skillTable["Dodge"];
+        Skill selectedSkill = characterData.getSkill("Dodge");
         characterData.skillController.Use(selectedSkill, selectedSkill.overrideName);
     }
 
@@ -58,11 +58,11 @@ public class PlayerController : Character
 
         if (isShiftOn)
         {
-            selectedSkill = characterData.skills.skillTable["JumpAttack"];
+            selectedSkill = characterData.getSkill("JumpAttack");
         }
         else
         {
-            selectedSkill = characterData.skills.skillTable["BasicAttack1"];
+            selectedSkill = characterData.getSkill("BasicAttack1");
         }
 
         characterData.skillController.Use(selectedSkill, selectedSkill.overrideName);
@@ -79,11 +79,11 @@ public class PlayerController : Character
 
         if (isShiftOn)
         {
-            selectedSkill = characterData.skills.skillTable["SpinAttack"];
+            selectedSkill = characterData.getSkill("SpinAttack");
         }
         else
         {
-            selectedSkill = characterData.skills.skillTable["Kick"];
+            selectedSkill = characterData.getSkill("Kick");
         }
 
         characterData.skillController.Use(selectedSkill, selectedSkill.overrideName);

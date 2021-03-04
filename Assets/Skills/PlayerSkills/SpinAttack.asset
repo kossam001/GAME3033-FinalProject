@@ -16,13 +16,18 @@ MonoBehaviour:
   cooldown: 0
   cost: 0
   speed: 1
+  knockback: 0
   damage: 10
   repeatEffect: 0
   canInterrupt: 0
+  canBeInterrupted: 0
   canResistFlinch: 1
   socketName: WeaponSocket
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0}
+  scale: {x: 0, y: 0, z: 0}
   animation: {fileID: 7400000, guid: 13915f3b636779c488be6a19999e619c, type: 2}
-  overrideName: BruteStandingMeleeAttackHorizontal
+  overrideName: BaseStandingMeleeAttackHorizontal
   useAnimation: 1
   windupPeriod: 0.1
   attackDuration: 0.4

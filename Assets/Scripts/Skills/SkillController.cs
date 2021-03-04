@@ -6,9 +6,6 @@ public class SkillController : MonoBehaviour
 {
     public CharacterData owner;
 
-    public Animator animator;
-    public AnimatorOverrideController overrideController;
-
     private Skill activeSkill;
     public List<Socket> skillSockets; // If skill needs a collider, where is it
     private Dictionary<string, Socket> socketTable;
@@ -21,12 +18,6 @@ public class SkillController : MonoBehaviour
     private readonly int AttackSpeedHash = Animator.StringToHash("AttackSpeed");
 
     private IEnumerator playAnimationRoutine;
-
-    private void Start()
-    {
-        overrideController = Instantiate(overrideController);
-        animator.runtimeAnimatorController = overrideController;
-    }
 
     private void Awake()
     {
@@ -72,10 +63,10 @@ public class SkillController : MonoBehaviour
 
         if (activeSkill.useAnimation)
         {
-            activeSkill.OverrideAnimationData(animator, overrideController);
-            animator.SetBool(IsAttackingHash, true);
+            activeSkill.OverrideAnimationData(owner.characterAnimator, owner.animatorOverride);
+            owner.characterAnimator.SetBool(IsAttackingHash, true);
 
-            animator.Play("SkillUse", 1, 0.0f);
+            owner.characterAnimator.Play("SkillUse", 1, 0.0f);
         }
 
         playAnimationRoutine = PlayAnimation();
@@ -87,7 +78,7 @@ public class SkillController : MonoBehaviour
         float stateDuration = 0.0f;
         float stateLength = activeSkill.animation.length;
         float attackSpeed = activeSkill.speed;
-        animator.SetFloat(AttackSpeedHash, attackSpeed);
+        owner.characterAnimator.SetFloat(AttackSpeedHash, attackSpeed);
 
         while (activeSkill.comboDuration / attackSpeed * stateLength >= stateDuration)
         {
@@ -122,7 +113,7 @@ public class SkillController : MonoBehaviour
         {
             //ToggleCollider(activeSkill.socketName, false);
             activeSkill.EndEffect(this);
-            animator.SetBool(IsAttackingHash, false);
+            owner.characterAnimator.SetBool(IsAttackingHash, false);
         }
 
         return false;
@@ -134,7 +125,7 @@ public class SkillController : MonoBehaviour
         isActive = false;
         canCancel = false;
         activeSkill = null;
-        animator.SetBool(IsAttackingHash, false);
+        owner.characterAnimator.SetBool(IsAttackingHash, false);
     }
 
     public bool SkillInUse()
@@ -177,7 +168,7 @@ public class SkillController : MonoBehaviour
 
     public float GetLength()
     {
-        return activeSkill.animation.length / animator.GetFloat(AttackSpeedHash) * activeSkill.noncancellablePeriod;
+        return activeSkill.animation.length / owner.characterAnimator.GetFloat(AttackSpeedHash) * activeSkill.noncancellablePeriod;
     }
 
     public Socket RetrieveSocket(string socketName)
@@ -206,5 +197,10 @@ public class SkillController : MonoBehaviour
         if (activeSkill == null) return false;
 
         return activeSkill.canResistFlinch;
+    }
+
+    public Animator GetAnimator()
+    {
+        return owner.characterAnimator;
     }
 }

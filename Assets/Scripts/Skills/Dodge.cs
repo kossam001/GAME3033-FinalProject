@@ -18,7 +18,7 @@ public class Dodge : Skill
         if (prestartEffectActivated) return;
         base.PrestartEffect(skillController);
 
-        skillController.animator.SetFloat(DodgeSpeedHash, speed);
+        skillController.GetAnimator().SetFloat(DodgeSpeedHash, speed);
     }
 
     public override void StartEfftect(SkillController skillController)
@@ -32,7 +32,7 @@ public class Dodge : Skill
 
         skillController.owner.tag = "Untagged";
         skillController.owner.canMove = false;
-        skillController.animator.SetBool(IsDodgingHash, true);
+        skillController.GetAnimator().SetBool(IsDodgingHash, true);
     }
 
     public override void EndEffect(SkillController skillController)
@@ -40,10 +40,7 @@ public class Dodge : Skill
         if (!startEffectActivated) return;
         base.EndEffect(skillController);
 
-        //skillController.animator.SetFloat(MoveXHash, 0.0f);
-        //skillController.animator.SetFloat(MoveZHash, 0.0f);
-
-        skillController.animator.SetBool(IsDodgingHash, false);
+        skillController.GetAnimator().SetBool(IsDodgingHash, false);
         skillController.owner.tag = ownerTag;
         skillController.owner.canMove = true;
     }

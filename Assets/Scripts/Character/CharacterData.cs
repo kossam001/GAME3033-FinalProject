@@ -15,9 +15,10 @@ public class CharacterData : MonoBehaviour
     public Knockback knockbackComponent;
 
     [Header("Skills")]
-    public SkillList skills;
+    [SerializeField] private Weapon weapon = null;
     public SkillController skillController;
     public Animator characterAnimator;
+    public AnimatorOverrideController animatorOverride;
 
     public int health = 100;
     public int currentHealth;
@@ -32,6 +33,10 @@ public class CharacterData : MonoBehaviour
         movementComponent = GetComponent<Movement>();
         knockbackComponent = GetComponent<Knockback>();
         characterAnimator = GetComponent<Animator>();
+
+
+        animatorOverride = Instantiate(animatorOverride);
+        characterAnimator.runtimeAnimatorController = animatorOverride;
     }
 
     public void UpdateHealth(int damage)
@@ -47,5 +52,19 @@ public class CharacterData : MonoBehaviour
             if (stateMachine != null)
                 stateMachine.enabled = false;
         }
+    }
+
+    public Skill getSkill(string skillName)
+    {
+        if (weapon.skills.skillTable.ContainsKey(skillName))
+            return weapon.skills.skillTable[skillName];
+
+        else
+            return null;
+    }
+
+    public void SetWeapon(Weapon _weapon)
+    {
+        weapon = _weapon;
     }
 }
