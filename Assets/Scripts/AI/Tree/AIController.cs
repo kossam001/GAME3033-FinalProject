@@ -25,7 +25,7 @@ public class AIController : MonoBehaviour
 
     public void UseSkill(Skill selectedSkill)
     {
-        skillController.Use(selectedSkill, selectedSkill.overrideName);
+        skillController.Use(selectedSkill);
     }
 
     public void CancelSkill()

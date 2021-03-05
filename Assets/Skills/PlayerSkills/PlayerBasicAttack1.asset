@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e85542d373b68974ebbf9e70451c90a6, type: 3}
   m_Name: PlayerBasicAttack1
   m_EditorClassIdentifier: 
-  skillName: BasicAttack1
+  skillID: 1
   cooldown: 0
   cost: 0
   speed: 2

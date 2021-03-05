@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c19c91e19a3b9545825585ce12ba537, type: 3}
   m_Name: SpinAttack
   m_EditorClassIdentifier: 
-  skillName: SpinAttack
+  skillID: 4
   cooldown: 0
   cost: 0
   speed: 1

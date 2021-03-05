@@ -41,10 +41,10 @@ public class PlayerController : Character
     
     public void OnDodge(InputValue button)
     {
-        if (characterData.skillController.GetActiveSkillName() == "Dodge") return;
+        if (characterData.skillController.GetActiveSkillName() == SkillID.Evade) return;
 
-        Skill selectedSkill = characterData.getSkill("Dodge");
-        characterData.skillController.Use(selectedSkill, selectedSkill.overrideName);
+        Skill selectedSkill = characterData.getSkill(SkillID.Evade);
+        characterData.skillController.Use(selectedSkill);
     }
 
     public override void Turn()
@@ -58,14 +58,14 @@ public class PlayerController : Character
 
         if (isShiftOn)
         {
-            selectedSkill = characterData.getSkill("JumpAttack");
+            selectedSkill = characterData.getSkill(SkillID.HeavyAttack);
         }
         else
         {
-            selectedSkill = characterData.getSkill("BasicAttack1");
+            selectedSkill = characterData.getSkill(SkillID.BasicAttack);
         }
 
-        characterData.skillController.Use(selectedSkill, selectedSkill.overrideName);
+        characterData.skillController.Use(selectedSkill);
     }
 
     public void OnShift(InputValue button)
@@ -79,14 +79,14 @@ public class PlayerController : Character
 
         if (isShiftOn)
         {
-            selectedSkill = characterData.getSkill("SpinAttack");
+            selectedSkill = characterData.getSkill(SkillID.AltHeavyAttack);
         }
         else
         {
-            selectedSkill = characterData.getSkill("Kick");
+            selectedSkill = characterData.getSkill(SkillID.AltAttack);
         }
 
-        characterData.skillController.Use(selectedSkill, selectedSkill.overrideName);
+        characterData.skillController.Use(selectedSkill);
     }
 
     public void OnInteract(InputValue button)

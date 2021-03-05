@@ -7,15 +7,15 @@ public class SkillList : MonoBehaviour
 {
     [SerializeField] private List<Skill> skills;
 
-    public Dictionary<string, Skill> skillTable;
+    public Dictionary<SkillID, Skill> skillTable;
 
     private void Awake()
     {
-        skillTable = new Dictionary<string, Skill>();
+        skillTable = new Dictionary<SkillID, Skill>();
 
         for (int i = 0; i < skills.Count; i++)
         {
-            skillTable.Add(skills[i].skillName, skills[i]);
+            skillTable.Add(skills[i].skillID, skills[i]);
         }
     }
 

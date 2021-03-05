@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757b9f0b97bf18e4cbbc3cebdd6ac242, type: 3}
   m_Name: Kick
   m_EditorClassIdentifier: 
-  skillName: Kick
+  skillID: 2
   cooldown: 0
   cost: 0
   speed: 1.5

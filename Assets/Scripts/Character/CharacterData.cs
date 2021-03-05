@@ -64,10 +64,10 @@ public class CharacterData : MonoBehaviour
         }
     }
 
-    public Skill getSkill(string skillName)
+    public Skill getSkill(SkillID skillID)
     {
-        if (weapon.skills.skillTable.ContainsKey(skillName))
-            return weapon.skills.skillTable[skillName];
+        if (weapon.skills.skillTable.ContainsKey(skillID))
+            return weapon.skills.skillTable[skillID];
 
         else
             return null;

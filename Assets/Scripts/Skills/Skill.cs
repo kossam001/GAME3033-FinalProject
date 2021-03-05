@@ -2,10 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SkillID
+{
+    None,
+    BasicAttack,
+    AltAttack,
+    HeavyAttack,
+    AltHeavyAttack,
+    Evade
+}
+
 public class Skill : ScriptableObject
 {
     [Header("Parameters")]
-    public string skillName;
+    public SkillID skillID;
     public float cooldown = 0.0f;
     public float cost = 0.0f;
     public float speed = 1.0f;

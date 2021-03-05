@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc5dddda1a319e46bcacd15e91d3635, type: 3}
   m_Name: PlayerDodge
   m_EditorClassIdentifier: 
-  skillName: Dodge
+  skillID: 5
   cooldown: 0
   cost: 0
   speed: 4
@@ -23,6 +23,9 @@ MonoBehaviour:
   canBeInterrupted: 0
   canResistFlinch: 0
   socketName: 
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0}
+  scale: {x: 0, y: 0, z: 0}
   animation: {fileID: 7400000, guid: 69ccc3c1da63ed64c989ce80133c031e, type: 2}
   overrideName: 
   useAnimation: 0

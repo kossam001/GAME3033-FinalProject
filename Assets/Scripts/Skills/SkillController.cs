@@ -17,8 +17,12 @@ public class SkillController : MonoBehaviour
 
     private IEnumerator playAnimationRoutine;
 
-    public void Use(Skill skill, string overrideName)
+    public void Use(Skill skill)
     {
+        if (skill == null) return;
+
+        string overrideName = skill.overrideName;
+
         // Another skill is being used
         if (!canCancel && isActive && (!skill.canInterrupt || !activeSkill.canBeInterrupted)) return;
 
@@ -159,13 +163,13 @@ public class SkillController : MonoBehaviour
         return activeSkill.animation.length / owner.characterAnimator.GetFloat(AttackSpeedHash) * activeSkill.noncancellablePeriod;
     }
 
-    public string GetActiveSkillName()
+    public SkillID GetActiveSkillName()
     {
         if (activeSkill != null)
-            return activeSkill.skillName;
+            return activeSkill.skillID;
 
         else
-            return "Invalid41245161";
+            return SkillID.None;
     }
 
     public bool CanInterrupt()
