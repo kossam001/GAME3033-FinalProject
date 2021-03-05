@@ -13,6 +13,7 @@ public class CharacterData : MonoBehaviour
     public StateMachine stateMachine;
     public Movement movementComponent;
     public Knockback knockbackComponent;
+    public Interact interactComponent;
 
     [Header("Skills")]
     [SerializeField] private Weapon weapon = null;
@@ -35,6 +36,7 @@ public class CharacterData : MonoBehaviour
         movementComponent = GetComponent<Movement>();
         knockbackComponent = GetComponent<Knockback>();
         characterAnimator = GetComponent<Animator>();
+        interactComponent = GetComponent<Interact>();
 
         animatorOverride = Instantiate(animatorOverride);
         characterAnimator.runtimeAnimatorController = animatorOverride;
@@ -74,14 +76,6 @@ public class CharacterData : MonoBehaviour
     public void SetWeapon(Weapon _weapon)
     {
         weapon = _weapon;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Weapon"))
-        {
-            other.gameObject.GetComponent<Weapon>().EquipWeapon(this);
-        }
     }
 
     public Socket RetrieveSocket(string socketName)

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1748027462353962153}
   - component: {fileID: 6473376365486842021}
   - component: {fileID: 3595215351722403958}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GreatSword
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -64,6 +64,9 @@ MonoBehaviour:
   colliderPosition: {x: 0, y: 0, z: 0}
   colliderRotation: {x: 0, y: 0, z: 0}
   colliderScale: {x: 0, y: 0, z: 0}
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0}
+  scale: {x: 0, y: 0, z: 0}
 --- !u!114 &5556592348913062945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +134,7 @@ GameObject:
   - component: {fileID: 2482888680631077034}
   - component: {fileID: 3049984399499303181}
   - component: {fileID: 9169149429364515467}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GreatSwordModel
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -145,13 +148,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7177464926039203530}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.22, y: -1.45, z: 0.07}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.0000012154619, y: -0.31010655, z: -0.0000036597576, w: 0.95070183}
+  m_LocalPosition: {x: -0.679, y: -2.549, z: -0.534}
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1.75}
   m_Children: []
   m_Father: {fileID: 505309964121475983}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -12.985, y: -35.854, z: 2.206}
 --- !u!33 &3049984399499303181
 MeshFilter:
   m_ObjectHideFlags: 0

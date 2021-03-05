@@ -88,4 +88,10 @@ public class PlayerController : Character
 
         characterData.skillController.Use(selectedSkill, selectedSkill.overrideName);
     }
+
+    public void OnInteract(InputValue button)
+    {
+        if (button.isPressed)
+            characterData.interactComponent.Use();
+    }
 }
