@@ -7,9 +7,22 @@ public class Weapon : Interactable
     public SkillList skills;
 
     [Header("Animation")]
-    [Tooltip("Overrides animation clip in animator.  Uses a parallel list.")]
-    public List<AnimationClip> animations;
-    public List<string> overrideNames;
+    [Header("Walk Animations")]
+    public List<AnimationClip> walkAnimations;
+    public List<string> walkOverrideNames;
+
+    [Header("Run Animations")]
+    public List<AnimationClip> runAnimations;
+    public List<string> runOverrideNames;
+
+    [Header("Evade Animations")]
+    public List<AnimationClip> evadeAnimations;
+    public List<string> evadeOverrideNames;
+
+    [Header("Other Animations")]
+    public List<AnimationClip> otherAnimations;
+    public List<string> otherOverrideNames;
+
     public Dictionary<string, AnimationClip> animationTable;
 
     [Header("Collider Transform")]
@@ -30,8 +43,17 @@ public class Weapon : Interactable
 
         animationTable = new Dictionary<string, AnimationClip>();
 
-        for (int i = 0; i < animations.Count - 1; i++)
-            animationTable.Add(overrideNames[i], animations[i]);
+        for (int i = 0; i < walkAnimations.Count - 1; i++)
+            animationTable.Add(walkOverrideNames[i], walkAnimations[i]);
+
+        for (int i = 0; i < runAnimations.Count - 1; i++)
+            animationTable.Add(runOverrideNames[i], runAnimations[i]);
+
+        for (int i = 0; i < evadeAnimations.Count - 1; i++)
+            animationTable.Add(evadeOverrideNames[i], evadeAnimations[i]);
+
+        for (int i = 0; i < otherAnimations.Count - 1; i++)
+            animationTable.Add(otherOverrideNames[i], otherAnimations[i]);
     }
 
     public void EquipWeapon(CharacterData _character)
@@ -62,8 +84,8 @@ public class Weapon : Interactable
 
         // Change collider size
         Transform colliderTransform = socket.colliderObject.transform;
-        colliderTransform.position = colliderPosition;
-        colliderTransform.rotation = Quaternion.Euler(colliderRotation);
+        colliderTransform.localPosition = colliderPosition;
+        colliderTransform.localRotation = Quaternion.Euler(colliderRotation);
         colliderTransform.localScale = colliderScale;
 
         // Replace previous weapon's references

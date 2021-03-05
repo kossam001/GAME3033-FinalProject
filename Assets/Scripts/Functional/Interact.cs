@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class Interact : MonoBehaviour
 {
-    private CharacterData character;
+    public CharacterData character;
 
     private Interactable interactable;
-
-    private void Awake()
-    {
-        character = GetComponent<CharacterData>();
-    }
 
     private void OnTriggerEnter(Collider other)
     {

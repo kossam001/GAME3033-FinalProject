@@ -129,45 +129,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skills: {fileID: 8334440532639856776}
-  animations:
-  - {fileID: 7400000, guid: 0600d38e9e5e7b246832db725c010871, type: 2}
+  walkAnimations:
   - {fileID: 7400000, guid: cc47c598c3291ff4f8eb1b52ec000276, type: 2}
   - {fileID: 7400000, guid: 17d0d40389f10e847819df2a272094d1, type: 2}
   - {fileID: 7400000, guid: 3107ec81e006e83468aed91078efa9b7, type: 2}
   - {fileID: 7400000, guid: da55a1104bd61b64b9f6c3ef79ebbaa0, type: 2}
-  - {fileID: 7400000, guid: 3227a11c42c4bfd41b461fb6166966aa, type: 2}
-  - {fileID: 7400000, guid: f4444093313ff8d49bf55b4a3cd2b811, type: 2}
-  - {fileID: 7400000, guid: 2daed3513d5f5df45b893a8192540162, type: 2}
-  - {fileID: 7400000, guid: 9aa0f749162a1144f8d469322273d898, type: 2}
-  - {fileID: 7400000, guid: 7f9bdc8afc4d4854d95ac0d8e9f0f7a2, type: 2}
-  - {fileID: 7400000, guid: 4a67911c6b639804c94618ac220cc7ed, type: 2}
-  - {fileID: 7400000, guid: ae809854974d12744b54e3d7dd8d9f37, type: 2}
-  - {fileID: 7400000, guid: c5c123fc07bb02e4986e2e1933321c61, type: 2}
-  - {fileID: 7400000, guid: 69ccc3c1da63ed64c989ce80133c031e, type: 2}
-  - {fileID: 7400000, guid: 0754b78cade0b074cb80e4a2eb6eb595, type: 2}
-  - {fileID: 7400000, guid: 708a877eec2e63a4d9c828e836413f31, type: 2}
-  - {fileID: 7400000, guid: e68b9c07f4d527044a336bfff2dd1f6c, type: 2}
-  overrideNames:
-  - BaseIdle
+  walkOverrideNames:
   - BaseWalkBack
   - BaseWalkForward
   - BaseWalkLeft
   - BaseWalkRight
-  - BasicAttack
-  - Flinch
-  - KnockedDown
+  runAnimations:
+  - {fileID: 7400000, guid: 9aa0f749162a1144f8d469322273d898, type: 2}
+  - {fileID: 7400000, guid: 7f9bdc8afc4d4854d95ac0d8e9f0f7a2, type: 2}
+  - {fileID: 7400000, guid: 4a67911c6b639804c94618ac220cc7ed, type: 2}
+  - {fileID: 7400000, guid: ae809854974d12744b54e3d7dd8d9f37, type: 2}
+  runOverrideNames:
   - RunBack
   - RunForward
   - RunLeft
   - RunRight
+  evadeAnimations:
+  - {fileID: 7400000, guid: c5c123fc07bb02e4986e2e1933321c61, type: 2}
+  - {fileID: 7400000, guid: 69ccc3c1da63ed64c989ce80133c031e, type: 2}
+  - {fileID: 7400000, guid: 0754b78cade0b074cb80e4a2eb6eb595, type: 2}
+  - {fileID: 7400000, guid: 708a877eec2e63a4d9c828e836413f31, type: 2}
+  evadeOverrideNames:
   - RollBack
   - RollForward
   - RollLeft
   - RollRight
-  - Death
-  colliderPosition: {x: 0, y: 0, z: 0}
-  colliderRotation: {x: 0, y: 0, z: 0}
-  colliderScale: {x: 0, y: 0, z: 0}
+  otherAnimations:
+  - {fileID: 7400000, guid: 0600d38e9e5e7b246832db725c010871, type: 2}
+  - {fileID: 7400000, guid: e68b9c07f4d527044a336bfff2dd1f6c, type: 2}
+  - {fileID: 7400000, guid: f4444093313ff8d49bf55b4a3cd2b811, type: 2}
+  - {fileID: 7400000, guid: 2daed3513d5f5df45b893a8192540162, type: 2}
+  otherOverrideNames:
+  - BaseIdle
+  - BaseDeath
+  - BaseFlinch
+  - BaseKnockedDown
+  colliderPosition: {x: 0.7493944, y: -0.009861267, z: 0.4848612}
+  colliderRotation: {x: 1.716, y: 20.273, z: -4.505}
+  colliderScale: {x: 0.800295, y: 0.2368326, z: 1.531635}
   position: {x: -0.5706058, y: -1.739861, z: 0.1048611}
   rotation: {x: 0, y: 0, z: 0}
   scale: {x: 1, y: 1, z: 1}

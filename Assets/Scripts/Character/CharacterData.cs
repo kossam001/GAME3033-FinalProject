@@ -36,7 +36,7 @@ public class CharacterData : MonoBehaviour
         movementComponent = GetComponent<Movement>();
         knockbackComponent = GetComponent<Knockback>();
         characterAnimator = GetComponent<Animator>();
-        interactComponent = GetComponent<Interact>();
+        //interactComponent = GetComponent<Interact>();
 
         animatorOverride = Instantiate(animatorOverride);
         characterAnimator.runtimeAnimatorController = animatorOverride;
