@@ -27,7 +27,7 @@ MonoBehaviour:
   rotation: {x: 0, y: 0, z: 0}
   scale: {x: 2, y: 30, z: 2}
   animation: {fileID: 7400000, guid: 91b61fad88c55ea4abc225d39c4e9844, type: 2}
-  overrideName: BaseStandingMeleeAttackHorizontal
+  overrideName: BasicAttack
   useAnimation: 1
   windupPeriod: 0.4
   attackDuration: 0.75

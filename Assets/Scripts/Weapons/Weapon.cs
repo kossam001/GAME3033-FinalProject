@@ -36,6 +36,8 @@ public class Weapon : Interactable
 
     public void EquipWeapon(CharacterData _character)
     {
+        DropWeapon(_character);
+
         List<string> overrideNames = new List<string>(animationTable.Keys);
 
         foreach (string name in overrideNames)
@@ -66,6 +68,18 @@ public class Weapon : Interactable
 
         // Replace previous weapon's references
         _character.SetWeapon(this);
+    }
+
+    public void DropWeapon(CharacterData _character)
+    {
+        Weapon weapon = _character.GetWeapon();
+        if (weapon == null) return;
+            
+        weapon.GetComponent<BoxCollider>().enabled = true;
+        weapon.GetComponent<Rigidbody>().isKinematic = false;
+
+        weapon.transform.parent.SetParent(null);
+        _character.SetWeapon(null);
     }
 
     public override void Use(CharacterData _character)

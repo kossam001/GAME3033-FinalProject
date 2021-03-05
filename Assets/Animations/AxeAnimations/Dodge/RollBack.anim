@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: StandToRollForward
+  m_Name: RollBack
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -51220,7 +51220,7 @@ AnimationClip:
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
     m_StopTime: 2.3666666
-    m_OrientationOffsetY: -21
+    m_OrientationOffsetY: -201
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0

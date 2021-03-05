@@ -78,6 +78,11 @@ public class CharacterData : MonoBehaviour
         weapon = _weapon;
     }
 
+    public Weapon GetWeapon()
+    {
+        return weapon;
+    }
+
     public Socket RetrieveSocket(string socketName)
     {
         return socketTable[socketName];
