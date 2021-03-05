@@ -13,35 +13,35 @@ public class Dodge : Skill
 
     private string ownerTag;
 
-    public override void PrestartEffect(SkillController skillController)
+    public override void PrestartEffect(CharacterData character)
     {
         if (prestartEffectActivated) return;
-        base.PrestartEffect(skillController);
+        base.PrestartEffect(character);
 
-        skillController.GetAnimator().SetFloat(DodgeSpeedHash, speed);
+        character.characterAnimator.SetFloat(DodgeSpeedHash, speed);
     }
 
-    public override void StartEfftect(SkillController skillController)
+    public override void StartEfftect(CharacterData character)
     {
         if (isRepeating()) return;
-        base.StartEfftect(skillController);
+        base.StartEfftect(character);
 
-        ownerTag = skillController.owner.tag;
+        ownerTag = character.tag;
 
-        if (!skillController.owner.canMove) return;
+        if (!character.canMove) return;
 
-        skillController.owner.tag = "Untagged";
-        skillController.owner.canMove = false;
-        skillController.GetAnimator().SetBool(IsDodgingHash, true);
+        character.tag = "Untagged";
+        character.canMove = false;
+        character.characterAnimator.SetBool(IsDodgingHash, true);
     }
 
-    public override void EndEffect(SkillController skillController)
+    public override void EndEffect(CharacterData character)
     {
         if (!startEffectActivated) return;
-        base.EndEffect(skillController);
+        base.EndEffect(character);
 
-        skillController.GetAnimator().SetBool(IsDodgingHash, false);
-        skillController.owner.tag = ownerTag;
-        skillController.owner.canMove = true;
+        character.characterAnimator.SetBool(IsDodgingHash, false);
+        character.tag = ownerTag;
+        character.canMove = true;
     }
 }

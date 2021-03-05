@@ -7,8 +7,6 @@ public class SkillController : MonoBehaviour
     public CharacterData owner;
 
     private Skill activeSkill;
-    public List<Socket> skillSockets; // If skill needs a collider, where is it
-    private Dictionary<string, Socket> socketTable;
 
     public bool isActive = false; // A bool to start skill - indicates whether or not controller is doing something 
     public bool canCancel = false; // A bool to stop - the controller is doing something but can be stopped
@@ -18,16 +16,6 @@ public class SkillController : MonoBehaviour
     private readonly int AttackSpeedHash = Animator.StringToHash("AttackSpeed");
 
     private IEnumerator playAnimationRoutine;
-
-    private void Awake()
-    {
-        socketTable = new Dictionary<string, Socket>();
-
-        foreach (Socket socket in skillSockets)
-        {
-            socketTable.Add(socket.name, socket);
-        }
-    }
 
     public void Use(Skill skill, string overrideName)
     {
@@ -85,17 +73,17 @@ public class SkillController : MonoBehaviour
             stateDuration += Time.deltaTime;
 
             if (stateLength / attackSpeed * activeSkill.windupPeriod > stateDuration)
-                activeSkill.PrestartEffect(this);
+                activeSkill.PrestartEffect(owner);
 
             // Turn attack collider on
             if (stateLength / attackSpeed * activeSkill.windupPeriod < stateDuration &&
                 stateLength / attackSpeed * activeSkill.attackDuration > stateDuration)
-                activeSkill.StartEfftect(this); // Trigger skill effect
+                activeSkill.StartEfftect(owner); // Trigger skill effect
 
             // If animation passes the noncancellable portion - the swing animation
             if (stateLength / attackSpeed * activeSkill.attackDuration < stateDuration &&
                 activeSkill.comboDuration * stateLength > stateDuration)
-                activeSkill.EndEffect(this); // Turn off skill effect
+                activeSkill.EndEffect(owner); // Turn off skill effect
 
             if (stateLength / attackSpeed * activeSkill.noncancellablePeriod < stateDuration)
                 canCancel = true;
@@ -112,7 +100,7 @@ public class SkillController : MonoBehaviour
         if (canCancel)
         {
             //ToggleCollider(activeSkill.socketName, false);
-            activeSkill.EndEffect(this);
+            activeSkill.EndEffect(owner);
             owner.characterAnimator.SetBool(IsAttackingHash, false);
         }
 
@@ -121,7 +109,7 @@ public class SkillController : MonoBehaviour
 
     public void EndSkill()
     {
-        activeSkill.EndEffect(this);
+        activeSkill.EndEffect(owner);
         isActive = false;
         canCancel = false;
         activeSkill = null;
@@ -169,11 +157,6 @@ public class SkillController : MonoBehaviour
     public float GetLength()
     {
         return activeSkill.animation.length / owner.characterAnimator.GetFloat(AttackSpeedHash) * activeSkill.noncancellablePeriod;
-    }
-
-    public Socket RetrieveSocket(string socketName)
-    {
-        return socketTable[socketName];
     }
 
     public string GetActiveSkillName()

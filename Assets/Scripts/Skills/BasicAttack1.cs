@@ -10,35 +10,35 @@ public class BasicAttack1 : Skill
         animatorOverrideController[overrideName] = animation;
     }
 
-    public override void PrestartEffect(SkillController skillController)
+    public override void PrestartEffect(CharacterData character)
     {
         if (prestartEffectActivated) return;
-        base.PrestartEffect(skillController);
+        base.PrestartEffect(character);
 
-        Socket socket = skillController.RetrieveSocket(socketName);
+        Socket socket = character.RetrieveSocket(socketName);
         colliderObject = socket.colliderObject;
         DamageCollider collider = colliderObject.GetComponent<DamageCollider>();
 
         collider.action = ApplyEffect;
     }
 
-    public override void StartEfftect(SkillController skillController)
+    public override void StartEfftect(CharacterData character)
     {
         if (isRepeating()) return;
-        base.StartEfftect(skillController);
+        base.StartEfftect(character);
 
-        Socket socket = skillController.RetrieveSocket(socketName);
+        Socket socket = character.RetrieveSocket(socketName);
         colliderObject = socket.colliderObject;
 
         colliderObject.SetActive(true);
     }
 
-    public override void EndEffect(SkillController skillController)
+    public override void EndEffect(CharacterData character)
     {
         if (!startEffectActivated) return;
-        base.EndEffect(skillController);
+        base.EndEffect(character);
 
-        Socket socket = skillController.RetrieveSocket(socketName);
+        Socket socket = character.RetrieveSocket(socketName);
         GameObject collider = socket.colliderObject;
         collider.SetActive(false);
     }

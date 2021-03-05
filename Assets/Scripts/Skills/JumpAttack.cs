@@ -7,19 +7,19 @@ public class JumpAttack : BasicAttack3
 {
     private Vector3 originalScale;
 
-    public override void PrestartEffect(SkillController skillController)
+    public override void PrestartEffect(CharacterData character)
     {
-        base.PrestartEffect(skillController);
+        base.PrestartEffect(character);
 
         originalScale = colliderObject.transform.localScale;
         colliderObject.transform.localScale = scale;
     }
 
-    public override void EndEffect(SkillController skillController)
+    public override void EndEffect(CharacterData character)
     {
-        base.PrestartEffect(skillController);
+        base.PrestartEffect(character);
 
-        base.EndEffect(skillController);
+        base.EndEffect(character);
         colliderObject.transform.localScale = originalScale;
     }
 }

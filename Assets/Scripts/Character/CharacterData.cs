@@ -19,6 +19,8 @@ public class CharacterData : MonoBehaviour
     public SkillController skillController;
     public Animator characterAnimator;
     public AnimatorOverrideController animatorOverride;
+    public List<Socket> sockets; // If skill needs a collider, where is it
+    private Dictionary<string, Socket> socketTable;
 
     public int health = 100;
     public int currentHealth;
@@ -34,9 +36,15 @@ public class CharacterData : MonoBehaviour
         knockbackComponent = GetComponent<Knockback>();
         characterAnimator = GetComponent<Animator>();
 
-
         animatorOverride = Instantiate(animatorOverride);
         characterAnimator.runtimeAnimatorController = animatorOverride;
+
+        socketTable = new Dictionary<string, Socket>();
+
+        foreach (Socket socket in sockets)
+        {
+            socketTable.Add(socket.name, socket);
+        }
     }
 
     public void UpdateHealth(int damage)
@@ -66,5 +74,18 @@ public class CharacterData : MonoBehaviour
     public void SetWeapon(Weapon _weapon)
     {
         weapon = _weapon;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Weapon"))
+        {
+            other.gameObject.GetComponent<Weapon>().EquipWeapon(this);
+        }
+    }
+
+    public Socket RetrieveSocket(string socketName)
+    {
+        return socketTable[socketName];
     }
 }

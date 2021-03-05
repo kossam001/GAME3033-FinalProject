@@ -63,18 +63,18 @@ public class Skill : ScriptableObject
 
     public virtual void OverrideAnimationData(Animator animator, AnimatorOverrideController animatorOverrideController) { }
 
-    public virtual void PrestartEffect(SkillController skillController)
+    public virtual void PrestartEffect(CharacterData character)
     {
         prestartEffectActivated = true;
     }
 
-    public virtual void StartEfftect(SkillController skillController)
+    public virtual void StartEfftect(CharacterData character)
     {
         prestartEffectActivated = false;
         startEffectActivated = true;
     }
 
-    public virtual void EndEffect(SkillController skillController)
+    public virtual void EndEffect(CharacterData character)
     {
         prestartEffectActivated = false;
         startEffectActivated = false;
