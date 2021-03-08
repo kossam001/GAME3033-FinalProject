@@ -77,26 +77,10 @@ public class Item : ScriptableObject
     }
 
     [SerializeField]
-    private int resourceCost1;
-    public int ResourceCost1
+    private bool sellable;
+    public bool Sellable
     {
-        get { return resourceCost1; }
-        private set { }
-    }
-
-    [SerializeField]
-    private int resourceCost2;
-    public int ResourceCost2
-    {
-        get { return resourceCost2; }
-        private set { }
-    }
-
-    [SerializeField]
-    private int resourceCost3;
-    public int ResourceCost3
-    {
-        get { return resourceCost3; }
+        get { return sellable; }
         private set { }
     }
 
