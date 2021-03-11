@@ -23,8 +23,7 @@ public class CharacterData : MonoBehaviour
     public List<Socket> sockets; // If skill needs a collider, where is it
     private Dictionary<string, Socket> socketTable;
 
-    public int health = 100;
-    public int currentHealth;
+    public CharacterStats stats;
 
     public bool canMove = true;
 
@@ -32,11 +31,12 @@ public class CharacterData : MonoBehaviour
 
     private void Awake()
     {
-        currentHealth = health;
+        stats = Instantiate(stats);
+        stats.InitializeStats();
+
         movementComponent = GetComponent<Movement>();
         knockbackComponent = GetComponent<Knockback>();
         characterAnimator = GetComponent<Animator>();
-        //interactComponent = GetComponent<Interact>();
 
         animatorOverride = Instantiate(animatorOverride);
         characterAnimator.runtimeAnimatorController = animatorOverride;
@@ -51,10 +51,10 @@ public class CharacterData : MonoBehaviour
 
     public void UpdateHealth(int damage)
     {
-        currentHealth -= damage;
-        healthIndicator.value = (float)currentHealth / (float)health;
+        stats.currentHealth -= damage;
+        healthIndicator.value = (float)stats.currentHealth / (float)stats.health;
 
-        if (currentHealth <= 0.0f)
+        if (stats.currentHealth <= 0.0f)
         {
             characterAnimator.SetBool(IsDeadHash, true);
             StageManager.Instance.RemoveFromTeam(this);

@@ -31,7 +31,7 @@ public class UseSkill : TreeNode
             brain.controller.skillController.canCancel))
         {
             // Is target dead
-            if (brain.activeTarget.GetComponent<CharacterData>().currentHealth <= 0.0f)
+            if (brain.activeTarget.GetComponent<CharacterData>().stats.currentHealth <= 0.0f)
             {
                 state.ChangeState(StateID.Chase);
                 brain.activeTarget = null;

@@ -45,19 +45,24 @@ public class BasicAttack1 : Skill
 
     public override void ApplyEffect(GameObject target, GameObject caster)
     {
+        if (!target.GetComponent<CharacterData>()) return;
+
+        CharacterData targetData = target.GetComponent<CharacterData>();
+        CharacterData casterData = caster.GetComponent<CharacterData>();
+
         switch (caster.tag)
         {
             case "Ally":
                 if (target.CompareTag("Enemy"))
                 {
-                    target.GetComponent<CharacterData>().UpdateHealth(damage);
+                    targetData.UpdateHealth(targetData.stats.DamageCalculation(casterData.stats.attack + damage));
                     target.GetComponent<CharacterData>().knockbackComponent.Flinch(knockback);
                 }
                 break;
             case "Enemy":
                 if (target.CompareTag("Ally"))
                 {
-                    target.GetComponent<CharacterData>().UpdateHealth(damage);
+                    targetData.UpdateHealth(targetData.stats.DamageCalculation(casterData.stats.attack + damage));
                     target.GetComponent<CharacterData>().knockbackComponent.Flinch(knockback);
                 }
                 break;

@@ -25,7 +25,7 @@ MonoBehaviour:
   socketName: WeaponSocket
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0}
-  scale: {x: 2, y: 30, z: 2}
+  scale: {x: 2, y: 2, z: 2}
   animation: {fileID: 7400000, guid: 91b61fad88c55ea4abc225d39c4e9844, type: 2}
   overrideName: BasicAttack
   useAnimation: 1
