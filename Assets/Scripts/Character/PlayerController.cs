@@ -94,4 +94,10 @@ public class PlayerController : Character
         if (button.isPressed)
             characterData.interactComponent.Use();
     }
+
+    public void OnPause(InputValue button)
+    {
+        if (button.isPressed)
+            GameManager.Instance.Pause();
+    }
 }

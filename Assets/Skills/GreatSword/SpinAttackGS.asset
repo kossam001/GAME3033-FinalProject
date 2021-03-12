@@ -21,7 +21,7 @@ MonoBehaviour:
   repeatEffect: 0
   canInterrupt: 0
   canBeInterrupted: 0
-  canResistFlinch: 0
+  canResistFlinch: 1
   socketName: WeaponSocket
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0}

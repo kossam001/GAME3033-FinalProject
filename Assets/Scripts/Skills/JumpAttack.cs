@@ -13,6 +13,13 @@ public class JumpAttack : BasicAttack3
 
         originalScale = colliderObject.transform.localScale;
         colliderObject.transform.localScale = scale;
+
+        character.GetComponent<Rigidbody>().AddForce(100 * character.transform.forward);
+    }
+
+    public override void StartEfftect(CharacterData character)
+    {
+        base.StartEfftect(character);
     }
 
     public override void EndEffect(CharacterData character)
