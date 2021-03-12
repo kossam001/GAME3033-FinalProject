@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da382f2a41e30db49b8cb90cfad167c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  socketName: AxeWeapon
   skills: {fileID: 8334440532639856776}
   walkAnimations:
   - {fileID: 7400000, guid: cc47c598c3291ff4f8eb1b52ec000276, type: 2}
