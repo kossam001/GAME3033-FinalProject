@@ -63,9 +63,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Quit()
+    private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        Application.Quit();
     }
 }
