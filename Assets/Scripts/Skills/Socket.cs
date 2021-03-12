@@ -10,6 +10,7 @@ public class Socket : MonoBehaviour
     private void Awake()
     {
         colliderObject = transform.Find("Collider").gameObject;
+        colliderObject.SetActive(false);
         colliderObject.GetComponent<DamageCollider>().owner = owner; 
     }
 }

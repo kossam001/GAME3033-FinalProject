@@ -4,6 +4,5 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "SpinAttack", menuName = "Skills/SpinAttack")]
 public class SpinAttack : BasicAttack3
-{
-
+{ 
 }

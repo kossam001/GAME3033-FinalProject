@@ -15,20 +15,23 @@ MonoBehaviour:
   skillID: 4
   cooldown: 0
   cost: 0
-  speed: 1
+  speed: 0.7
   knockback: 0
   damage: 10
   repeatEffect: 0
   canInterrupt: 0
   canBeInterrupted: 0
   canResistFlinch: 1
-  socketName: WeaponSocket
+  socketName: GreatSwordSocket
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0}
   scale: {x: 0, y: 0, z: 0}
   animation: {fileID: 7400000, guid: 6b586d46bfcf1ae48a87bd83c4dfc765, type: 2}
   overrideName: BasicAttack
   useAnimation: 1
+  movementForce1: 50
+  movementForce2: 50
+  movementForce3: 0
   windupPeriod: 0.1
   attackDuration: 0.75
   comboDuration: 1

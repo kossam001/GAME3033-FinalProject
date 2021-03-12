@@ -10,31 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d23ad9ab7c5d1947979ef14924044c3, type: 3}
-  m_Name: BasicAttack3
+  m_Name: ChainAttackGS
   m_EditorClassIdentifier: 
-  skillID: 1
+  skillID: 2
   cooldown: 0
   cost: 0
-  speed: 1
+  speed: 0.7
   knockback: 0
   damage: 10
   repeatEffect: 0
   canInterrupt: 0
-  canBeInterrupted: 0
-  canResistFlinch: 0
-  socketName: AxeSocket
+  canBeInterrupted: 1
+  canResistFlinch: 1
+  socketName: GreatSwordSocket
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0}
   scale: {x: 0, y: 0, z: 0}
-  animation: {fileID: 7400000, guid: 7dc11d79fb5e93c47a661b32afc494d1, type: 2}
+  animation: {fileID: 7400000, guid: 7d9aa0f3bc5ac584da02613b1786d8b8, type: 2}
   overrideName: BasicAttack
   useAnimation: 1
-  windupPeriod: 0.3
-  attackDuration: 0.4
-  comboDuration: 0.7
-  noncancellablePeriod: 0.7
-  followUpSkill: {fileID: 11400000, guid: b2a8af2e5396a3f4583625885e973ef9, type: 2}
-  comboName: BasicCombo
+  movementForce1: 5
+  movementForce2: 50
+  movementForce3: 0
+  windupPeriod: 0.1
+  attackDuration: 0.8
+  comboDuration: 1
+  noncancellablePeriod: 0.9
+  followUpSkill: {fileID: 0}
+  comboName: 
   minRange: 0
-  maxRange: 2
-  arcAngle: 60
+  maxRange: 1
+  arcAngle: 0

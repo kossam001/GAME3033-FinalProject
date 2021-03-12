@@ -15,14 +15,14 @@ MonoBehaviour:
   skillID: 1
   cooldown: 0
   cost: 0
-  speed: 1
+  speed: 0.7
   knockback: 250
   damage: 20
   repeatEffect: 0
   canInterrupt: 0
   canBeInterrupted: 0
-  canResistFlinch: 0
-  socketName: WeaponSocket
+  canResistFlinch: 1
+  socketName: GreatSwordSocket
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0}
   scale: {x: 0, y: 0, z: 0}
@@ -33,8 +33,8 @@ MonoBehaviour:
   attackDuration: 0.75
   comboDuration: 1
   noncancellablePeriod: 0.75
-  followUpSkill: {fileID: 0}
-  comboName: 
+  followUpSkill: {fileID: 11400000, guid: bec7f0863078504458c94b1dab67f656, type: 2}
+  comboName: BasicAttack
   minRange: 0
   maxRange: 1
   arcAngle: 0

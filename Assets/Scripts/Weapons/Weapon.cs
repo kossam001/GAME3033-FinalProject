@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Weapon : Interactable
 {
+    [Tooltip("Where to attach weapon.")]
+    public string socketName;
     public SkillList skills;
 
     [Header("Animation")]
@@ -70,7 +72,7 @@ public class Weapon : Interactable
         GetComponent<Rigidbody>().isKinematic = true;
 
         // Attach to socket
-        Socket socket = _character.RetrieveSocket("WeaponSocket");
+        Socket socket = _character.RetrieveSocket(socketName);
         
         transform.parent.SetParent(socket.transform); // A fix for the weapon offset
 

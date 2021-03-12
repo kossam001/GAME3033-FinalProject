@@ -5,6 +5,22 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BasicAttack3", menuName = "Skills/BasicAttack3")]
 public class BasicAttack3 : BasicAttack1
 {
+    public override void PrestartEffect(CharacterData character)
+    {
+        base.PrestartEffect(character);
+
+        character.GetComponent<Rigidbody>().AddForce(movementForce1 * character.transform.forward);
+    }
+
+    public override void StartEfftect(CharacterData character)
+    {
+        character.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        base.StartEfftect(character);
+
+        character.GetComponent<Rigidbody>().AddForce(movementForce2 * character.transform.forward);
+    }
+
     public override void ApplyEffect(GameObject target, GameObject caster)
     {
         if (!target.GetComponent<CharacterData>()) return;

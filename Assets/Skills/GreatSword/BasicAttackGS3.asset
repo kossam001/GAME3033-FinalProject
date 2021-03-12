@@ -9,32 +9,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d23ad9ab7c5d1947979ef14924044c3, type: 3}
+  m_Script: {fileID: 11500000, guid: e85542d373b68974ebbf9e70451c90a6, type: 3}
   m_Name: BasicAttackGS3
   m_EditorClassIdentifier: 
-  skillID: 2
+  skillID: 1
   cooldown: 0
   cost: 0
-  speed: 1
-  knockback: 0
-  damage: 10
+  speed: 0.7
+  knockback: 250
+  damage: 20
   repeatEffect: 0
   canInterrupt: 0
   canBeInterrupted: 0
-  canResistFlinch: 0
-  socketName: WeaponSocket
+  canResistFlinch: 1
+  socketName: GreatSwordSocket
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0}
   scale: {x: 0, y: 0, z: 0}
-  animation: {fileID: 7400000, guid: 7d9aa0f3bc5ac584da02613b1786d8b8, type: 2}
+  animation: {fileID: 7400000, guid: d9658f4d044dd4a48be7ebbfdaf765e2, type: 2}
   overrideName: BasicAttack
   useAnimation: 1
-  windupPeriod: 0.1
-  attackDuration: 0.8
+  movementForce1: 0
+  movementForce2: 0
+  movementForce3: 0
+  windupPeriod: 0.3
+  attackDuration: 0.75
   comboDuration: 1
-  noncancellablePeriod: 0.9
+  noncancellablePeriod: 0.75
   followUpSkill: {fileID: 0}
-  comboName: 
+  comboName: BasicAttack
   minRange: 0
   maxRange: 1
   arcAngle: 0

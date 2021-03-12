@@ -33,7 +33,8 @@ public class Skill : ScriptableObject
     protected bool startEffectActivated = false;
 
     [Header("Collider Physics")]
-    [Tooltip("Name of associated socket")]
+    [Tooltip("Name of associated socket.  Used to retrieve collider.  " +
+        "It is to be able to access other sockets other than the socket the weapon is attached to for skills that uses different parts of the character. E.x. kicks, punches, dual wielding")]
     public string socketName;
     protected GameObject colliderObject;
     public Vector3 position;
@@ -46,6 +47,10 @@ public class Skill : ScriptableObject
     public string overrideName;
     [Tooltip("Whether or not the animation should be used externally.")]
     public bool useAnimation = true;
+    [Tooltip("Whether there is motion in the animation.")]
+    public float movementForce1;
+    public float movementForce2;
+    public float movementForce3;
 
     [Header("Timing")]
     [Tooltip("Period before the attack - collider should be off.")]
