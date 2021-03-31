@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using System;
+using UnityEngine.InputSystem;
 
 public class InventoryController : MonoBehaviour
 {
@@ -20,13 +21,10 @@ public class InventoryController : MonoBehaviour
     PointerEventData m_PointerEventData;
     EventSystem m_EventSystem;
 
-    [Header("Tower Shop")]
-    [SerializeField] private Inventory towerInventory;
-
-    [Header("Seed Shop")]
-    [SerializeField] private Inventory seedInventory;
+    [SerializeField] private Inventory inventory;
 
     private bool clicked = false;
+    private Vector2 mousePosition;
 
     private void Awake()
     {
@@ -49,82 +47,55 @@ public class InventoryController : MonoBehaviour
         m_EventSystem = GetComponent<EventSystem>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnMouseMove(InputValue delta)
     {
-        //Check if the left Mouse button is clicked
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-
-            clicked = true;
-            Click();
-        }
-
-        if (Input.GetKeyUp(KeyCode.Mouse0) && clicked)
-        {
-            clicked = false;
-            Click();
-        }
-
-        cursorIcon.transform.position = Input.mousePosition;
+        mousePosition = delta.Get<Vector2>();
     }
 
-    private void Click()
-    {
-        // Code from https://forum.unity.com/threads/graphicraycaster-raycast-on-nested-canvases.603436/
-        PointerEventData m_PointerEventData = new PointerEventData(m_EventSystem);
-        m_PointerEventData.position = Input.mousePosition;
-        List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(m_PointerEventData, results);
+    //private void OnClick()
+    //{
+    //    // Code from https://forum.unity.com/threads/graphicraycaster-raycast-on-nested-canvases.603436/
+    //    PointerEventData m_PointerEventData = new PointerEventData(m_EventSystem);
+    //    m_PointerEventData.position = mousePosition;
+    //    List<RaycastResult> results = new List<RaycastResult>();
+    //    EventSystem.current.RaycastAll(m_PointerEventData, results);
 
-        //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
-        for (int i = 0; i < results.Count; i++)
-        {
-            if (results[i].gameObject.tag == "ItemSlot")
-            {
-                ItemSlot itemSlot = results[i].gameObject.GetComponent<ItemSlot>();
+    //    //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
+    //    for (int i = 0; i < results.Count; i++)
+    //    {
+    //        if (results[i].gameObject.tag == "ItemSlot")
+    //        {
+    //            ItemSlot itemSlot = results[i].gameObject.GetComponent<ItemSlot>();
 
-                //if (Input.GetKey(KeyCode.LeftAlt))
-                //{
-                //    PickUpOne(itemSlot);
-                //}
-                //else if (Input.GetKey(KeyCode.LeftControl))
-                //{
-                //    DropAll(itemSlot);
-                //}
-                //else if (Input.GetKey(KeyCode.LeftShift))
-                //{
-                //    PickUpAll(itemSlot);
-                //}
-                //else
-                //{
-                MoveItem(itemSlot);
-                //}
-                break; // No point in checking the other results
-            }
-        }
+    //            //if (Input.GetKey(KeyCode.LeftAlt))
+    //            //{
+    //            //    PickUpOne(itemSlot);
+    //            //}
+    //            //else if (Input.GetKey(KeyCode.LeftControl))
+    //            //{
+    //            //    DropAll(itemSlot);
+    //            //}
+    //            //else if (Input.GetKey(KeyCode.LeftShift))
+    //            //{
+    //            //    PickUpAll(itemSlot);
+    //            //}
+    //            //else
+    //            //{
+    //            MoveItem(itemSlot);
+    //            //}
+    //            break; // No point in checking the other results
+    //        }
+    //    }
 
-        if (results.Count == 0)
-        {
-            DragAndUse();
-        }
-    }
+    //    if (results.Count == 0)
+    //    {
+    //        DragAndUse();
+    //    }
+    //}
 
     public void AddToInventory(Item item, int amount = 1)
     {
-        Inventory playerInventory = null;
-
-        switch (item.Type)
-        {
-            case ItemType.SEED:
-                playerInventory = seedInventory;
-                break;
-            case ItemType.TOWER:
-                playerInventory = towerInventory;
-                break;
-        }
-
-        foreach (ItemSlot itemSlot in playerInventory.itemSlots)
+        foreach (ItemSlot itemSlot in inventory.itemSlots)
         {
             if (itemSlot.AddItems(item, amount)) return;
         }
