@@ -20,6 +20,8 @@ public class StageManager : MonoBehaviour
 
     private int characterCount = 0;
 
+    [SerializeField] private List<GameObject> spawnPoints;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -28,6 +30,11 @@ public class StageManager : MonoBehaviour
         else
             instance = this;
 
+        CreateTeams();
+    }
+
+    public void CreateTeams()
+    {
         // Set the teams
         teamTable = new Dictionary<Team, Dictionary<int, GameObject>>();
         teamTable[Team.Ally] = new Dictionary<int, GameObject>();

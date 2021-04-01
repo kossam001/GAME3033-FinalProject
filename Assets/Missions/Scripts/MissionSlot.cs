@@ -4,10 +4,5 @@ using UnityEngine;
 
 public class MissionSlot : ShopSlot
 {
-    [SerializeField] private string missionID;
-
-    public void SelectMission()
-    {
-
-    }
+    [SerializeField] private Mission mission;
 }

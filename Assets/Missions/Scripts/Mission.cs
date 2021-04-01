@@ -12,4 +12,5 @@ public class Mission : Item
 
     public int reward;
     public string missionInfo;
+    public string stageName;
 }

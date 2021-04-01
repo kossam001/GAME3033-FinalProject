@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MissionShop : Shop
 {
-    [SerializeField] private MissionSlot mission;
     [Tooltip("Mission content panel")]
     [SerializeField] private GameObject missionPanel;
 
@@ -17,19 +16,8 @@ public class MissionShop : Shop
         InitShop();
     }
 
-    private void InitShop()
+    protected override void InitShop()
     {
-        // itemTypeToInventoryTable = new Dictionary<ItemType, GameObject>();
-        // itemTypeToSlotTable = new Dictionary<ItemType, List<ShopSlot>>();
-
-        //for (int i = 0; i < inventoryType.Count; i++)
-        //{
-        //    itemTypeToInventoryTable[inventoryType[i]] = inventoryPanel[i];
-        //    itemTypeToSlotTable[inventoryType[i]] = new List<ShopSlot>();
-        //}
-
-        // 
-
         // Sort the items into seeds and towers and organize them into the correct inventories
         foreach (ItemTable missionTable in masterItemTables)
         {
@@ -37,8 +25,10 @@ public class MissionShop : Shop
         }
     }
 
-    public override void SellItem(Item item)
+    public override void SelectItem(Item item)
     {
-        
+        Mission mission = item as Mission;
+        GameManager.Instance.missionData = mission;
+        SceneController.Instance.LoadScene(mission.stageName);
     }
 }

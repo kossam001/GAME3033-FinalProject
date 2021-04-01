@@ -17,8 +17,8 @@ public class ShopSlot : ItemSlot
      * Shop genereates the items itself, so it can set up the Shop reference itself.
      */ 
 
-    public void Buy()
+    public void Select()
     {
-        shop.SellItem(ItemInSlot);
+        shop.SelectItem(ItemInSlot);
     }
 }

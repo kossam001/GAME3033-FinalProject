@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     private bool isPaused = false;
 
+    public Mission missionData;
+
     private void Awake()
     {
         if (instance != null && instance != this)

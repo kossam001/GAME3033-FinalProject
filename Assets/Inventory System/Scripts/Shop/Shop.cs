@@ -27,7 +27,7 @@ public class Shop : MonoBehaviour
         InitShop();
     }
 
-    private void InitShop()
+    protected virtual void InitShop()
     {
         itemTypeToInventoryTable = new Dictionary<ItemType, GameObject>();
         itemTypeToSlotTable = new Dictionary<ItemType, List<ItemSlot>>();
@@ -57,7 +57,7 @@ public class Shop : MonoBehaviour
         slot.SetContents(item, 1);
     }
 
-    public virtual void SellItem(Item item)
+    public virtual void SelectItem(Item item)
     {
         InventoryController.Instance.AddToInventory(item);
     }

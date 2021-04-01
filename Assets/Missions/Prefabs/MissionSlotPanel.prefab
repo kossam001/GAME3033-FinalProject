@@ -121,9 +121,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: -5873032774542383607}
         m_TargetAssemblyTypeName: ShopSlot, Assembly-CSharp
-        m_MethodName: Buy
+        m_MethodName: Select
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -826,7 +826,7 @@ GameObject:
   - component: {fileID: 3518049970416617663}
   - component: {fileID: -5873032774542383607}
   m_Layer: 5
-  m_Name: MissionSlot
+  m_Name: MissionSlotPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -881,4 +881,5 @@ MonoBehaviour:
   canSetSlot: 0
   itemCountText: {fileID: 5039082732415039546}
   itemIcon: {fileID: 898606256182487530}
-  missionID: 
+  shop: {fileID: 0}
+  mission: {fileID: 0}

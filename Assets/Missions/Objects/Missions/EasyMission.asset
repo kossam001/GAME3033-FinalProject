@@ -24,3 +24,4 @@ MonoBehaviour:
   enemyObjects: []
   reward: 0
   missionInfo: 
+  stageName: Arena
