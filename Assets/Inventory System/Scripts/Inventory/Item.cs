@@ -11,7 +11,7 @@ class ItemException : System.Exception
 }
 
 
-[CreateAssetMenu(fileName = "Item", menuName = "ScriptableObjects/Item", order = 1)]
+[CreateAssetMenu(fileName = "Item", menuName = "Inventory/Item", order = 1)]
 public class Item : ScriptableObject
 {
     [SerializeField]

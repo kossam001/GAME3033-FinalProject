@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-[CreateAssetMenu(fileName = "Item Table", menuName = "ScriptableObjects/ItemTable", order = 2)]
+[CreateAssetMenu(fileName = "Item Table", menuName = "InventoryDatabase/ItemTable", order = 2)]
 public class ItemTable : ScriptableObject
 {
     public Item[] items;
