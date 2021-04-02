@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,11 +32,16 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        SetPauseMenu();
+    }
+
+    private void SetPauseMenu()
+    {
         Time.timeScale = 1.0f;
         pauseMenu = GameObject.Find("PauseMenu");
-        
+
         if (pauseMenu == null) return;
-        
+
         pauseMenu.SetActive(false);
     }
 
