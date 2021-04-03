@@ -20,7 +20,7 @@ MonoBehaviour:
   type: 1
   itemObjectTag: 
   sellable: 0
-  numOpponents: 03000000
+  numOpponents: 01000000
   enemyObjects:
   - {fileID: 2554136919568846012, guid: a1e0928205172f147aeaf688a4101b48, type: 3}
   reward: 100

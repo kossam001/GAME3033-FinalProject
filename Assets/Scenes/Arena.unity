@@ -3353,16 +3353,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265f92b4058db2042bee73890d24a4f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: []
-  allies:
-  - {fileID: 8766573650720140851}
-  - {fileID: 645231677}
+  playerCharacter: {fileID: 1194796433}
   spawnPoints:
   - {fileID: 1387989092}
   - {fileID: 1792472033}
   - {fileID: 113441000}
   - {fileID: 132821330}
   stageMission: {fileID: 11400000, guid: ba402960a572b4e4387df0e508e8f80b, type: 2}
+  stageClear: 0
+  stageFail: 0
 --- !u!4 &578185818
 Transform:
   m_ObjectHideFlags: 0
@@ -12409,6 +12408,11 @@ Transform:
   m_Father: {fileID: 407210642}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &1194796433 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1492514647227995334, guid: ddb4a38124764c54ab49a83a80538388, type: 3}
+  m_PrefabInstance: {fileID: 1492514646686999529}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1207467379
 GameObject:
   m_ObjectHideFlags: 0
@@ -20350,7 +20354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1757987224
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,17 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2eb779bcb215ff84eb388010b08c7ec1, type: 3}
-  m_Name: I_Tower1
+  m_Name: I_HealthPotion
   m_EditorClassIdentifier: 
-  itemID: 2
-  name: I_Tower1
-  description: 'this is an Tower
-
-'
+  itemID: 0
+  name: HealthPotion
+  description: this is a Health Potion
   category: misc
-  icon: {fileID: 21300000, guid: 074d9d348df1c86499f4300b92f704d9, type: 3}
-  type: 1
-  itemObjectTag: DelayTower
-  resourceCost1: 200
-  resourceCost2: 200
-  resourceCost3: 200
+  icon: {fileID: 21300000, guid: 4ab4cc97f40dcaf4189c7cb9ffcbd1fe, type: 3}
+  type: 0
+  sellable: 1
+  effect: {fileID: 11400000, guid: 4524434081163ec4bb231e4b17450b5c, type: 2}

@@ -51,7 +51,9 @@ public class CharacterData : MonoBehaviour
 
     public void UpdateHealth(int damage)
     {
-        stats.currentHealth -= damage;
+        stats.currentHealth = Mathf.Clamp(stats.currentHealth - damage, 0, 100);
+
+
         healthIndicator.value = (float)stats.currentHealth / (float)stats.health;
 
         if (stats.currentHealth <= 0.0f)

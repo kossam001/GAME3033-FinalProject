@@ -35,6 +35,7 @@ public class InventoryController : MonoBehaviour
         else
         {
             instance = this;
+            DontDestroyOnLoad(this);
         }
     }
 
@@ -52,46 +53,12 @@ public class InventoryController : MonoBehaviour
         mousePosition = delta.Get<Vector2>();
     }
 
-    //private void OnClick()
-    //{
-    //    // Code from https://forum.unity.com/threads/graphicraycaster-raycast-on-nested-canvases.603436/
-    //    PointerEventData m_PointerEventData = new PointerEventData(m_EventSystem);
-    //    m_PointerEventData.position = mousePosition;
-    //    List<RaycastResult> results = new List<RaycastResult>();
-    //    EventSystem.current.RaycastAll(m_PointerEventData, results);
+    public void OnHotbar1(InputValue button)
+    {
+        if (StageManager.Instance == null) return;
 
-    //    //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
-    //    for (int i = 0; i < results.Count; i++)
-    //    {
-    //        if (results[i].gameObject.tag == "ItemSlot")
-    //        {
-    //            ItemSlot itemSlot = results[i].gameObject.GetComponent<ItemSlot>();
-
-    //            //if (Input.GetKey(KeyCode.LeftAlt))
-    //            //{
-    //            //    PickUpOne(itemSlot);
-    //            //}
-    //            //else if (Input.GetKey(KeyCode.LeftControl))
-    //            //{
-    //            //    DropAll(itemSlot);
-    //            //}
-    //            //else if (Input.GetKey(KeyCode.LeftShift))
-    //            //{
-    //            //    PickUpAll(itemSlot);
-    //            //}
-    //            //else
-    //            //{
-    //            MoveItem(itemSlot);
-    //            //}
-    //            break; // No point in checking the other results
-    //        }
-    //    }
-
-    //    if (results.Count == 0)
-    //    {
-    //        DragAndUse();
-    //    }
-    //}
+        inventory.itemSlots[0].UseItem(StageManager.Instance.playerCharacter);
+    }
 
     public void AddToInventory(Item item, int amount = 1)
     {
@@ -248,21 +215,5 @@ public class InventoryController : MonoBehaviour
     {
         cursorIcon.TryRemoveItems(cursorIcon.ItemCount);
         currentlyMovingItem = false;
-    }
-
-    public void DragAndUse()
-    {
-        if (cursorIcon.HasItem())
-        {
-            cursorIcon.UseItem();
-            currentlyMovingItem = false;
-        }
-        //else if (cursorIcon.HasItem())
-        //{
-        //    AddToInventory(cursorIcon.ItemInSlot, 1);
-
-        //    currentlyMovingItem = false;
-        //    cursorIcon.TryRemoveItems(1);
-        //}
     }
 }

@@ -14,13 +14,18 @@ public class Mission : Item
     public string missionInfo;
     public string stageName;
 
-    public void CheckClearMission()
+    public bool CheckClearMission(int enemyCount)
     {
+        if (enemyCount == 0) return true;
 
+        return false;
     }
 
-    public void CheckFailMission()
+    public bool CheckFailMission(int playerHealth)
     {
+        if (playerHealth <= 0) 
+            return true;
 
+        return false;
     }
 }

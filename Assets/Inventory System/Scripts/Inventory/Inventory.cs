@@ -20,6 +20,8 @@ public class Inventory : MonoBehaviour, ISaveHandler
     [Tooltip("Items to add on Start for testing purposes")]
     [SerializeField]
     protected List<Item> startingItems;
+    [SerializeField]
+    protected List<int> startingItemsAmount;
 
     /// <summary>
     /// Private key used for saving with playerprefs
@@ -35,9 +37,8 @@ public class Inventory : MonoBehaviour, ISaveHandler
         // init starting items for testing
         for (int i = 0; i < startingItems.Count && i < itemSlots.Count; i++)
         {
-            // Some empty slots are initialized to 16
             if (startingItems[i] != null)
-                itemSlots[i].SetContents(startingItems[i], 16);
+                itemSlots[i].SetContents(startingItems[i], startingItemsAmount[i]);
         }
     }
 

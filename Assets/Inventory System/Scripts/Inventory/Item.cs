@@ -69,14 +69,6 @@ public class Item : ScriptableObject
     }
 
     [SerializeField]
-    private string itemObjectTag;
-    public string ItemObjectTag
-    {
-        get { return itemObjectTag; }
-        private set { }
-    }
-
-    [SerializeField]
     private bool sellable;
     public bool Sellable
     {
@@ -84,8 +76,12 @@ public class Item : ScriptableObject
         private set { }
     }
 
-    public void Use()
+    [SerializeField]
+    private ItemEffect effect;
+    public bool Effect { get; private set; }
+
+    public void Use(GameObject character)
     {
-        
+        effect.Activate(character);
     }
 }

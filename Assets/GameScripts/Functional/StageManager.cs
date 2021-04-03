@@ -12,9 +12,8 @@ public class StageManager : MonoBehaviour
 {
     private static StageManager instance;
     public static StageManager Instance { get { return instance; } }
-    
-    public List<GameObject> enemies;
-    public List<GameObject> allies;
+
+    public GameObject playerCharacter;
 
     public Dictionary<Team, Dictionary<int, GameObject>> teamTable;
 
@@ -23,6 +22,9 @@ public class StageManager : MonoBehaviour
     [SerializeField] private List<SpawnPoint> spawnPoints;
 
     [SerializeField] private Mission stageMission;
+
+    public bool stageClear;
+    public bool stageFail;
 
     private void Awake()
     {
@@ -43,33 +45,8 @@ public class StageManager : MonoBehaviour
         teamTable[Team.Ally] = new Dictionary<int, GameObject>();
         teamTable[Team.Enemy] = new Dictionary<int, GameObject>();
 
-        // Set the characters
-        CharacterData characterData;
-
-        //foreach (GameObject character in enemies)
-        //{
-        //    characterData = character.GetComponent<CharacterData>();
-
-        //    characterData.id = characterCount;
-        //    characterData.team = Team.Enemy;
-
-        //    teamTable[Team.Enemy][characterData.id] = character;
-
-        //    characterCount++;
-        //}
-
-        // Just for the player
-        foreach (GameObject character in allies)
-        {
-            characterData = character.GetComponent<CharacterData>();
-
-            characterData.id = characterCount;
-            characterData.team = Team.Ally;
-
-            teamTable[Team.Ally][characterData.id] = character;
-
-            characterCount++;
-        }
+        // Setup the player character
+        SetupCharacter(playerCharacter.GetComponentInChildren<CharacterData>().gameObject, Team.Ally);
     }
 
     public List<GameObject> GetEnemies(Team team)
@@ -136,7 +113,7 @@ public class StageManager : MonoBehaviour
         {
             stageMission.numOpponents[enemyIndex]--;
 
-            SetupEnemyCharacter(spawnedEnemy.GetComponentInChildren<CharacterData>().gameObject);
+            SetupCharacter(spawnedEnemy.GetComponentInChildren<CharacterData>().gameObject, Team.Enemy);
 
             // Stop spawning specific enemy if all of them are spawned
             if (stageMission.numOpponents[enemyIndex] <= 0)
@@ -149,7 +126,7 @@ public class StageManager : MonoBehaviour
         Invoke(nameof(SpawnCharacter), Random.Range(0.1f, 0.5f));
     }
 
-    public void SetupEnemyCharacter(GameObject character)
+    public void SetupCharacter(GameObject character, Team team)
     {
         // Set the characters
         CharacterData characterData;
@@ -157,27 +134,29 @@ public class StageManager : MonoBehaviour
         characterData = character.GetComponent<CharacterData>();
 
         characterData.id = characterCount;
-        characterData.team = Team.Enemy;
+        characterData.team = team;
 
-        teamTable[Team.Enemy][characterData.id] = character;
+        teamTable[team][characterData.id] = character;
 
         characterCount++;
-
-        //foreach (GameObject character in allies)
-        //{
-        //    characterData = character.GetComponent<CharacterData>();
-
-        //    characterData.id = characterCount;
-        //    characterData.team = Team.Ally;
-
-        //    teamTable[Team.Ally][characterData.id] = character;
-
-        //    characterCount++;
-        //}
     }
 
     private void Update()
     {
-        stageMission.CheckClearMission();
+        if (stageMission.CheckClearMission(teamTable[Team.Enemy].Count))
+        {
+            if (!IsInvoking(nameof(ReturnToLobby)))
+                Invoke(nameof(ReturnToLobby), 3);
+        }
+        else if (stageMission.CheckFailMission(playerCharacter.GetComponentInChildren<CharacterData>().stats.currentHealth))
+        {
+            if (!IsInvoking(nameof(ReturnToLobby)))
+                Invoke(nameof(ReturnToLobby), 3);
+        }
+    }
+
+    private void ReturnToLobby()
+    {
+        SceneController.Instance.LoadScene("Lobby");
     }
 }
