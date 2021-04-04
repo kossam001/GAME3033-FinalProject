@@ -177,10 +177,15 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    private void ReturnToLobby()
+    public void ReturnToLobby()
     {
+        Time.timeScale = 1.0f;
+
+        GameManager.Instance.isPaused = false;
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
         GameManager.Instance.SaveGame();
 
         SceneController.Instance.LoadScene("Lobby");

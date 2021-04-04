@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject pauseMenu;
 
-    private bool isPaused = false;
+    public bool isPaused = false;
 
     public Mission missionData;
 
