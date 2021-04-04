@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   health: 100
-  currentHealth: 0
+  currentHealth: 100
   defense: 0
   currentDefense: 0
   attack: 0
   currentAttack: 0
+  knockbackResistance: 0
+  currentKnockbackResistance: 0

@@ -31,6 +31,8 @@ public class InventoryController : MonoBehaviour
 
     public int money = 1000;
 
+    public CharacterStats statSheet;
+
     private void Awake()
     {
         if (instance != null && instance != this)

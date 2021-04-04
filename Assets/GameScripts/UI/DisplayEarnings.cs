@@ -17,7 +17,6 @@ public class DisplayEarnings : MonoBehaviour
     {
         GetComponent<TMP_Text>().text = "Your Earnings: " + InventoryController.Instance.money;
     }
-        
 
     private void OnDisable()
     {

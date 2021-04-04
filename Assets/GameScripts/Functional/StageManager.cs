@@ -46,7 +46,11 @@ public class StageManager : MonoBehaviour
         teamTable[Team.Enemy] = new Dictionary<int, GameObject>();
 
         // Setup the player character
-        SetupCharacter(playerCharacter.GetComponentInChildren<CharacterData>().gameObject, Team.Ally);
+        CharacterData playerData = playerCharacter.GetComponentInChildren<CharacterData>();
+        
+        SetupCharacter(playerData.gameObject, Team.Ally);
+        playerData.stats = InventoryController.Instance.statSheet;
+        playerData.stats.InitializeStats();
     }
 
     public List<GameObject> GetEnemies(Team team)
