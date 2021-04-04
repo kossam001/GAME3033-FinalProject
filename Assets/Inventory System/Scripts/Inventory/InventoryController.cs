@@ -72,6 +72,69 @@ public class InventoryController : MonoBehaviour
         inventory.itemSlots[0].UseItem(StageManager.Instance.playerCharacter);
     }
 
+    public void OnHotbar2(InputValue button)
+    {
+        if (StageManager.Instance == null) return;
+
+        inventory.itemSlots[1].UseItem(StageManager.Instance.playerCharacter);
+    }
+
+    public void OnHotbar3(InputValue button)
+    {
+        if (StageManager.Instance == null) return;
+
+        inventory.itemSlots[2].UseItem(StageManager.Instance.playerCharacter);
+    }
+
+    public void OnHotbar4(InputValue button)
+    {
+        if (StageManager.Instance == null) return;
+
+        inventory.itemSlots[3].UseItem(StageManager.Instance.playerCharacter);
+    }
+
+    public void OnHotbar5(InputValue button)
+    {
+        if (StageManager.Instance == null) return;
+
+        inventory.itemSlots[4].UseItem(StageManager.Instance.playerCharacter);
+    }
+
+    public void OnHotbar6(InputValue button)
+    {
+        if (StageManager.Instance == null) return;
+
+        inventory.itemSlots[5].UseItem(StageManager.Instance.playerCharacter);
+    }
+
+    public void OnHotbar7(InputValue button)
+    {
+        if (StageManager.Instance == null) return;
+
+        inventory.itemSlots[6].UseItem(StageManager.Instance.playerCharacter);
+    }
+
+    public void OnHotbar8(InputValue button)
+    {
+        if (StageManager.Instance == null) return;
+
+        inventory.itemSlots[7].UseItem(StageManager.Instance.playerCharacter);
+    }
+
+    public void OnHotbar9(InputValue button)
+    {
+        if (StageManager.Instance == null) return;
+
+        inventory.itemSlots[8].UseItem(StageManager.Instance.playerCharacter);
+    }
+
+    public void OnHotbar0(InputValue button)
+    {
+        if (StageManager.Instance == null) return;
+
+        inventory.itemSlots[9].UseItem(StageManager.Instance.playerCharacter);
+    }
+
     public void AddToInventory(Item item, int amount = 1)
     {
         foreach (ItemSlot itemSlot in inventory.itemSlots)

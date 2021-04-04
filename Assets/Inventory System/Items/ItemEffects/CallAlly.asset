@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24c18ec3d59fa2947bd42f065465e040, type: 3}
-  m_Name: MasterItemTable
+  m_Script: {fileID: 11500000, guid: 3749bb2422ab31a469549ebfcc64cffe, type: 3}
+  m_Name: CallAlly
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 11400000, guid: 7ca493bf2fa31724592cf92924671357, type: 2}
-  - {fileID: 11400000, guid: 4e86efd4e79aff341a4f440629330cf7, type: 2}
+  ally: {fileID: 559380224333579090, guid: e51f163b39424804285357111e2b5ffd, type: 3}

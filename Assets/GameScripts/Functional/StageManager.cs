@@ -156,6 +156,23 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    public void SpawnAlly(GameObject character)
+    {
+        GameObject spawnedAlly = spawnPoints[Random.Range(0, spawnPoints.Count)].SpawnObject(character);
+
+        if (spawnedAlly)
+        {
+            SetupCharacter(spawnedAlly.GetComponentInChildren<CharacterData>().gameObject, Team.Ally);
+        }
+        else
+        {
+            if (IsInvoking(nameof(SpawnAlly))) return;
+
+            // Try again after waiting for a short time
+            Invoke(nameof(SpawnAlly), Random.Range(0.1f, 0.5f));
+        }
+    }
+
     private void ReturnToLobby()
     {
         Cursor.lockState = CursorLockMode.None;
