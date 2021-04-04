@@ -21,6 +21,8 @@ public class Shop : MonoBehaviour
     private Dictionary<ItemType, List<ItemSlot>> itemTypeToSlotTable;
     private List<List<ItemSlot>> itemSlots;
 
+    [SerializeField] private GameObject descriptionPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +53,7 @@ public class Shop : MonoBehaviour
         GameObject newObject = Instantiate(itemTemplate.gameObject, parentPanel.transform);
         ShopSlot slot = newObject.GetComponent<ShopSlot>();
         slot.shop = this;
+        slot.descriptionUI = descriptionPanel;
         slots.Add(slot);
 
         slot.shop = this;
@@ -59,6 +62,9 @@ public class Shop : MonoBehaviour
 
     public virtual void SelectItem(Item item)
     {
+        if (InventoryController.Instance.money < item.price) return;
+
+        InventoryController.Instance.SetMoneyAmount(InventoryController.Instance.money - item.price);
         InventoryController.Instance.AddToInventory(item);
     }
 }

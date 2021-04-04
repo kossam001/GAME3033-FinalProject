@@ -27,6 +27,8 @@ public class ItemSlot : MonoBehaviour
     [SerializeField]
     private Image itemIcon;
 
+    public GameObject descriptionUI;
+
     private void Update()
     {
         if(b_needsUpdate)

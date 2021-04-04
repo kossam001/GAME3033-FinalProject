@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: EasyMission
   m_EditorClassIdentifier: 
   itemID: 0
-  name: EasyMission
-  description: Simple Mission
+  name: Intro Mission
+  description: 1 weak enemy.  Defeat them.
   category: misc
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: fa8586cd010bd7a409b3a5846fcb7fd2, type: 3}
   type: 1
-  itemObjectTag: 
   sellable: 0
+  effect: {fileID: 0}
+  price: 0
   numOpponents: 01000000
   enemyObjects:
   - {fileID: 2554136919568846012, guid: a1e0928205172f147aeaf688a4101b48, type: 3}
   reward: 100
-  missionInfo: 
   stageName: Arena
+  diffculty: Easy

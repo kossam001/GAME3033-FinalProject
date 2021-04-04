@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: I_HealthPotion
   m_EditorClassIdentifier: 
   itemID: 0
-  name: HealthPotion
-  description: this is a Health Potion
+  name: Health Potion
+  description: A health potion.  Heals 20 points.
   category: misc
   icon: {fileID: 21300000, guid: 4ab4cc97f40dcaf4189c7cb9ffcbd1fe, type: 3}
   type: 0
   sellable: 1
   effect: {fileID: 11400000, guid: 4524434081163ec4bb231e4b17450b5c, type: 2}
+  price: 100

@@ -11,8 +11,9 @@ public class Mission : Item
     public List<GameObject> enemyObjects;
 
     public int reward;
-    public string missionInfo;
     public string stageName;
+
+    public string diffculty;
 
     public bool CheckClearMission(int enemyCount)
     {

@@ -525,7 +525,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8717194785524449316}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1629200976938206760}
+        m_TargetAssemblyTypeName: ShopSlot, Assembly-CSharp
+        m_MethodName: ShowInfo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6645448413880594528
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,4 +893,6 @@ MonoBehaviour:
   canSetSlot: 0
   itemCountText: {fileID: 5039082732415039546}
   itemIcon: {fileID: 898606256182487530}
+  descriptionUI: {fileID: 0}
   shop: {fileID: 0}
+  price: 0

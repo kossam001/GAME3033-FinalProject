@@ -23,8 +23,13 @@ public class InventoryController : MonoBehaviour
 
     [SerializeField] private Inventory inventory;
 
+    public delegate void EarningsChanged();
+    public EarningsChanged OnEarningsChanged;
+
     private bool clicked = false;
     private Vector2 mousePosition;
+
+    public int money = 1000;
 
     private void Awake()
     {
@@ -51,6 +56,13 @@ public class InventoryController : MonoBehaviour
     public void OnMouseMove(InputValue delta)
     {
         mousePosition = delta.Get<Vector2>();
+    }
+
+    public void SetMoneyAmount(int amount)
+    {
+        money = amount;
+        if (OnEarningsChanged == null) return;
+        OnEarningsChanged();
     }
 
     public void OnHotbar1(InputValue button)

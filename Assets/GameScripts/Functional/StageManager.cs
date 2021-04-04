@@ -143,20 +143,24 @@ public class StageManager : MonoBehaviour
 
     private void Update()
     {
+        if (IsInvoking(nameof(ReturnToLobby))) return;
+
         if (stageMission.CheckClearMission(teamTable[Team.Enemy].Count))
         {
-            if (!IsInvoking(nameof(ReturnToLobby)))
-                Invoke(nameof(ReturnToLobby), 3);
+            InventoryController.Instance.SetMoneyAmount(InventoryController.Instance.money + stageMission.reward);
+            Invoke(nameof(ReturnToLobby), 3);
         }
         else if (stageMission.CheckFailMission(playerCharacter.GetComponentInChildren<CharacterData>().stats.currentHealth))
         {
-            if (!IsInvoking(nameof(ReturnToLobby)))
-                Invoke(nameof(ReturnToLobby), 3);
+            Invoke(nameof(ReturnToLobby), 3);
         }
     }
 
     private void ReturnToLobby()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         SceneController.Instance.LoadScene("Lobby");
     }
 }

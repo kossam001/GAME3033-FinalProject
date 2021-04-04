@@ -78,7 +78,13 @@ public class Item : ScriptableObject
 
     [SerializeField]
     private ItemEffect effect;
-    public bool Effect { get; private set; }
+    public bool Effect 
+    { 
+        get { return effect; }
+        private set { }
+    }
+
+    public int price;
 
     public void Use(GameObject character)
     {

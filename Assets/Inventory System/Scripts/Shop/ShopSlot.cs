@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class ShopSlot : ItemSlot
 {
@@ -20,5 +21,17 @@ public class ShopSlot : ItemSlot
     public void Select()
     {
         shop.SelectItem(ItemInSlot);
+    }
+
+    public virtual void ShowInfo()
+    {
+        string itemInfo = "";
+        itemInfo += ItemInSlot.Name + "\n\n";
+        itemInfo += ItemInSlot.Description + "\n\n";
+        itemInfo += "Price: " + ItemInSlot.price;
+
+        descriptionUI.GetComponentInChildren<TMP_Text>().text = itemInfo;
+
+        descriptionUI.SetActive(true);
     }
 }
