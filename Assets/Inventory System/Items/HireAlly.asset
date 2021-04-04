@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: HireAlly
   m_EditorClassIdentifier: 
   itemID: 1
-  name: Call For Backup
+  name: Ally Contract
   description: Hire an ally to help you fight.
   category: misc
   icon: {fileID: 21300000, guid: 083a48f5c969dc64294bf6fe47151e65, type: 3}
   type: 0
   sellable: 1
   effect: {fileID: 11400000, guid: 9b485d43cca23e04e89b971efb3ef689, type: 2}
-  price: 1000
+  price: 200

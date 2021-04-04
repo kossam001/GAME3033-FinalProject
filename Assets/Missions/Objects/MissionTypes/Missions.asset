@@ -10,7 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24c18ec3d59fa2947bd42f065465e040, type: 3}
-  m_Name: EasyMissions
+  m_Name: Missions
   m_EditorClassIdentifier: 
   items:
   - {fileID: 11400000, guid: ba402960a572b4e4387df0e508e8f80b, type: 2}
+  - {fileID: 11400000, guid: fe8784d672c943e4dad0ebd75ffca2f3, type: 2}
+  - {fileID: 11400000, guid: a1a613e38d1a4844181b2d0bc169f728, type: 2}
+  - {fileID: 11400000, guid: adf50cb6ac4a74c4aab634eea63069f3, type: 2}

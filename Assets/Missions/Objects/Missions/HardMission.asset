@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ea996863e5ecd4e8cd7661ce8c6703, type: 3}
+  m_Name: HardMission
+  m_EditorClassIdentifier: 
+  itemID: 2
+  name: Boss Fight
+  description: Opponent won't go down easily and hits hard.
+  category: misc
+  icon: {fileID: 21300000, guid: fa8586cd010bd7a409b3a5846fcb7fd2, type: 3}
+  type: 1
+  sellable: 0
+  effect: {fileID: 0}
+  price: 0
+  numOpponents: 01000000
+  enemyObjects:
+  - {fileID: 4840260350987458968, guid: a3f4e903cde84e748bc783b886eab07f, type: 3}
+  reward: 1000
+  stageName: Arena
+  diffculty: Hard

@@ -18,10 +18,14 @@ public class MissionShop : Shop
 
     protected override void InitShop()
     {
-        // Sort the items into seeds and towers and organize them into the correct inventories
-        foreach (ItemTable missionTable in masterItemTables)
+        //foreach (ItemTable missionTable in masterItemTables)
+        //{
+        //        SetupSlot(missionTable.GetItem(Random.Range(0, missionTable.items.Length)), missionPanel, itemSlots);
+        //}
+
+        foreach (Item mission in masterItemTables[0].items)
         {
-                SetupSlot(missionTable.GetItem(Random.Range(0, missionTable.items.Length)), missionPanel, itemSlots);
+            SetupSlot(mission, missionPanel, itemSlots);
         }
     }
 
