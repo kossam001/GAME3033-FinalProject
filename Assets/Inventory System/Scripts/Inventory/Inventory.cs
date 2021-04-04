@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.Assertions;
 using System.Linq; // For finding all gameObjects with name
+using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour, ISaveHandler
 {

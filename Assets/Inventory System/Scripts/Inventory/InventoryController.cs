@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using System;
 using UnityEngine.InputSystem;
 
@@ -44,6 +45,9 @@ public class InventoryController : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this);
         }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        inventory.GetComponent<RectTransform>().localScale = Vector3.zero;
     }
 
     // Start is called before the first frame update
@@ -53,6 +57,21 @@ public class InventoryController : MonoBehaviour
         m_Raycaster = GetComponent<GraphicRaycaster>();
         //Fetch the Event System from the Scene
         m_EventSystem = GetComponent<EventSystem>();
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (this == null) return;
+
+        if (StageManager.Instance == null)
+            inventory.GetComponent<RectTransform>().localScale = Vector3.zero;
+        else
+            inventory.GetComponent<RectTransform>().localScale = new Vector3(0.2f, 0.2f, 1);
     }
 
     public void OnMouseMove(InputValue delta)

@@ -491,6 +491,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5277691403095416389, guid: cf8a4649a57fc4c4c92f87c1295fe382, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8762668733677277082, guid: cf8a4649a57fc4c4c92f87c1295fe382, type: 3}
       propertyPath: m_Name
       value: PlayerInventoryController
