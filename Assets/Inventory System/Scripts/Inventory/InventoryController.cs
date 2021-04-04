@@ -21,7 +21,7 @@ public class InventoryController : MonoBehaviour
     PointerEventData m_PointerEventData;
     EventSystem m_EventSystem;
 
-    [SerializeField] private Inventory inventory;
+    public Inventory inventory;
 
     public delegate void EarningsChanged();
     public EarningsChanged OnEarningsChanged;
@@ -141,7 +141,11 @@ public class InventoryController : MonoBehaviour
     {
         foreach (ItemSlot itemSlot in inventory.itemSlots)
         {
-            if (itemSlot.AddItems(item, amount)) return;
+            if (itemSlot.AddItems(item, amount))
+            {
+                GameManager.Instance.SaveGame();
+                return;
+            }
         }
     }
 

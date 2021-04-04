@@ -181,6 +181,7 @@ public class StageManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        GameManager.Instance.SaveGame();
 
         SceneController.Instance.LoadScene("Lobby");
     }

@@ -75,4 +75,42 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
+
+    public void LoadGame()
+    {
+        string loadedData = PlayerPrefs.GetString("PlayerData", "");
+
+        if (loadedData == "") return;
+
+        string[] parsedData = loadedData.Split(',');
+
+        InventoryController.Instance.money = Int32.Parse(parsedData[0]);
+        InventoryController.Instance.statSheet.health = Int32.Parse(parsedData[1]);
+        InventoryController.Instance.statSheet.attack = Int32.Parse(parsedData[2]);
+        InventoryController.Instance.statSheet.defense = Int32.Parse(parsedData[3]);
+
+        InventoryController.Instance.inventory.OnLoad();
+    }
+
+    public void SaveGame()
+    {
+        // Format: money,health,attack,defense
+        string money = InventoryController.Instance.money.ToString();
+        string health = InventoryController.Instance.statSheet.health.ToString();
+        string attack = InventoryController.Instance.statSheet.attack.ToString();
+        string defense = InventoryController.Instance.statSheet.defense.ToString();
+
+        PlayerPrefs.SetString("PlayerData", string.Concat(money, ",", health, ",", attack, ",", defense));
+        PlayerPrefs.Save();
+
+        InventoryController.Instance.inventory.OnSave();
+    }
+
+    public void CreateGame()
+    {
+        InventoryController.Instance.money = 1000;
+        InventoryController.Instance.statSheet.health = 100;
+        InventoryController.Instance.statSheet.attack = 0;
+        InventoryController.Instance.statSheet.defense = 0;
+    }
 }

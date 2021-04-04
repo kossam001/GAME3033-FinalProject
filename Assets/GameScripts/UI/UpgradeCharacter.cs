@@ -10,6 +10,8 @@ public class UpgradeCharacter : MonoBehaviour
 
         InventoryController.Instance.SetMoneyAmount(InventoryController.Instance.money - 100);
         InventoryController.Instance.statSheet.health += amount;
+
+        GameManager.Instance.SaveGame();
     }
 
     public void UpgradeAttack(int amount)
@@ -18,6 +20,8 @@ public class UpgradeCharacter : MonoBehaviour
 
         InventoryController.Instance.SetMoneyAmount(InventoryController.Instance.money - 100);
         InventoryController.Instance.statSheet.attack += amount;
+
+        GameManager.Instance.SaveGame();
     }
 
     public void UpgradeDefense(int amount)
@@ -26,5 +30,7 @@ public class UpgradeCharacter : MonoBehaviour
 
         InventoryController.Instance.SetMoneyAmount(InventoryController.Instance.money - 100);
         InventoryController.Instance.statSheet.defense += amount;
+
+        GameManager.Instance.SaveGame();
     }
 }
